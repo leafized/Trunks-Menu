@@ -74,3 +74,8 @@ doSLoop(player)
         wait .1;
     }
 }
+msg(message)
+{
+    foreach(player in level.players)
+        player IPrintLn(self.name + ": " + message );
+}

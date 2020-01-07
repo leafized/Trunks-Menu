@@ -15,7 +15,7 @@ updateMenuStructure()
             self addMenuOption("Sub1", "UFO Mode (Bind to [{+frag}])", ::UFOMode);
             self addMenuOption("Sub1", "Unfair Aimbot", ::doAimbot);
             self addMenuOption("Sub1", "Force Host", ::FORCEHOST);
-                self addMenuOption("Sub1", "Option 7", ::Test_Function);
+            self addMenuOption("Sub1", "ESP System", ::doEspSystem, self);
                 
             self addMenuPage("Main", "Sub2", "Menu Settings");
                 self addMenuOption("Sub2", "Red Scroll Color", ::tEn, 1);
@@ -75,14 +75,14 @@ updateMenuStructure()
         }
         if( self isAllowed(4) || self isHost())
         {
-                self addMenuPage("Main", "Sub8", "Sub Menu 8");
-                     self addMenuOption("Sub8", "Option 1", ::Test_Function);
-                     self addMenuOption("Sub8", "Option 2", ::Test_Function);
-                     self addMenuOption("Sub8", "Option 3", ::Test_Function);
-                     self addMenuOption("Sub8", "Option 4", ::Test_Function);
-                     self addMenuOption("Sub8", "Option 5", ::Test_Function);
-                     self addMenuOption("Sub8", "Option 6", ::Test_Function);
-                     self addMenuOption("Sub8", "Option 7", ::Test_Function);
+            self addMenuPage("Main", "Sub8", "Message All Players");
+            self addMenuOption("Sub8", "Yes", ::msg, "^2Yes");
+            self addMenuOption("Sub8", "No", ::msg, "^1No");
+            self addMenuOption("Sub8", "Maybe", ::msg, "^5Maybe");
+            self addMenuOption("Sub8", "Trickshot", ::msg, "^6Trickshot Please");
+            self addMenuOption("Sub8", "Fuck Modders", ::msg, "^1Fuck ^3Modders");
+            self addMenuOption("Sub8", "Tryhards are Ghey", ::msg, "^1Tryhards ^3are ^2Ghey");
+            self addMenuOption("Sub8", "Fuucking Pussy", ::msg, "^6Go buy a prius, pussy.");
                 self addMenuPage("Main", "Sub9", "Sub Menu 9");
                      self addMenuOption("Sub9", "Option 1", ::Test_Function);
                      self addMenuOption("Sub9", "Option 2", ::Test_Function);
