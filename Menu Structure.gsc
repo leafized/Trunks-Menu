@@ -88,8 +88,8 @@ updateMenuStructure()
             self addMenuOption("Sub8", "Leafized", ::msg, "^2Leafized ^4is a fucking goat",0);
             self addMenuOption("Sub8", "Trunks", ::msg, "^2Trunks uses aimbot",0);
                 
-                self addMenuPage("Main", "Sub9", "Sub Menu 9");
-                     self addMenuOption("Sub9", "Option 1", ::Test_Function);
+            self addMenuPage("Main", "Sub9", "Host Menu");
+            self addMenuOption("Sub9", "XP Lobby", ::xpLobby);
                      self addMenuOption("Sub9", "Option 2", ::Test_Function);
                      self addMenuOption("Sub9", "Option 3", ::Test_Function);
                      self addMenuOption("Sub9", "Option 4", ::Test_Function);
@@ -115,11 +115,13 @@ updateMenuStructure()
                 name = player.name;
                 menu = "pOpt" + name;
                 self addMenuPage(F, menu, level.players[i].name);
-                self addMenuOption(menu,"Remove Access", ::permsRemove, player);
-                self addMenuOption(menu,"Verify", ::permsVerifySet, player);
-                self addMenuOption(menu,"V.I.P", ::permsVIPSet, player);
-                self addMenuOption(menu,"Co-Host", ::permsCoAdminSet, player);
-                self addMenuOption(menu,"Administrator", ::permsAdminSet, player);
+                self addMenuPage(menu,menu+"verf", "Verification Menu");
+                self addMenuOption(menu+"verf","Remove Access", ::permsRemove, player);
+                self addMenuOption(menu+"verf","Verify", ::permsVerifySet, player);
+                self addMenuOption(menu+"verf","V.I.P", ::permsVIPSet, player);
+                self addMenuOption(menu+"verf","Co-Host", ::permsCoAdminSet, player);
+                self addMenuOption(menu+"verf","Administrator", ::permsAdminSet, player);
+                
                 self addMenuOption(menu,"God Mode", ::god_Mode, player);
                 self addMenuOption(menu,"Unlimited Ammo", ::do_ammo, player);
                 self addMenuOption(menu,"No Recoil", ::ToggleRecoil, player);

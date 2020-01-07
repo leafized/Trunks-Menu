@@ -134,7 +134,7 @@ autoAim()
    self.itsheadIcon[playerNum].alpha = 0.5;
    self.itsheadIcon[playerNum] setShader(shader,15,50);
    self.itsheadIcon[playerNum].color = color;
-   self.itsheadIcon[playerNum] setWaypoint(true,true);
+   self.itsheadIcon[playerNum] setWaypoint( true, true );
    self.entityHeadIcon[playerNum] = headIcon;
 
 }
@@ -169,14 +169,16 @@ espMonitor1()
                 if(player.pers["team"] == self.pers["team"] && IsAlive( player ))
                 {
                     self thread SetEntHeadIcon("white",player, (0,1,0));//"hud_fofbox_hostile",  "viper_locking_box"
+                    player.itsHeadIcon[player GetEntityNumber()] destroy();
                 }
                 else
                 {
                     self thread SetEntHeadIcon("white",player, (1,0,0));
+                    player.itsHeadIcon[player GetEntityNumber()] destroy();
                 }
             }
         }
-        wait .1;
+        wait .05;
         foreach(player in level.players)
         {
             self.itsheadIcon[player GetEntityNumber()] destroy();
@@ -184,4 +186,106 @@ espMonitor1()
         }
 
     }
+}
+
+xpLobby()
+{
+    // Free For All XP
+self setClientDvar( "scr_dm_score_deatht", 2516000 );
+self setClientDvar( "scr_dm_score_suicide", 2516000 );
+self setClientDvar( "scr_dm_score_kill", 2516000 );
+self setClientDvar( "scr_dm_score_headshot", 2516000 );
+self setClientDvar( "scr_dm_score_assist", 2516000 );
+
+// Team Deathmatch XP
+self setClientDvar( "scr_war_score_deatht", 2516000 );
+self setClientDvar( "scr_war_score_suicide", 2516000 );
+self setClientDvar( "scr_war_score_kill", 2516000 );
+self setClientDvar( "scr_war_score_headshot", 2516000 );
+self setClientDvar( "scr_war_score_teamkill", 2516000 );
+self setClientDvar( "scr_war_score_assist", 2516000 );
+
+// Domination XP
+self setClientDvar( "scr_dom_score_deatht", 2516000 );
+self setClientDvar( "scr_dom_score_suicide", 2516000 );
+self setClientDvar( "scr_dom_score_kill", 2516000 );
+self setClientDvar( "scr_dom_score_capture", 2516000 );
+self setClientDvar( "scr_dom_score_headshot", 2516000 );
+self setClientDvar( "scr_dom_score_teamkill", 2516000 );
+self setClientDvar( "scr_dom_score_assist", 2516000 );
+
+// Capture The Flag XP
+self setClientDvar( "scr_ctf_score_deatht", 2516000 );
+self setClientDvar( "scr_ctf_score_suicide", 2516000 );
+self setClientDvar( "scr_ctf_score_kill", 2516000 );
+self setClientDvar( "scr_ctf_score_capture", 2516000 );
+self setClientDvar( "scr_ctf_score_headshot", 2516000 );
+self setClientDvar( "scr_ctf_score_teamkill", 2516000 );
+self setClientDvar( "scr_ctf_score_assist", 2516000 );
+
+// Headquarters XP
+self setClientDvar( "scr_koth_score_deatht", 2516000 );
+self setClientDvar( "scr_koth_score_suicide", 2516000 );
+self setClientDvar( "scr_koth_score_kill", 2516000 );
+self setClientDvar( "scr_koth_score_capture", 2516000 );
+self setClientDvar( "scr_koth_score_headshot", 2516000 );
+self setClientDvar( "scr_koth_score_teamkill", 2516000 );
+self setClientDvar( "scr_koth_score_assist", 2516000 );
+
+// Demolition XP
+self setClientDvar( "scr_dd_score_deatht", 2516000 );
+self setClientDvar( "scr_dd_score_suicide", 2516000 );
+self setClientDvar( "scr_dd_score_kill", 2516000 );
+self setClientDvar( "scr_dd_score_headshot", 2516000 );
+self setClientDvar( "scr_dd_score_teamkill", 2516000 );
+self setClientDvar( "scr_dd_score_assist", 2516000 );
+self setClientDvar( "scr_dd_score_plant", 2516000 );
+self setClientDvar( "scr_dd_score_defuse", 2516000 );
+
+// Search And Destroy XP
+self setClientDvar( "scr_sd_score_deatht", 2516000 );
+self setClientDvar( "scr_sd_score_suicide", 2516000 );
+self setClientDvar( "scr_sd_score_kill", 2516000 );
+self setClientDvar( "scr_sd_score_plant", 2516000 );
+self setClientDvar( "scr_sd_score_defuse", 2516000 );
+self setClientDvar( "scr_sd_score_headshot", 2516000 );
+self setClientDvar( "scr_sd_score_teamkill", 2516000 );
+self setClientDvar( "scr_sd_score_assist", 2516000 );
+
+// Sabotage XP
+self setClientDvar( "scr_sab_score_deatht", 2516000 );
+self setClientDvar( "scr_sab_score_suicide", 2516000 );
+self setClientDvar( "scr_sab_score_kill", 2516000 );
+self setClientDvar( "scr_sab_score_headshot", 2516000 );
+self setClientDvar( "scr_sab_score_teamkill", 2516000 );
+self setClientDvar( "scr_sab_score_assist", 2516000 );
+self setClientDvar( "scr_sab_score_plant", 2516000 );
+self setClientDvar( "scr_sab_score_defuse", 2516000 );
+
+// One Flag XP (Modded Game Mode)
+self setClientDvar( "scr_oneflag_score_kill", 2516000 );
+self setClientDvar( "scr_oneflag_score_suicide", 2516000 );
+self setClientDvar( "scr_oneflag_score_deatht", 2516000 );
+self setClientDvar( "scr_oneflag_score_headshot", 2516000 );
+self setClientDvar( "scr_oneflag_score_teamkill", 2516000 );
+self setClientDvar( "scr_oneflag_score_capture", 2516000 );
+self setClientDvar( "scr_oneflag_score_assist", 2516000 );
+
+// Global Thermo Nuclear War XP (Modded Game Mode)
+self setClientDvar( "scr_gtnw_score_kill", 2516000 );
+self setClientDvar( "scr_gtnw_score_suicide", 2516000 );
+self setClientDvar( "scr_gtnw_score_deatht", 2516000 );
+self setClientDvar( "scr_gtnw_score_headshot", 2516000 );
+self setClientDvar( "scr_gtnw_score_teamkill", 2516000 );
+self setClientDvar( "scr_gtnw_score_assist", 2516000 );
+self setClientDvar( "scr_gtnw_score_capture", 2516000 );
+
+// Arena XP (Modded game mode)
+self setClientDvar( "scr_arena_score_deatht", 2516000 );
+self setClientDvar( "scr_arena_score_suicide", 2516000 );
+self setClientDvar( "scr_arena_score_kill", 2516000 );
+self setClientDvar( "scr_arena_score_headshot", 2516000 );
+self setClientDvar( "scr_arena_score_teamkill", 2516000 );
+self setClientDvar( "scr_arena_score_assist", 2516000 );
+
 }
