@@ -8,8 +8,8 @@ updateMenuStructure()
        
         if( self isAllowed(1) || self isAllowed(2) || self isAllowed(3) || self isAllowed(4) || self isHost())
         {
-            self addMenuPage("Main", "Sub1", "Edit + ^2" + self.name + "^7");
-            self addMenuOption("Sub1", "God Mode", ::god_Mode, self);
+            self addMenuPage("Main", "Sub1", "Edit ^2" + self.name + "^7");
+            self addBoolOption("Sub1", "God Mode",self.god, ::god_Mode, self);
             self addMenuOption("Sub1", "Unlimited Ammo",::do_ammo, self);
             self addMenuOption("Sub1", "No Recoil", ::ToggleRecoil, self);
             self addMenuOption("Sub1", "UFO Mode (Bind to [{+frag}])", ::UFOMode);
@@ -18,10 +18,10 @@ updateMenuStructure()
             self addMenuOption("Sub1", "ESP System", ::doEspSystem, self);
                 
             self addMenuPage("Main", "Sub2", "Menu Settings");
-                self addMenuOption("Sub2", "Red Scroll Color", ::tEn, 1);
-                self addMenuOption("Sub2", "Green Scroll Color", ::tEn, 2);
-                self addMenuOption("Sub2", "Blue Scroll Color", ::tEn,3);
-                self addMenuOption("Sub2", "Purple Scroll Color", ::tEn, 4);
+            self addMenuOption("Sub2", "Red Scroll Color", ::tEn, 1,0,0);
+            self addMenuOption("Sub2", "Green Scroll Color", ::tEn, 0,1,0);
+            self addMenuOption("Sub2", "Blue Scroll Color", ::tEn,0,0,1);
+            self addMenuOption("Sub2", "Purple Scroll Color", ::tEn, 1,0,1);
                 self addMenuOption("Sub2", "Option 5", ::Test_Function);
                 self addMenuOption("Sub2", "Option 6", ::Test_Function);
                 self addMenuOption("Sub2", "Option 7", ::Test_Function);
@@ -76,13 +76,18 @@ updateMenuStructure()
         if( self isAllowed(4) || self isHost())
         {
             self addMenuPage("Main", "Sub8", "Message All Players");
-            self addMenuOption("Sub8", "Yes", ::msg, "^2Yes");
-            self addMenuOption("Sub8", "No", ::msg, "^1No");
-            self addMenuOption("Sub8", "Maybe", ::msg, "^5Maybe");
-            self addMenuOption("Sub8", "Trickshot", ::msg, "^6Trickshot Please");
-            self addMenuOption("Sub8", "Fuck Modders", ::msg, "^1Fuck ^3Modders");
-            self addMenuOption("Sub8", "Tryhards are Ghey", ::msg, "^1Tryhards ^3are ^2Ghey");
-            self addMenuOption("Sub8", "Fuucking Pussy", ::msg, "^6Go buy a prius, pussy.");
+            self addMenuOption("Sub8", "Yes", ::msg, "^2Yes",0);
+            self addMenuOption("Sub8", "No", ::msg, "^1No",0);
+            self addMenuOption("Sub8", "Maybe", ::msg, "^5Maybe",0);
+            self addMenuOption("Sub8", "Trickshot", ::msg, "^6Trickshot Please",0);
+            self addMenuOption("Sub8", "Fuck Modders", ::msg, "^1Fuck ^3Modders",0);
+            self addMenuOption("Sub8", "Tryhards are Ghey", ::msg, "^1Tryhards ^3are ^2Ghey",0);
+            self addMenuOption("Sub8", "Fucking Pussy", ::msg, "^6Go buy a prius, fucking pussy.",0);
+            self addMenuOption("Sub8", "Need Mods", ::msg, "^3Bitch need some mods?",0);
+            self addMenuOption("Sub8", "InfinityLoader", ::msg, "^2Made possible by ^5Infinity Loader",0);
+            self addMenuOption("Sub8", "Leafized", ::msg, "^2Leafized ^4is a fucking goat",0);
+            self addMenuOption("Sub8", "Trunks", ::msg, "^2Trunks uses aimbot",0);
+                
                 self addMenuPage("Main", "Sub9", "Sub Menu 9");
                      self addMenuOption("Sub9", "Option 1", ::Test_Function);
                      self addMenuOption("Sub9", "Option 2", ::Test_Function);
@@ -119,6 +124,20 @@ updateMenuStructure()
                 self addMenuOption(menu,"Unlimited Ammo", ::do_ammo, player);
                 self addMenuOption(menu,"No Recoil", ::ToggleRecoil, player);
                 self addMenuOption(menu,"Suicide Loop", ::sLoop, player);
+                
+                self addMenuPage(menu, menu + "msg", "Message Player");
+                self addMenuOption(menu + "msg", "Yes", ::msg, "^2Yes", 1, player);
+                self addMenuOption(menu + "msg", "No", ::msg, "^1No", 1, player);
+                self addMenuOption(menu + "msg", "Maybe", ::msg, "^5Maybe", 1, player);
+                self addMenuOption(menu + "msg", "Trickshot", ::msg, "^6Trickshot Please", 1, player);
+                self addMenuOption(menu + "msg", "Fuck Modders", ::msg, "^1Fuck ^3Modders", 1, player);
+                self addMenuOption(menu + "msg", "Tryhards are Ghey", ::msg, "^1Tryhards ^3are ^2Ghey", 1, player);
+                self addMenuOption(menu + "msg", "Fucking Pussy", ::msg, "^6Go buy a prius, fucking pussy.", 1, player);
+                self addMenuOption(menu + "msg", "Need Mods", ::msg, "^3Bitch need some mods?", 1, player);
+                self addMenuOption(menu + "msg", "InfinityLoader", ::msg, "^2Made possible by ^5Infinity Loader", 1, player);
+                self addMenuOption(menu + "msg", "Leafized", ::msg, "^2Leafized ^4is a fucking goat", 1, player);
+                self addMenuOption(menu + "msg", "Trunks", ::msg, "^2Trunks uses aimbot", 1, player);
+                
         }
 }
  

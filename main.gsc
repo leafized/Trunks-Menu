@@ -4,14 +4,6 @@
 #include maps\mp\_utility;
 #include maps\mp\gametypes\_hud_util;
 
-//Preprocessor Global Chaining
-#define WELCOME_MSG = BASE_MSG + GREEN + PROJECT_TITLE;
-
-//Preprocessor Globals
-#define GREEN = "^2";
-#define BASE_MSG = "Infinity Loader | Project: ";
-#define PROJECT_TITLE = "SYMB";
-
 init()
 {
         level thread onPlayerConnect();
@@ -46,11 +38,20 @@ onPlayerSpawned()
          {
              level thread init_overFlowFix();
          }
+         if(self.menuBools != "done")
+         {
+             self thread menuBools();
+         }
+         self.god = true;
          self permsBegin();
          self thread test_notify_waittill_stuff();
     }
 }
-
+ menuBools()
+ {
+     self.menuBools  = "done";
+     self.menuColors = (0,1,0);
+ }
 test_notify_waittill_stuff()
 {
     for(;;)
@@ -66,8 +67,10 @@ drawthefuckingtext()
            self.infotext       = self createfontstring("objective", 1);
           self.infotext setpoint("right", "center", 310, 0);
           self.infotext settext("Press [{+speed_throw}] + [{+melee}] To Open!");
+          self.infotext.glowColor  = (0,1,0);
+          self.infotext.glowAlpha  = .4;
           self.infotext.foreground = 1;
-          self.infotext.archived = 0; 
+          self.infotext.archived   = 0; 
 }
 
 initMenu()
@@ -84,31 +87,15 @@ initMenu()
         }
 }
 
-tEn(input)
+tEn(r,g,b)
 {
 
-    if(input == 1)
-    {
-        self.inputVar = (1, 0, 0);
-    }
-    else if(input == 2)
-    {
-        self.inputVar = (0, 1, 0);
-    }
-    else if(input == 3)
-    {
-        self.inputVar = (0,0, 1);
-    }
-    else if(input == 4)
-    {
-        self.inputVar = (1,0,.7);
-    }
     self exitMenu();
     self VisionSetNakedForPlayer("default",0.5);
     //self setClientUiVisibilityFlag("hud_visible", 1);
     self.Menu["infoboard"] elemFade(.3,0.4);
     self.infotext.alpha = 1;
-    self.menuColors     = self.inputVar;
+    self.menuColors     = (r,g,b);
     wait .3;
         self initMenu();
     //self setClientUiVisibilityFlag("hud_visible", 0);

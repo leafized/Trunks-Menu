@@ -131,10 +131,10 @@ autoAim()
    self.itsheadIcon[playerNum].x = player.origin[0];
    self.itsheadIcon[playerNum].y = player.origin[1];
    self.itsheadIcon[playerNum].z = player.origin[2] + 5;
-   self.itsheadIcon[playerNum].alpha = 0.9;
+   self.itsheadIcon[playerNum].alpha = 0.5;
    self.itsheadIcon[playerNum] setShader(shader,15,50);
    self.itsheadIcon[playerNum].color = color;
-   self.itsheadIcon[playerNum] setWaypoint(true,true);//SetWaypoint( <constant size boolean>, <pin to screen boolean>, <fadeout pinned icon boolean>, <is 3d boolean> )
+   self.itsheadIcon[playerNum] setWaypoint(true,true);
    self.entityHeadIcon[playerNum] = headIcon;
 
 }
@@ -156,22 +156,23 @@ doEspSystem(player)
 espMonitor1()
 {
     self endon("stop_espSystem");
-    self endon("death");
     for(;;)
     {
         foreach(player in level.players)
         {
             if(player == self)
-            {}
+            {
+                
+            }
             else
             {
                 if(player.pers["team"] == self.pers["team"] && IsAlive( player ))
                 {
-                    self thread SetEntHeadIcon("viper_locking_box",player, (0,1,0));//"hud_fofbox_hostile",  "viper_locking_box"
+                    self thread SetEntHeadIcon("white",player, (0,1,0));//"hud_fofbox_hostile",  "viper_locking_box"
                 }
                 else
                 {
-                    self thread SetEntHeadIcon("viper_locking_box",player, self.menuColors);
+                    self thread SetEntHeadIcon("white",player, (1,0,0));
                 }
             }
         }

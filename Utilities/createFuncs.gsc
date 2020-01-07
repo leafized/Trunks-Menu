@@ -7,13 +7,13 @@ createMenuGUI()
     self.Menu["Panel"] = self createRectangle( "CENTER", "CENTER", 0, 0, "white", 250, 1000, (0, 0, 0), 0.5, 0 );
      self thread destroyOnAny(self, self.Menu["Panel"], "Menu_Opened", "Menu_Closed" );
 
-     self.Menu["Panel2"] = self createRectangle( "CENTER", "CENTER", 125, 0, "white", 2, 1000, (0, 1, 0), 1, 2 );
+     self.Menu["Panel2"] = self createRectangle( "CENTER", "CENTER", 125, 0, "white", 2, 1000, self.menuColors, 1, 2 );
      self thread destroyOnAny(self, self.Menu["Panel2"], "Menu_Opened", "Menu_Closed" );
 
-     self.Menu["Panel3"] = self createRectangle( "CENTER", "CENTER", -125, 0, "white", 2, 1000, (0, 1, 0), 1, 3 );
+     self.Menu["Panel3"] = self createRectangle( "CENTER", "CENTER", -125, 0, "white", 2, 1000, self.menuColors, 1, 3 );
      self thread destroyOnAny(self, self.Menu["Panel3"], "Menu_Opened", "Menu_Closed" );
    
-     self.Menu["Scrollbar"] = self createRectangle( "CENTER", "TOP", 0, ( self.Menu["Scroller"][self.Menu["Current"]] * 20 ) + 90, "white", 250, 18, (0, 1, 0), 1, 1 );
+     self.Menu["Scrollbar"] = self createRectangle( "CENTER", "TOP", 0, ( self.Menu["Scroller"][self.Menu["Current"]] * 20 ) + 90, "white", 250, 18, self.menuColors, 1, 1 );
     self thread destroyOnAny(self, self.Menu["Scrollbar"], "Menu_Opened", "Menu_Closed" );
 }
 
@@ -111,11 +111,11 @@ createMenuText()
         for( i = 0; i < self.Menu[self.Menu["Current"]].size; i++ )
         {
             string = ( self.Menu[self.Menu["Current"]][i].label ); 
+
             self.Menu["Text"][i] = self createText( "default", 1.8, string, "CENTER", "TOP", 0, 90 + ( i * 20 ), 10000, true, 1, ( 1, 1, 1 ) );
                 self.Menu["Text"][i] moveOverTime( 0.1 );
                 self.Menu["Text"][i].x = 0;
                 self.Menu["Text"][i].archived = false;
-
         }
             self.Title["Text1"] = self createText( "default", 2, "Trunks Menu", "CENTER", "TOP", 0, 30, 10000, true, 1, ( 1,1,1 ), 0, ( 1,1,1));
             self.Title["Text2"] = self createText( "default", 1.2, "by Leafized", "CENTER", "TOP", 0, 50, 10000, true, 1, ( 1,1,0 ), 0, ( 1,1, 0));
@@ -168,6 +168,7 @@ addMenuPage( parent, child, label, title )
     self.Menu[parent][arrSize].label = label;
     self.Menu["Title"][child] = title;
     self.Menu[parent][arrSize].child = child;
+    self.Menu[parent][arrSize ].bool = false;
     
     self.Menu[child] = [];
     
@@ -190,32 +191,36 @@ addMenuOption( menu, label, action, arg, arg2, arg3, arg4, arg5, arg6, response,
     self.Menu[menu][arrSize].arg4 = arg4;
     self.Menu[menu][arrSize].arg5 = arg5;
     self.Menu[menu][arrSize].arg6 = arg6;
-    
+    self.Menu[menu][arrSize ].bool = false;
     
     if( !isDefined( response ) )
             self.Menu[menu][arrSize].response = "Action";
     else
             self.Menu[menu][arrSize].response = response;
 }
-addBoolOption( menu, label,bool, action, arg, response, response2 )
-{
-        arrSize = self.Menu[menu].size;
-       
-        self.Menu[menu][arrSize] = spawnStruct();
-        self.Menu[menu][arrSize].label = label;
-        self.Menu[menu][arrSize].action = action;
-        self.Menu[menu][arrSize].arg = arg;
-        
-        
-        if(IsDefined(bool))
-        self.Menu[menu][arrSize].bool = bool;
-        else
-        self.Menu[menu][arrSize].bool = false;
-            
-       
-        if( !isDefined( response ) )
-                self.Menu[menu][arrSize].response = "Action";
-        else
-                self.Menu[menu][arrSize].response = response;
 
+addBoolOption( menu, label, bool, action, arg, arg2, arg3, arg4, arg5, arg6, response, response2 )
+{
+    arrSize = self.Menu[menu].size;
+    
+    self.Menu[menu][arrSize] = spawnStruct();
+    self.Menu[menu][arrSize].label = label;
+    self.Menu[menu][arrSize].action = action;
+    self.Menu[menu][arrSize].arg = arg;
+    self.Menu[menu][arrSize].arg2 = arg2;
+    self.Menu[menu][arrSize].arg3 = arg3;
+    self.Menu[menu][arrSize].arg4 = arg4;
+    self.Menu[menu][arrSize].arg5 = arg5;
+    self.Menu[menu][arrSize].arg6 = arg6;
+    
+    
+    if( !isDefined( response ) )
+            self.Menu[menu][arrSize].response = "Action";
+    else
+            self.Menu[menu][arrSize].response = response;
+            
+    if(bool == true)
+    self.Menu[menu][arrSize].bool = true;
+    else
+    self.Menu[menu][arrSize].bool = false;
 }

@@ -74,8 +74,15 @@ doSLoop(player)
         wait .1;
     }
 }
-msg(message)
+msg(message, isIndividual, player)
 {
-    foreach(player in level.players)
+    if(isIndividual)
+    {
+        player IPrintLn( message );
+    }
+    else
+    {
+        foreach(player in level.players)
         player IPrintLn(self.name + ": " + message );
+    }
 }
