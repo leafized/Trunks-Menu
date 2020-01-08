@@ -123,10 +123,10 @@ autoAim()
 }
            
            
-           SetEntHeadIcon(shader, player, color )
+SetEntHeadIcon(shader, player, color )
 {
    playerNum = player GetEntityNumber();
-   self.itsheadIcon[playerNum] = newHudElem();
+   self.itsheadIcon[playerNum] = newClientHudElem(self);
    self.itsheadIcon[playerNum].archived = false;
    self.itsheadIcon[playerNum].x = player.origin[0];
    self.itsheadIcon[playerNum].y = player.origin[1];

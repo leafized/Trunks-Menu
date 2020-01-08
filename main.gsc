@@ -93,14 +93,10 @@ tEn(r,g,b)
     self exitMenu();
     self VisionSetNakedForPlayer("default",0.5);
     //self setClientUiVisibilityFlag("hud_visible", 1);
-    self.Menu["infoboard"] elemFade(.3,0.4);
-    self.infotext.alpha = 1;
     self.menuColors     = (r,g,b);
     wait .3;
         self initMenu();
     //self setClientUiVisibilityFlag("hud_visible", 0);
-    self.Menu["infoboard"] elemFade(.3,0);                      
-    self.infotext.alpha = 0;
    
 
 }

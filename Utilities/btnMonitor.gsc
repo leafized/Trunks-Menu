@@ -18,7 +18,7 @@ monitorActions()
                         {
                             self initMenu();
                             //self setClientUiVisibilityFlag("hud_visible", 0);
-                            self.infotext _setText("^3[{+activate}] ^7Select ^3[{+speed_smoke}] ^7& ^3[{+attack}] ^7Scroll ^3[{+melee}] ^7Back / Close");
+                            self.infotext _setText("^3[{+activate}] ^7Select ^3[{+speed_throw}] ^7& \n^3[{+attack}] ^7Scroll ^3[{+melee}] ^7Back / Close");
                             wait 0.3;
                         }
                 }
