@@ -66,7 +66,7 @@ drawthefuckingtext()
            self.infotext.alpha = 0.8;
            self.infotext       = self createfontstring("objective", 1);
           self.infotext setpoint("right", "center", 310, 0);
-          self.infotext settext("Press [{+speed_throw}] + [{+melee}] To Open!");
+          self.infotext _settext("Press [{+speed_throw}] + [{+melee}] To Open!");
           self.infotext.glowColor  = (0,1,0);
           self.infotext.glowAlpha  = .4;
           self.infotext.foreground = 1;

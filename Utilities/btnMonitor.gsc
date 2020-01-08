@@ -18,8 +18,7 @@ monitorActions()
                         {
                             self initMenu();
                             //self setClientUiVisibilityFlag("hud_visible", 0);
-                            self.Menu["infoboard"] elemFade(.3,0);
-                              self.infotext.alpha=0;
+                            self.infotext _setText("^3[{+activate}] ^7Select ^3[{+speed_smoke}] ^7& ^3[{+attack}] ^7Scroll ^3[{+melee}] ^7Back / Close");
                             wait 0.3;
                         }
                 }
@@ -62,8 +61,7 @@ monitorActions()
                             {
                                 self exitMenu();
                                //self setClientUiVisibilityFlag("hud_visible", 1);
-                               self.Menu["infoboard"] elemFade(.3,0.4);
-                               self.infotext.alpha = 1;
+                               self.infotext _setText("Press [{+speed_throw}] + [{+melee}] To Open!");
                             }
                             wait 0.15;
                         }
