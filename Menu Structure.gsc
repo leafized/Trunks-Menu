@@ -89,7 +89,6 @@ updateMenuStructure()
             self addMenuOption("Sub8", "Trunks", ::msg, "^2Trunks uses aimbot",0);
                 
             self addMenuPage("Main", "Sub9", "Host Menu");
-            self addMenuOption("Sub9", "XP Lobby", ::xpLobby);
                      self addMenuOption("Sub9", "Option 2", ::Test_Function);
                      self addMenuOption("Sub9", "Option 3", ::Test_Function);
                      self addMenuOption("Sub9", "Option 4", ::Test_Function);
