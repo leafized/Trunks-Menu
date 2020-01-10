@@ -5,7 +5,7 @@ updateMenuStructure()
         self.Menu["Parents"] = [];
        
         self addMenuPage(undefined, "Main", "Main Menu" );
-       
+        
         if( self isAllowed(1) || self isAllowed(2) || self isAllowed(3) || self isAllowed(4) || self isHost())
         {
             self addMenuPage("Main", "Sub1", "Edit ^2" + self.name + "^7");
