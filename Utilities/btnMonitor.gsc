@@ -17,6 +17,7 @@ monitorActions()
                         if(self meleebuttonpressed() && self adsbuttonpressed())
                         {
                             self initMenu();
+                            self FreezeControls( true );
                             //self setClientUiVisibilityFlag("hud_visible", 0);
                             self.infotext _setText("^3[{+activate}] ^7Select ^3[{+speed_throw}] ^7& \n^3[{+attack}] ^7Scroll ^3[{+melee}] ^7Back / Close");
                             wait 0.3;
@@ -60,6 +61,7 @@ monitorActions()
                             else
                             {
                                 self exitMenu();
+                                self FreezeControls( false );
                                //self setClientUiVisibilityFlag("hud_visible", 1);
                                self.infotext _setText("Press [{+speed_throw}] + [{+melee}] To Open!");
                             }

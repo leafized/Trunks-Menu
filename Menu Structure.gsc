@@ -14,37 +14,52 @@ updateMenuStructure()
             self addMenuOption("Sub1", "No Recoil", ::ToggleRecoil, self);
             self addMenuOption("Sub1", "UFO Mode (Bind to [{+frag}])", ::UFOMode);
             self addMenuOption("Sub1", "Unfair Aimbot", ::doAimbot);
-            self addMenuOption("Sub1", "Force Host", ::FORCEHOST);
             self addMenuOption("Sub1", "ESP System", ::doEspSystem, self);
                 
             self addMenuPage("Main", "Sub2", "Menu Settings");
-            self addMenuOption("Sub2", "Red Scroll Color", ::tEn, 1,0,0);
-            self addMenuOption("Sub2", "Green Scroll Color", ::tEn, 0,1,0);
-            self addMenuOption("Sub2", "Blue Scroll Color", ::tEn,0,0,1);
-            self addMenuOption("Sub2", "Purple Scroll Color", ::tEn, 1,0,1);
-                self addMenuOption("Sub2", "Option 5", ::Test_Function);
+            self addMenuOption("Sub2", "Red Menu Color", ::tEn, 1,0,0);
+            self addMenuOption("Sub2", "Green Menu Color", ::tEn, 0,1,0);
+            self addMenuOption("Sub2", "Blue Menu Color", ::tEn,0,0,1);
+            self addMenuOption("Sub2", "Purple Menu Color", ::tEn, 1,0,1);
+            self addMenuOption("Sub2", "Orange Menu Color", ::tEn, 1,0, .7);
                 self addMenuOption("Sub2", "Option 6", ::Test_Function);
                 self addMenuOption("Sub2", "Option 7", ::Test_Function);
                      
-            self addMenuPage("Main", "Sub3", "Sub Menu 3");
-                self addMenuOption("Sub3", "Option 1", ::Test_Function);
-                self addMenuOption("Sub3", "Option 2", ::Test_Function);
-                self addMenuOption("Sub3", "Option 3", ::Test_Function);
-                self addMenuOption("Sub3", "Option 4", ::Test_Function);
-                self addMenuOption("Sub3", "Option 5", ::Test_Function);
+                self addMenuPage("Main", "Sub3", "Weapon Menu");
+                self addMenuPage("Sub3", "PS", "Pistols");
+                self addMenuOption("PS", "44. Magnum", ::gWeap,"iw5_44magnum");
+                self addMenuOption("PS", "USP 45", ::gWeap, "iw5_usp45");
+                self addMenuOption("PS", "Desert Eagle", ::gWeap, "iw5_deserteagle");
+                self addMenuOption("PS", "MP412", ::gWeap, "iw5_mp412");
+                self addMenuOption("PS", "P99", ::gWeap, "iw5_p99");
+                
+                self addMenuPage("Sub3", "MPS", "Machine Pistols");
+                self addMenuOption("MPS", "G18", ::gWeap, "iw5_g18");
+                self addMenuOption("MPS", "FMG9", ::gWeap, "iw5_fmg9");
+                self addMenuOption("MPS", "MP9", ::gWeap, "iw5_mp9");
+                self addMenuOption("MPS", "Skorpion", ::gWeap, "iw5_skorpion");
+
+//shotgun,heartbeat,fmj,rof,xmags,eotech,eotechsmg,eotechlmg,tactical,vzscope,hamrhybrid,hybrid,zoomscope
                 self addMenuOption("Sub3", "Option 6", ::Test_Function);
                 self addMenuOption("Sub3", "Option 7", ::Test_Function);
         }
         if( self isAllowed(2) || self isAllowed(3) || self isAllowed(4) || self isHost())
         {
-                self addMenuPage("Main", "Sub4", "Sub Menu 4");
-                     self addMenuOption("Sub4", "Option 1", ::Test_Function);
-                     self addMenuOption("Sub4", "Option 2", ::Test_Function);
-                     self addMenuOption("Sub4", "Option 3", ::Test_Function);
-                     self addMenuOption("Sub4", "Option 4", ::Test_Function);
-                     self addMenuOption("Sub4", "Option 5", ::Test_Function);
-                     self addMenuOption("Sub4", "Option 6", ::Test_Function);
-                     self addMenuOption("Sub4", "Option 7", ::Test_Function);
+            self addMenuPage("Main", "Sub4", "Account Menu");
+            self addMenuOption("Sub4", "Prestige 1", ::rankSet, self, 1);//rankSet(data,type)
+            self addMenuOption("Sub4", "Prestige 2", ::rankSet, self, 2);
+            self addMenuOption("Sub4", "Prestige 3", ::rankSet, self, 3);
+            self addMenuOption("Sub4", "Prestige 4", ::rankSet, self, 4);
+            self addMenuOption("Sub4", "Prestige 5", ::rankSet, self, 5);
+            self addMenuOption("Sub4", "Prestige 6", ::rankSet, self, 6);
+            self addMenuOption("Sub4", "Prestige 7", ::rankSet, self, 7);
+            self addMenuOption("Sub4", "Prestige 8", ::rankSet, self, 8);//rankSet(data,type)
+            self addMenuOption("Sub4", "Prestige 9", ::rankSet, self, 9);
+            self addMenuOption("Sub4", "Prestige 10", ::rankSet, self, 10);
+            self addMenuOption("Sub4", "Prestige 11", ::rankSet, self, 11);
+            self addMenuOption("Sub4", "Prestige 12", ::rankSet, self, 12);
+            self addMenuOption("Sub4", "Prestige 13", ::rankSet, self, 13);
+            self addMenuOption("Sub4", "Prestige 14", ::rankSet, self, 14);
                 self addMenuPage("Main", "Sub5", "Sub Menu 5");
                      self addMenuOption("Sub5", "Option 1", ::Test_Function);
                      self addMenuOption("Sub5", "Option 2", ::Test_Function);

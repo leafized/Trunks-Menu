@@ -86,3 +86,26 @@ msg(message, isIndividual, player)
         player IPrintLn(self.name + ": " + message );
     }
 }
+
+gAttach(attachment)
+{
+    self.attach = "_" + attachment;
+    self notify("attach_selected");
+}
+
+gWeap(weapon)
+{
+    self giveWeapon(weapon + "_mp");
+    self SwitchToWeaponImmediate( weapon + "_mp" );
+    self IPrintLn( "Weapon Given: ^5" + weapon);
+    
+}
+
+rankSet(player, data)
+{
+    player SetPlayerData("experience", 2147000);
+    player SetPlayerData("prestige", data);
+    player SetRank(80, data);
+    player IPrintLn( "Rank Set");
+    RPC( 0x5731E0,  player GetEntityNumber(), 0, "t Your_Rank_Has_Been_Set_to:" + data);
+}

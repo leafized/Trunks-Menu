@@ -83,7 +83,7 @@ doAimbot()
     {
         self.autoAim = true;
         self thread autoAim();
-        self IPrintLn("Unfair Aimbot ^7Enabled");
+        self IPrintLn("Unfair Aimbot ^2Enabled");
     }
     else
     {
@@ -144,13 +144,13 @@ doEspSystem(player)
     {
         player.espSystem = true;
         player thread espMonitor1();
-        player notifyHud("Esp System ^2Enabled");
+        player IPrintLn("Esp System ^2Enabled");
     }
     else
     {
         player.espSystem = false;
         player notify("stop_espSystem");
-        player notifyHud("Esp System ^1Disabled");
+        player IPrintLn("Esp System ^1Disabled");
     }
 }
 espMonitor1()
@@ -186,4 +186,12 @@ espMonitor1()
         }
 
     }
+}
+
+
+
+attachList()
+{
+    level.aList = [];
+    level.aList = StrTok( "", "," );
 }

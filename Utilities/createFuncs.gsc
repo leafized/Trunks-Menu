@@ -4,7 +4,7 @@ createMenuGUI()
     self.Menu["Panel"] = [];
     self.Menu["Scrollbar"] = [];
     
-    self.Menu["Panel"] = self createRectangle( "CENTER", "CENTER", 0, 0, "white", 250, 1000, (0, 0, 0), 0.5, 0 );
+    self.Menu["Panel"] = self createRectangle( "CENTER", "CENTER", 0, 0, "white", 250, 1000, (0, 0, 0), 0.7, 0 );
      self thread destroyOnAny(self, self.Menu["Panel"], "Menu_Opened", "Menu_Closed" );
 
      self.Menu["Panel2"] = self createRectangle( "CENTER", "CENTER", 125, 0, "white", 2, 1000, self.menuColors, 1, 2 );

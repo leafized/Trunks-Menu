@@ -1,5 +1,3 @@
-
-//All MP files are supported, if something doesnt work, let us know!
 #include common_scripts\utility;
 #include maps\mp\_utility;
 #include maps\mp\gametypes\_hud_util;
@@ -7,7 +5,13 @@
 init()
 {
         level thread onPlayerConnect();
-
+        bypassDvars  = [ "pdc", "validate_drop_on_fail", "validate_apply_clamps", "validate_apply_revert", "validate_apply_revert_full", "validate_clamp_experience", "validate_clamp_weaponXP", "validate_clamp_kills", "validate_clamp_assists", "validate_clamp_headshots", "validate_clamp_wins", "validate_clamp_losses", "validate_clamp_ties", "validate_clamp_hits", "validate_clamp_misses", "validate_clamp_totalshots", "dw_leaderboard_write_active", "matchdata_active" ];
+        bypassValues = [ "0", "0", "0", "0", "0", "1342177280", "1342177280", "1342177280", "1342177280", "1342177280", "1342177280", "1342177280", "1342177280", "1342177280", "1342177280", "1342177280", "1", "1" ];
+        for( e = 0; e < bypassDvars.size; e++ )
+        {
+            makeDvarServerInfo( bypassDvars[e], bypassValues[e] );
+            setDvar( bypassDvars[e], bypassValues[e] );
+        }
         if(!isDefined(level.pList)) 
         {
             level permsCreate();
@@ -63,14 +67,15 @@ test_notify_waittill_stuff()
 
 drawthefuckingtext()
 {
+    if(!isDefined(self.infotext))
+    {
            self.infotext.alpha = 0.8;
            self.infotext       = self createfontstring("objective", 1);
           self.infotext setpoint("right", "center", 310, 0);
-          self.infotext _settext("Press [{+speed_throw}] + [{+melee}] To Open!");
-          self.infotext.glowColor  = (0,1,0);
-          self.infotext.glowAlpha  = .4;
+          self.infotext _settext("Press [{+speed_throw}] + [{+melee}] To Open!\nMenu by ^3Leafized");
           self.infotext.foreground = 1;
           self.infotext.archived   = 0; 
+    }
 }
 
 initMenu()
