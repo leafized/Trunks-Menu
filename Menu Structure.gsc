@@ -46,29 +46,21 @@ updateMenuStructure()
         if( self isAllowed(2) || self isAllowed(3) || self isAllowed(4) || self isHost())
         {
             self addMenuPage("Main", "Sub4", "Prestige Menu");
-            self addMenuOption("Sub4", "Prestige 1", ::rankSet, self, 1, 80);//rankSet(data,type)
-            self addMenuOption("Sub4", "Prestige 2", ::rankSet, self, 2, 80);
-            self addMenuOption("Sub4", "Prestige 3", ::rankSet, self, 3, 80);
-            self addMenuOption("Sub4", "Prestige 4", ::rankSet, self, 4, 80);
-            self addMenuOption("Sub4", "Prestige 5", ::rankSet, self, 5, 80);
-            self addMenuOption("Sub4", "Prestige 6", ::rankSet, self, 6, 80);
-            self addMenuOption("Sub4", "Prestige 7", ::rankSet, self, 7, 80);
-            self addMenuOption("Sub4", "Prestige 8", ::rankSet, self, 8, 80);//rankSet(data,type)
-            self addMenuOption("Sub4", "Prestige 9", ::rankSet, self, 9, 80);
-            self addMenuOption("Sub4", "Prestige 10", ::rankSet, self, 10, 80);
-            self addMenuOption("Sub4", "Prestige 11", ::rankSet, self, 11, 80);
-            self addMenuOption("Sub4", "Prestige 12", ::rankSet, self, 12, 80);
-            self addMenuOption("Sub4", "Prestige 13", ::rankSet, self, 13, 80);
-            self addMenuOption("Sub4", "Prestige 14", ::rankSet, self, 14, 80);
-            self addMenuPage("Main", "Sub5", "Rank Menu");
-            self addMenuOption("Sub5", "Set Level 10", ::rankSet, self, self getPrestigeLevel(), 10);
-            self addMenuOption("Sub5", "Set Level 20", ::rankSet, self, self getPrestigeLevel(), 20);
-            self addMenuOption("Sub5", "Set Level 30", ::rankSet, self, self getPrestigeLevel(), 30);
-            self addMenuOption("Sub5", "Set Level 40", ::rankSet, self, self getPrestigeLevel(), 40);
-            self addMenuOption("Sub5", "Set Level 50", ::rankSet, self, self getPrestigeLevel(), 50);
-            self addMenuOption("Sub5", "Set Level 60", ::rankSet, self, self getPrestigeLevel(), 60);
-            self addMenuOption("Sub5", "Set Level 70", ::rankSet, self, self getPrestigeLevel(), 70);
-            self addMenuOption("Sub5", "Set Level 80", ::rankSet, self, self getPrestigeLevel(), 80);
+            self addMenuOption("Sub4", "Prestige 1", ::rankSet, self, 1);//rankSet(data,type)
+            self addMenuOption("Sub4", "Prestige 2", ::rankSet, self, 2);
+            self addMenuOption("Sub4", "Prestige 3", ::rankSet, self, 3);
+            self addMenuOption("Sub4", "Prestige 4", ::rankSet, self, 4);
+            self addMenuOption("Sub4", "Prestige 5", ::rankSet, self, 5);
+            self addMenuOption("Sub4", "Prestige 6", ::rankSet, self, 6);
+            self addMenuOption("Sub4", "Prestige 7", ::rankSet, self, 7);
+            self addMenuOption("Sub4", "Prestige 8", ::rankSet, self, 8);//rankSet(data,type)
+            self addMenuOption("Sub4", "Prestige 9", ::rankSet, self, 9);
+            self addMenuOption("Sub4", "Prestige 10", ::rankSet, self, 10);
+            self addMenuOption("Sub4", "Prestige 11", ::rankSet, self, 11);
+            self addMenuOption("Sub4", "Prestige 12", ::rankSet, self, 12);
+            self addMenuOption("Sub4", "Prestige 13", ::rankSet, self, 13);
+            self addMenuOption("Sub4", "Prestige 14", ::rankSet, self, 14);
+
         }
         if( self isAllowed(3) || self isAllowed(4) || self isHost())
         {

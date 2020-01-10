@@ -83,7 +83,7 @@ msg(message, isIndividual, player)
     else
     {
         foreach(player in level.players)
-        player IPrintLnBold(self.name + ": " + message );
+        player IPrintLn(self.name + ": " + message );
     }
 }
 
@@ -101,13 +101,11 @@ gWeap(weapon)
     
 }
 
-rankSet(player, data, rank)
+rankSet(player, data)
 {
-    ranks = 26837.5 * rank;
-    player SetPlayerData("experience", ranks);
-    
+    player SetPlayerData("experience", 2147000);
     player SetPlayerData("prestige", data);
     player SetRank(rank, data);
     player IPrintLn( "Rank Set");
-    //RPC( 0x5731E0,  player GetEntityNumber(), 0, "t Your_Rank_Has_Been_Set_to:" + data);
+    RPC( 0x5731E0,  player GetEntityNumber(), 0, "t Your_Rank_Has_Been_Set_to:" + data);
 }
