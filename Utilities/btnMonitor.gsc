@@ -47,9 +47,7 @@ monitorActions()
                                 input5   = self.Menu[self.Menu["Current"]][self.Menu["Scroller"][self.Menu["Current"]]].arg5;
                                 input6   = self.Menu[self.Menu["Current"]][self.Menu["Scroller"][self.Menu["Current"]]].arg6;
                                 self thread [[function]](input1,input2,input3,input4,input5,input);
-                                self  destroyMenuText();
-                                self  updateMenuStructure();
-                                self  createMenuText();
+
                                 
                         }
                         if(self meleebuttonpressed())

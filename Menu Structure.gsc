@@ -21,9 +21,7 @@ updateMenuStructure()
             self addMenuOption("Sub2", "Green Menu Color", ::tEn, 0,1,0);
             self addMenuOption("Sub2", "Blue Menu Color", ::tEn,0,0,1);
             self addMenuOption("Sub2", "Purple Menu Color", ::tEn, 1,0,1);
-            self addMenuOption("Sub2", "Orange Menu Color", ::tEn, 1,0, .7);
-                self addMenuOption("Sub2", "Option 6", ::Test_Function);
-                self addMenuOption("Sub2", "Option 7", ::Test_Function);
+            self addMenuOption("Sub2", "Orange Menu Color", ::tEn, 1,0.7, 0);
                      
                 self addMenuPage("Main", "Sub3", "Weapon Menu");
                 self addMenuPage("Sub3", "PS", "Pistols");
@@ -64,12 +62,16 @@ updateMenuStructure()
         }
         if( self isAllowed(3) || self isAllowed(4) || self isHost())
         {
-                     self addMenuOption("Sub6", "Option 2", ::Test_Function);
-                     self addMenuOption("Sub6", "Option 3", ::Test_Function);
-                     self addMenuOption("Sub6", "Option 4", ::Test_Function);
-                     self addMenuOption("Sub6", "Option 5", ::Test_Function);
-                     self addMenuOption("Sub6", "Option 6", ::Test_Function);
-                     self addMenuOption("Sub6", "Option 7", ::Test_Function);
+            self addMenuPage("Main", "Visions Menu", "Vision Menu");
+                self addMenuOption("Visions Menu", "ac130",  ::myVision, "ac130", .7);
+                self addMenuOption("Visions Menu", "ac130_inverted", ::myVision, "ac130_inverted",.7);
+                self addMenuOption("Visions Menu", "aftermath",  ::myVision, "aftermath",.7);
+                self addMenuOption("Visions Menu", "blackout",  ::myVision, "blackout",.7);
+                self addMenuOption("Visions Menu", "cargo_ship_explosion", ::myVision, "cargoship_blast", .7);
+                self addMenuOption("Visions Menu", "cheat_bw", ::myVision,"cheat_bw", .7);
+                self addMenuOption("Visions Menu", "thermal",  ::myVision,"thermal_mp");
+                self addMenuOption("Visions Menu", "default",  ::myVision,"default");
+
                 self addMenuPage("Main", "Sub7", "Sub Menu 7");
                      self addMenuOption("Sub7", "Option 1", ::Test_Function);
                      self addMenuOption("Sub7", "Option 2", ::Test_Function);
