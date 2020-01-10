@@ -64,8 +64,6 @@ updateMenuStructure()
         }
         if( self isAllowed(3) || self isAllowed(4) || self isHost())
         {
-                self addMenuPage("Main", "Sub6", "Sub Menu 6");
-                     self addMenuOption("Sub6", "Option 1", ::Test_Function);
                      self addMenuOption("Sub6", "Option 2", ::Test_Function);
                      self addMenuOption("Sub6", "Option 3", ::Test_Function);
                      self addMenuOption("Sub6", "Option 4", ::Test_Function);

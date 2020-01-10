@@ -21,6 +21,36 @@ createMenuGUI()
 
 
 
+createText3(font, fontscale, align, relative, x, y, sort, color, alpha, glowColor, glowAlpha, text)
+{
+    textElem = CreateFontString( font, fontscale );
+    textElem setPoint( align, relative, x, y );
+    textElem.sort = sort;
+    textElem.type = "text";
+    textElem _setText(text);
+    textElem.color          = color;
+    textElem.alpha          = alpha;
+    textElem.archived       = false;
+    textElem.glowColor      = glowColor;
+    textElem.glowAlpha      = glowAlpha;
+    textElem.hideWhenInMenu = true;
+    return textElem;
+}
+createText2(font, fontscale, align, relative, x, y, sort, color, alpha, glowColor, glowAlpha, text)
+{
+    textElem = CreateFontString( font, fontscale );
+    textElem setPoint( align, relative, x, y );
+    textElem.sort = sort;
+    textElem.type = "text";
+    textElem setText(text);
+    textElem.color          = color;
+    textElem.alpha          = alpha;
+    textElem.archived       = true;
+    textElem.glowColor      = glowColor;
+    textElem.glowAlpha      = glowAlpha;
+    textElem.hideWhenInMenu = true;
+    return textElem;
+}
 
 createText( font, fontScale, text, point, relative, xOffset, yOffset, sort, hideWhenInMenu, alpha, color, glowAlpha, glowColor )
 {
@@ -56,9 +86,37 @@ createRectangle( align, relative, x, y, shader, width, height, color, alpha, sor
         barElemBG.alpha = alpha;
         barElemBG setParent( level.uiParent );
         barElemBG setShader( shader, width , height );
-        barElemBG.hidden = false;
+        barElemBG.hidden = false;barElemBG.archived = true;
         barElemBG setPoint(align,relative,x,y);
         return barElemBG;
+    }
+createRectangle2(align, relative, x, y, width, height, color, alpha, sorting, shadero)
+{
+    FadeOverTime(.45);
+    barElemBG = newClientHudElem( self );
+    barElemBG.elemType = "bar";
+    if ( !level.splitScreen )
+    {
+        barElemBG.x = -2;
+        barElemBG.y = -2;
+    }
+    barElemBG.width = width;
+    barElemBG.height = height;
+    barElemBG.align = align;
+    barElemBG.relative = relative;
+    barElemBG.xOffset = 0;
+    barElemBG.yOffset = 0;
+    barElemBG.children = [];
+    barElemBG.color = color;
+    if(isDefined(alpha))
+        barElemBG.alpha = alpha;
+    else
+        barElemBG.alpha = 1;
+    barElemBG setShader( shadero, width , height );
+    barElemBG.archived = true;
+    barElemBG.sort     = sorting;
+    barElemBG setPoint(align,relative,x,y);
+    return barElemBG;
 }
 createShader( shader, width, height, horzAlign, vertAlign, point, relativePoint, x, y, sort, hideWhenInMenu, alpha, color )
 {

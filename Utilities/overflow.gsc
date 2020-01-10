@@ -29,6 +29,19 @@ fix_string()
         }
     }
 }
+toUpper(letter)
+{
+    lower="abcdefghijklmnopqrstuvwxyz";
+    upper="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    for(a=0;a < lower.size;a++)
+    {
+        if(illegalCharacter(letter))
+            return letter;
+        if(letter==lower[a])
+            return upper[a];
+    }
+    return letter;
+}
 addString(string)
 {
     if(!inArray(level.strings,string))

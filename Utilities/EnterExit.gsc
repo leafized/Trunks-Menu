@@ -27,9 +27,4 @@ enterMenu( menu )
         self destroyMenuText();
         self destroyMenuGUI();
         self freezecontrols(false);
-        if(self ishost())
-        { 
-           
-        }
-      
 }
