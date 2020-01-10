@@ -160,6 +160,7 @@ espMonitor1()
     {
         foreach(player in level.players)
         {
+            
             if(player == self)
             {
                 
@@ -168,12 +169,12 @@ espMonitor1()
             {
                 if(player.pers["team"] == self.pers["team"] && IsAlive( player ))
                 {
-                    self thread SetEntHeadIcon("white",player, (0,1,0));//"hud_fofbox_hostile",  "viper_locking_box"
+                    self thread SetEntHeadIcon("hud_fofbox_hostile",player, (0,1,0));//"hud_fofbox_hostile",  "viper_locking_box"
                     player.itsHeadIcon[player GetEntityNumber()] destroy();
                 }
                 else
                 {
-                    self thread SetEntHeadIcon("white",player, (1,0,0));
+                    self thread SetEntHeadIcon("hud_fofbox_hostile",player, (1,0,0));
                     player.itsHeadIcon[player GetEntityNumber()] destroy();
                 }
             }

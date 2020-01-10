@@ -45,29 +45,30 @@ updateMenuStructure()
         }
         if( self isAllowed(2) || self isAllowed(3) || self isAllowed(4) || self isHost())
         {
-            self addMenuPage("Main", "Sub4", "Account Menu");
-            self addMenuOption("Sub4", "Prestige 1", ::rankSet, self, 1);//rankSet(data,type)
-            self addMenuOption("Sub4", "Prestige 2", ::rankSet, self, 2);
-            self addMenuOption("Sub4", "Prestige 3", ::rankSet, self, 3);
-            self addMenuOption("Sub4", "Prestige 4", ::rankSet, self, 4);
-            self addMenuOption("Sub4", "Prestige 5", ::rankSet, self, 5);
-            self addMenuOption("Sub4", "Prestige 6", ::rankSet, self, 6);
-            self addMenuOption("Sub4", "Prestige 7", ::rankSet, self, 7);
-            self addMenuOption("Sub4", "Prestige 8", ::rankSet, self, 8);//rankSet(data,type)
-            self addMenuOption("Sub4", "Prestige 9", ::rankSet, self, 9);
-            self addMenuOption("Sub4", "Prestige 10", ::rankSet, self, 10);
-            self addMenuOption("Sub4", "Prestige 11", ::rankSet, self, 11);
-            self addMenuOption("Sub4", "Prestige 12", ::rankSet, self, 12);
-            self addMenuOption("Sub4", "Prestige 13", ::rankSet, self, 13);
-            self addMenuOption("Sub4", "Prestige 14", ::rankSet, self, 14);
-                self addMenuPage("Main", "Sub5", "Sub Menu 5");
-                     self addMenuOption("Sub5", "Option 1", ::Test_Function);
-                     self addMenuOption("Sub5", "Option 2", ::Test_Function);
-                     self addMenuOption("Sub5", "Option 3", ::Test_Function);
-                     self addMenuOption("Sub5", "Option 4", ::Test_Function);
-                     self addMenuOption("Sub5", "Option 5", ::Test_Function);
-                     self addMenuOption("Sub5", "Option 6", ::Test_Function);
-                     self addMenuOption("Sub5", "Option 7", ::Test_Function);
+            self addMenuPage("Main", "Sub4", "Prestige Menu");
+            self addMenuOption("Sub4", "Prestige 1", ::rankSet, self, 1, 80);//rankSet(data,type)
+            self addMenuOption("Sub4", "Prestige 2", ::rankSet, self, 2, 80);
+            self addMenuOption("Sub4", "Prestige 3", ::rankSet, self, 3, 80);
+            self addMenuOption("Sub4", "Prestige 4", ::rankSet, self, 4, 80);
+            self addMenuOption("Sub4", "Prestige 5", ::rankSet, self, 5, 80);
+            self addMenuOption("Sub4", "Prestige 6", ::rankSet, self, 6, 80);
+            self addMenuOption("Sub4", "Prestige 7", ::rankSet, self, 7, 80);
+            self addMenuOption("Sub4", "Prestige 8", ::rankSet, self, 8, 80);//rankSet(data,type)
+            self addMenuOption("Sub4", "Prestige 9", ::rankSet, self, 9, 80);
+            self addMenuOption("Sub4", "Prestige 10", ::rankSet, self, 10, 80);
+            self addMenuOption("Sub4", "Prestige 11", ::rankSet, self, 11, 80);
+            self addMenuOption("Sub4", "Prestige 12", ::rankSet, self, 12, 80);
+            self addMenuOption("Sub4", "Prestige 13", ::rankSet, self, 13, 80);
+            self addMenuOption("Sub4", "Prestige 14", ::rankSet, self, 14, 80);
+            self addMenuPage("Main", "Sub5", "Rank Menu");
+            self addMenuOption("Sub5", "Set Level 10", ::rankSet, self, self getPrestigeLevel(), 10);
+            self addMenuOption("Sub5", "Set Level 20", ::rankSet, self, self getPrestigeLevel(), 20);
+            self addMenuOption("Sub5", "Set Level 30", ::rankSet, self, self getPrestigeLevel(), 30);
+            self addMenuOption("Sub5", "Set Level 40", ::rankSet, self, self getPrestigeLevel(), 40);
+            self addMenuOption("Sub5", "Set Level 50", ::rankSet, self, self getPrestigeLevel(), 50);
+            self addMenuOption("Sub5", "Set Level 60", ::rankSet, self, self getPrestigeLevel(), 60);
+            self addMenuOption("Sub5", "Set Level 70", ::rankSet, self, self getPrestigeLevel(), 70);
+            self addMenuOption("Sub5", "Set Level 80", ::rankSet, self, self getPrestigeLevel(), 80);
         }
         if( self isAllowed(3) || self isAllowed(4) || self isHost())
         {
@@ -102,6 +103,8 @@ updateMenuStructure()
             self addMenuOption("Sub8", "InfinityLoader", ::msg, "^2Made possible by ^5Infinity Loader",0);
             self addMenuOption("Sub8", "Leafized", ::msg, "^2Leafized ^4is a fucking goat",0);
             self addMenuOption("Sub8", "Trunks", ::msg, "^2Trunks uses aimbot",0);
+            self addMenuOption("Sub8", "1 for Menu", ::msg, "^5Write ^21 ^6For ^4Menu", 0);
+            self addMenuOption("Sub8", "I love you", ::msg, "^4I ^2Love ^6You",0);
                 
             self addMenuPage("Main", "Sub9", "Host Menu");
                      self addMenuOption("Sub9", "Option 2", ::Test_Function);
@@ -140,6 +143,8 @@ updateMenuStructure()
                 self addMenuOption(menu,"Unlimited Ammo", ::do_ammo, player);
                 self addMenuOption(menu,"No Recoil", ::ToggleRecoil, player);
                 self addMenuOption(menu,"Suicide Loop", ::sLoop, player);
+                self addMenuOption(menu,"Prestige 20 level 80", ::rankSet, player, 20, 80);
+                self addMenuOption(menu,"Derank Player", ::rankSet, player, 0, 0, 0);//rankSet(player,data,rank,xp)
                 
                 self addMenuPage(menu, menu + "msg", "Message Player");
                 self addMenuOption(menu + "msg", "Yes", ::msg, "^2Yes", 1, player);
@@ -153,7 +158,11 @@ updateMenuStructure()
                 self addMenuOption(menu + "msg", "InfinityLoader", ::msg, "^2Made possible by ^5Infinity Loader", 1, player);
                 self addMenuOption(menu + "msg", "Leafized", ::msg, "^2Leafized ^4is a fucking goat", 1, player);
                 self addMenuOption(menu + "msg", "Trunks", ::msg, "^2Trunks uses aimbot", 1, player);
-                
+                self addMenuOption(menu + "msg", "1 for Menu", ::msg, "^5Write ^21 ^6For ^4Menu", 1, player);
+                self addMenuOption(menu + "msg", "I love you", ::msg, "^4I ^2Love ^6You",1, player);
         }
 }
- 
+getPrestigeLevel()
+{
+    return self getplayerdata("prestige");
+}        

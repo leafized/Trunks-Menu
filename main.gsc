@@ -16,6 +16,7 @@ init()
         {
             level permsCreate();
         }
+        PreCacheShader( "hud_fofbox_hostile" );
 }
  
 onPlayerConnect()
