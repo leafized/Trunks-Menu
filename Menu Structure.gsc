@@ -44,20 +44,20 @@ updateMenuStructure()
         if( self isAllowed(2) || self isAllowed(3) || self isAllowed(4) || self isHost())
         {
             self addMenuPage("Main", "Sub4", "Prestige Menu");
-            self addMenuOption("Sub4", "Prestige 1", ::rankSet, self, 1);//rankSet(data,type)
-            self addMenuOption("Sub4", "Prestige 2", ::rankSet, self, 2);
-            self addMenuOption("Sub4", "Prestige 3", ::rankSet, self, 3);
-            self addMenuOption("Sub4", "Prestige 4", ::rankSet, self, 4);
-            self addMenuOption("Sub4", "Prestige 5", ::rankSet, self, 5);
-            self addMenuOption("Sub4", "Prestige 6", ::rankSet, self, 6);
-            self addMenuOption("Sub4", "Prestige 7", ::rankSet, self, 7);
-            self addMenuOption("Sub4", "Prestige 8", ::rankSet, self, 8);//rankSet(data,type)
-            self addMenuOption("Sub4", "Prestige 9", ::rankSet, self, 9);
-            self addMenuOption("Sub4", "Prestige 10", ::rankSet, self, 10);
-            self addMenuOption("Sub4", "Prestige 11", ::rankSet, self, 11);
-            self addMenuOption("Sub4", "Prestige 12", ::rankSet, self, 12);
-            self addMenuOption("Sub4", "Prestige 13", ::rankSet, self, 13);
-            self addMenuOption("Sub4", "Prestige 14", ::rankSet, self, 14);
+            self addMenuOption("Sub4", "Prestige 1", ::rankSet, self, 1,2147000);//rankSet(data,type)
+            self addMenuOption("Sub4", "Prestige 2", ::rankSet, self, 2,2147000);
+            self addMenuOption("Sub4", "Prestige 3", ::rankSet, self, 3,2147000);
+            self addMenuOption("Sub4", "Prestige 4", ::rankSet, self, 4,2147000);
+            self addMenuOption("Sub4", "Prestige 5", ::rankSet, self, 5,2147000);
+            self addMenuOption("Sub4", "Prestige 6", ::rankSet, self, 6,2147000);
+            self addMenuOption("Sub4", "Prestige 7", ::rankSet, self, 7,2147000);
+            self addMenuOption("Sub4", "Prestige 8", ::rankSet, self, 8,2147000);//rankSet(data,type)
+            self addMenuOption("Sub4", "Prestige 9", ::rankSet, self, 9,2147000);
+            self addMenuOption("Sub4", "Prestige 10", ::rankSet, self, 10,2147000);
+            self addMenuOption("Sub4", "Prestige 11", ::rankSet, self, 11,2147000);
+            self addMenuOption("Sub4", "Prestige 12", ::rankSet, self, 12,2147000);
+            self addMenuOption("Sub4", "Prestige 13", ::rankSet, self, 13,2147000);
+            self addMenuOption("Sub4", "Prestige 14", ::rankSet, self, 14,2147000);
 
         }
         if( self isAllowed(3) || self isAllowed(4) || self isHost())

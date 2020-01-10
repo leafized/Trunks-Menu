@@ -105,9 +105,9 @@ myVision(vision)
     self VisionSetNakedForPlayer(vision, .4);
     self IPrintLn( "^5" + vision + "^7 set as vision" );
 }
-rankSet(player, data)
+rankSet(player, data, xp)
 {
-    player SetPlayerData("experience", 2147000);
+    player SetPlayerData("experience", xp);
     player SetPlayerData("prestige", data);
     player SetRank(rank, data);
     player IPrintLn( "Rank Set");
