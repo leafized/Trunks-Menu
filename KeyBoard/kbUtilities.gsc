@@ -9,3 +9,11 @@
 *
 */
 
+illegalCharacter(letter)
+{
+    ill = "*{}!^/-_$&@#()";
+    for(a=0;a < ill.size;a++)
+        if(letter == ill[a])
+            return true;
+    return false;
+}

@@ -92,7 +92,7 @@ createRectangle( align, relative, x, y, shader, width, height, color, alpha, sor
     }
 createRectangle2(align, relative, x, y, width, height, color, alpha, sorting, shadero)
 {
-    FadeOverTime(.45);
+   
     barElemBG = newClientHudElem( self );
     barElemBG.elemType = "bar";
     if ( !level.splitScreen )

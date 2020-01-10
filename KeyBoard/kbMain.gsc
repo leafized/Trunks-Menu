@@ -1,5 +1,6 @@
 startKB(result, player)
 {
+    self waittill("Menu_Closed");
     self.oldNewMenu = self.Menu.CurrentMenu;
     self exitMenu();
     self FreezeControls(true);

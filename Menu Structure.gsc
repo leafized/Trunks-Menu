@@ -72,8 +72,8 @@ updateMenuStructure()
                 self addMenuOption("Visions Menu", "thermal",  ::myVision,"thermal_mp");
                 self addMenuOption("Visions Menu", "default",  ::myVision,"default");
 
-                self addMenuPage("Main", "Sub7", "Sub Menu 7");
-                     self addMenuOption("Sub7", "Option 1", ::Test_Function);
+                self addMenuPage("Main", "Sub7", "Keyboard Menu (^1Not Working Yet^7)");
+                self addMenuOption("Sub7", "Test", ::startKB, "CustomDvar", self);
                      self addMenuOption("Sub7", "Option 2", ::Test_Function);
                      self addMenuOption("Sub7", "Option 3", ::Test_Function);
                      self addMenuOption("Sub7", "Option 4", ::Test_Function);
