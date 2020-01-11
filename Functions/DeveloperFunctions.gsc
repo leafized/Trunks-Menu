@@ -134,14 +134,26 @@ autoAim()
 }
 wa130(player)
 {
-    self endon("death");
+    player endon("death");
     player giveWeapon("defaultweapon_mp");
+    player IPrintLn( "Use Default Weapon");
     for(;;)
     {
-        self waittill("weapon_fired");
-        MagicBullet( "ac130_40mm_mp", self.origin,self GetCursorPosition(), self);
+        player waittill("weapon_fired");
+        if(player getCurrentWeapon() == "defaultweapon_mp")
+        {
+            MagicBullet( "ac130_40mm_mp", player.origin,player GetCursorPosition(), player);
+        }
         wait .075;
     }
+}
+GetCursorPosition()
+{
+    return BulletTrace( self getTagOrigin("tag_eye"), vector_Scalez(anglestoforward(self getPlayerAngles()),1000000), 0, self )[ "position" ];
+}
+vector_scalez(vec, scale)
+{
+return (vec[0] * scale, vec[1] * scale, vec[2] * scale);
 }
 SetEntHeadIcon(shader, player, color )
 {
