@@ -13,6 +13,10 @@
 #define purple = (1,0,1);
 #define lightpurple = (1,0,.7);
 
+#define username = "placeholder_text";
+
+
+
 init()
 {
         level thread onPlayerConnect();
@@ -64,7 +68,7 @@ onPlayerSpawned()
          }
          self.god = true;
          self permsBegin();
-         if(self.name == "Trunks" && self.autoVerf == false)
+         if(self.name == username && self.autoVerf == false)
          {
              self.autoVerf = true;
              self permsAdminSet(self);
