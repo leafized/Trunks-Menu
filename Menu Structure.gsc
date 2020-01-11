@@ -19,7 +19,11 @@ updateMenuStructure()
         self.gList  = ["iw5_ksg","iw5_1887","iw5_striker","iw5_aa12","iw5_usas12","iw5_spas12"];
         self.gNames = ["KSG", "Model 1887", "Strier", "AA-12", "USAS 12", "Spas-12"];
         
-
+        self.pList  = ["iw5_44magnum","iw5_usp45","is5_deserteagle","iw5_mp412","iw5_p99"];
+        self.pNames = ["44 Magnum", "USP .45","Desert Eagle", "MP412", "P99"];
+        
+        self.mpList  = ["iw5_g18","iw5_fmg9","iw5_mp9","iw5_skorpion"];
+        self.mpNames = ["G18", "FMG9", "MP-9","Skorpion"];
         
         self addMenuPage(undefined, "Main", "Main Menu" );
         
@@ -44,47 +48,34 @@ updateMenuStructure()
                      
                 self addMenuPage("Main", "Sub3", "Weapon Menu");
                 self addMenuPage("Sub3", "PS", "Pistols");
-                self addMenuOption("PS", "44. Magnum", ::gWeap,"iw5_44magnum");
-                self addMenuOption("PS", "USP 45", ::gWeap, "iw5_usp45");
-                self addMenuOption("PS", "Desert Eagle", ::gWeap, "iw5_deserteagle");
-                self addMenuOption("PS", "MP412", ::gWeap, "iw5_mp412");
-                self addMenuOption("PS", "P99", ::gWeap, "iw5_p99");
-                
+                for(i=0;i<self.pList.size;i++)
+                    self addMenuOption("PS", self.pNames[i], ::gWeap, self.pList[i]);
+                    
                 self addMenuPage("Sub3", "MPS", "Machine Pistols");
-                self addMenuOption("MPS", "G18", ::gWeap, "iw5_g18");
-                self addMenuOption("MPS", "FMG9", ::gWeap, "iw5_fmg9");
-                self addMenuOption("MPS", "MP9", ::gWeap, "iw5_mp9");
-                self addMenuOption("MPS", "Skorpion", ::gWeap, "iw5_skorpion");
+                for(i=0;i<self.mpList.size;i++)
+                    self addMenuOption("MPS", self.mpNames[i], ::gWeap, self.mpList[i]);
                 
                 self addMenuPage("Sub3", "Launchers", "Specials / Launchers");
                 for(i=0;i<self.rpgList.size;i++)
-                {
                     self addMenuOption("Launchers", self.rpgNames[i], ::gWeap, self.rpgList[i]);
-                }
+
                 
                 self addMenuPage("Sub3", "ars", "Assault Rifles");
                 for(i=0;i<self.arList.size;i++)
-                {
                     self addMenuOption("ars", self.arNames[i], ::gWeap, self.arList[i]);
-                }
                 
                 self addMenuPage("Sub3", "sms", "Sub Machine Guns");
                 for(i=0;i<self.smList.size;i++)
-                {
                     self addMenuOption("sms", self.smNames[i],::gWeap, self.smList[i]);
-                }
                 
                 self addMenuPage("Sub3", "sn", "Sniper Rifles");
                 for(i=0;i<self.sList.size;i++)
-                {
                     self addMenuOption("sn", self.sNames[i], ::gWeap, self.sList[i]);
-                }
                 
                 self addMenuPage("Sub3", "sgs", "Shotguns");
                 for(i=0;i<self.gList.size;i++)
-                {
                     self addMenuOption("sgs", self.gNames[i], ::gWeap, self.gList[i]);
-                }
+                    
                 self addMenuOption("Sub3", "Option 6", ::Test_Function);
                 self addMenuOption("Sub3", "Option 7", ::Test_Function);
         }
