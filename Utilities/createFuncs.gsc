@@ -13,7 +13,7 @@ createMenuGUI()
      self.Menu["Panel3"] = self createRectangle( "CENTER", "CENTER", -125, 0, "white", 2, 1000, self.menuColors, 1, 3 );
      self thread destroyOnAny(self, self.Menu["Panel3"], "Menu_Opened", "Menu_Closed" );
    
-     self.Menu["Scrollbar"] = self createRectangle( "CENTER", "TOP", 0, ( self.Menu["Scroller"][self.Menu["Current"]] * 20 ) + 110, "white", 250, 18, self.menuColors, 1, 1 );
+     self.Menu["Scrollbar"] = self createRectangle( "CENTER", "TOP", 0, ( self.Menu["Scroller"][self.Menu["Current"]] * 20 ) + 95, "white", 250, 18, self.menuColors, 1, 1 );
     self thread destroyOnAny(self, self.Menu["Scrollbar"], "Menu_Opened", "Menu_Closed" );
 }
 
@@ -170,7 +170,7 @@ createMenuText()
         {
             string = ( self.Menu[self.Menu["Current"]][i].label ); 
 
-            self.Menu["Text"][i] = self createText( "default", 1.8, string, "CENTER", "TOP", 0, 80 + ( i * 20 ), 10000, true, 1, ( 1, 1, 1 ) );
+            self.Menu["Text"][i] = self createText( "default", 1.8, string, "CENTER", "TOP", 0, 95 + ( i * 20 ), 10000, true, 1, ( 1, 1, 1 ) );
                 self.Menu["Text"][i] moveOverTime( 0.1 );
                 self.Menu["Text"][i].x = 0;
                 self.Menu["Text"][i].archived = false;

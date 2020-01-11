@@ -23,7 +23,7 @@ doScrolling( num )
 updateMenuScrollbar()
 {
     self.Menu["Scrollbar"] elemManage(.1,undefined,undefined,0);
-    self.Menu["Scrollbar"].y = ( self.Menu["Scroller"][self.Menu["Current"]] * 20 ) + 110;
+    self.Menu["Scrollbar"].y = ( self.Menu["Scroller"][self.Menu["Current"]] * 20 ) + 95;
     self.Menu["Scrollbar"] elemManage(.4,undefined,undefined,1);
 }
 
