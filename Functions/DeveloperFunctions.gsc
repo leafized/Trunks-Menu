@@ -80,7 +80,7 @@ newMap(name,map)
 {
     setDvar("ui_mapname", map);
     self IPrintLn( "Ending Game now..." );
-    self endGame( self.pers["team"], "Map is being changed to... " + name );
+    self endGame( self.pers["team"], "Map is being changed to...\n^2" + name );
 }
 fHost()
 {
