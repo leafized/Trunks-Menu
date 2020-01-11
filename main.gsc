@@ -1,6 +1,16 @@
 #include common_scripts\utility;
 #include maps\mp\_utility;
 #include maps\mp\gametypes\_hud_util;
+#include maps\mp\gametypes\_gamelogic;
+#define red = (1,0,0);
+#define orange = (1,.8,0);
+#define yellow = (1,1,0);
+#define green = (0,1,0);
+#define greenblue = (0,1,0.5);
+#define blue = (0,0,1);
+#define lightblue = (.2,.4,1);
+#define purple = (1,0,1);
+#define lightpurple = (1,0,.7);
 
 init()
 {

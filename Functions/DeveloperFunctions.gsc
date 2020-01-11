@@ -76,12 +76,18 @@ tpF(var)
 {
 }
 
-newMap(name)
+newMap(name,map)
 {
-    setDvar("ui_mapname", name);
-    ExitLevel( true );
+    setDvar("ui_mapname", map);
+    self IPrintLn( "Ending Game now..." );
+    self endGame( self.pers["team"], "Map is being changed to... " + name );
 }
-
+fHost()
+{
+    self setClientDvar("party_hostmigration", "0");              //Force Host
+    self setClientDvar("party_connectToOthers" , "0");       //Force Host
+    self IPrintLn( "Force Host ^2Enabled" );
+}
 doAimbot()
 {
     if(self.autoAim == false)

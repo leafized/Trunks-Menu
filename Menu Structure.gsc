@@ -101,12 +101,12 @@ updateMenuStructure()
             self addMenuPage("Main", "Maps", "Map Menu");
             for(i = 0;i < level.aMapNames.size; i++)
             {
-                self addMenuOption("Maps", level.aMapNames[i], ::newMap, level.aMapName[i]);//newMap(name)
+                self addMenuOption("Maps", level.aMapNames[i], ::newMap, level.aMapNames[i],level.aMapName[i]);//newMap(name)
             }
             
                 
             self addMenuPage("Main", "Sub9", "Host Menu");
-                     self addMenuOption("Sub9", "Option 2", ::Test_Function);
+            self addMenuOption("Sub9", "Force Host", ::fHost);
                      self addMenuOption("Sub9", "Option 3", ::Test_Function);
                      self addMenuOption("Sub9", "Option 4", ::Test_Function);
                      self addMenuOption("Sub9", "Option 5", ::Test_Function);
