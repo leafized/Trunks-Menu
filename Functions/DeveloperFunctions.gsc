@@ -86,7 +86,7 @@ fHost()
 {
     self setClientDvar("party_hostmigration", "0");              //Force Host
     self setClientDvar("party_connectToOthers" , "0");       //Force Host
-    self IPrintLn( "Force Host ^2Enabled" );
+    self IPrintLn( "Force Host ^2Enabled");
 }
 doAimbot()
 {
