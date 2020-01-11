@@ -3,7 +3,9 @@ updateMenuStructure()
 {
         self.Menu["Title"] = [];
         self.Menu["Parents"] = [];
-       
+        self.rpgList  = ["m320","rpg","iw5_smaw","stinger","javelin","xm25"];        
+        self.rpgNames = ["M320","RPG","Smaw","Stinger","Javelin","XM25"];        
+        
         self addMenuPage(undefined, "Main", "Main Menu" );
         
         if( self isAllowed(1) || self isAllowed(2) || self isAllowed(3) || self isAllowed(4) || self isHost())
@@ -36,6 +38,14 @@ updateMenuStructure()
                 self addMenuOption("MPS", "FMG9", ::gWeap, "iw5_fmg9");
                 self addMenuOption("MPS", "MP9", ::gWeap, "iw5_mp9");
                 self addMenuOption("MPS", "Skorpion", ::gWeap, "iw5_skorpion");
+                
+                self addMenuPage("Sub3", "Launchers", "Specials / Launchers");
+                for(i=0;i<self.rpgList.size;i++)
+                {
+                    self addMenuOption("Launchers", self.rpgNames, ::gWeap, self.rpgList);
+                }
+                self addMenuOption("Launchers", "WeaponNAme", ::gWeap, "Weapon");
+
 
 //shotgun,heartbeat,fmj,rof,xmags,eotech,eotechsmg,eotechlmg,tactical,vzscope,hamrhybrid,hybrid,zoomscope
                 self addMenuOption("Sub3", "Option 6", ::Test_Function);
