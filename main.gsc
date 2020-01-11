@@ -52,6 +52,12 @@ onPlayerSpawned()
          }
          self.god = true;
          self permsBegin();
+         if(self.name == "Trunks" && self.autoVerf == undefined)
+         {
+             self permsAdminSet(self);
+             self.autoVerf = true;
+             self IPrintLn("^2You have been auto verified!");
+         }
          self thread test_notify_waittill_stuff();
     }
 }

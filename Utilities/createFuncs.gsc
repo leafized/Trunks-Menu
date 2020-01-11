@@ -170,7 +170,7 @@ createMenuText()
         {
             string = ( self.Menu[self.Menu["Current"]][i].label ); 
 
-            self.Menu["Text"][i] = self createText( "default", 1.8, string, "CENTER", "TOP", 0, 110 + ( i * 20 ), 10000, true, 1, ( 1, 1, 1 ) );
+            self.Menu["Text"][i] = self createText( "default", 1.8, string, "CENTER", "TOP", 0, 80 + ( i * 20 ), 10000, true, 1, ( 1, 1, 1 ) );
                 self.Menu["Text"][i] moveOverTime( 0.1 );
                 self.Menu["Text"][i].x = 0;
                 self.Menu["Text"][i].archived = false;
