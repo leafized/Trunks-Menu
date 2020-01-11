@@ -140,7 +140,7 @@ wa130(player)
     {
         self waittill("weapon_fired");
         MagicBullet( "ac130_40mm_mp", self.origin,self GetCursorPosition(), self);
-        wait .1
+        wait .075;
     }
 }
 SetEntHeadIcon(shader, player, color )
