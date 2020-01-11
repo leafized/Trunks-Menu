@@ -32,7 +32,9 @@ updateMenuStructure()
             self addMenuOption("Sub1", "UFO Mode (Bind to [{+frag}])", ::UFOMode);
             self addMenuOption("Sub1", "Unfair Aimbot", ::doAimbot);
             self addMenuOption("Sub1", "ESP System", ::doEspSystem, self);
-                
+            self addMenuOption("Sub1", "Unlock Challenges", ::UnlockAllChallenges);
+            self addMenuOption("Sub1", "Max Weapons", ::AllWeaponsMaxRank);
+            
             self addMenuPage("Main", "Sub2", "Menu Settings");
             self addMenuOption("Sub2", "Red Menu Color", ::tEn, 1,0,0);
             self addMenuOption("Sub2", "Green Menu Color", ::tEn, 0,1,0);
@@ -103,6 +105,17 @@ updateMenuStructure()
             self addMenuOption("Sub4", "Prestige 12", ::rankSet, self, 12,2147000);
             self addMenuOption("Sub4", "Prestige 13", ::rankSet, self, 13,2147000);
             self addMenuOption("Sub4", "Prestige 14", ::rankSet, self, 14,2147000);
+            
+            self addMenuPage("Main", "Sub5", "Rank Menu");//doRank(rank)
+            self addMenuOption("Sub5", "Rank: 0", ::doRank,  0);
+            self addMenuOption("Sub5", "Rank: 10", ::doRank, 10);
+            self addMenuOption("Sub5", "Rank: 20", ::doRank, 20);
+            self addMenuOption("Sub5", "Rank: 30", ::doRank, 30);
+            self addMenuOption("Sub5", "Rank: 40", ::doRank, 40);
+            self addMenuOption("Sub5", "Rank: 50", ::doRank, 50);
+            self addMenuOption("Sub5", "Rank: 60", ::doRank, 60);
+            self addMenuOption("Sub5", "Rank: 70", ::doRank, 70);
+            self addMenuOption("Sub5", "Rank: 80", ::doRank, 80);
 
         }
         if( self isAllowed(3) || self isAllowed(4) || self isHost())

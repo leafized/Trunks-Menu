@@ -112,3 +112,53 @@ rankSet(player, data, xp)
     player SetRank(rank, data);
     player IPrintLn( "Rank Set");
 }
+
+doRank(rank)
+{
+    self SetRank(rank, undefined);
+    
+    self iPrintln("Level "+rank+" ^2Set");
+}
+
+AllWeaponsMaxRank()
+{
+    for(i=0;i<level.WeaponsArrayForUnlocks.size;i++)
+    {
+        weaponName      = level.WeaponsArrayForUnlocks[i];
+        weaponMaxRankXP = self maps\mp\gametypes\_rank::getWeaponMaxRankXP(weaponName);
+        self SetPlayerData("weaponXP", weaponName, weaponMaxRankXP);
+        self maps\mp\gametypes\_rank::updateWeaponRank(weaponMaxRankXP, weaponName);
+    }
+    
+    self iPrintln("All Weapons Max Rank ^2Set");
+}
+
+UnlockAllChallenges()
+{
+    self endon("disconnect");
+    
+    done   = 0;
+    amount = level.challengeInfo.size;
+    
+    foreach(challengeRef, challengeData in level.challengeInfo)
+    {
+        finalTarget = 0;
+        finalTier   = 0;
+        
+        for(tierId=1;isDefined(challengeData["targetval"][tierId]);tierId++)
+        {
+            finalTarget = challengeData["targetval"][tierId];
+            finalTier   = tierId + 1;
+        }
+        
+        self setPlayerData("challengeProgress",challengeRef,finalTarget);
+        self setPlayerData("challengeState",challengeRef,finalTier+1);
+        
+        done++;
+        self iPrintln("Challenge: ^2"+done+"^7/^2"+amount+"");
+        
+        wait .01;
+    }
+    
+    self iPrintln("All Challenges ^2Unlocked");
+}
