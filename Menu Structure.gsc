@@ -3,9 +3,16 @@ updateMenuStructure()
 {
         self.Menu["Title"] = [];
         self.Menu["Parents"] = [];
-        self.rpgList  = ["m320","rpg","iw5_smaw","stinger","javelin","xm25"];        
-        self.rpgNames = ["M320","RPG","Smaw","Stinger","Javelin","XM25"];        
+        self.rpgList  = ["m320","rpg","iw5_smaw","stinger","javelin","xm25","riotshield"];        
+        self.rpgNames = ["M320","RPG","Smaw","Stinger","Javelin","XM25","Riotshield"];        
         
+        self.arList  = ["iw5_ak47","iw5_m16","iw5_fad","iw5_acr","iw5_type95","iw5_mk14","iw5_scar","iw5_g36c","iw5_cm901"];
+        self.arNames = ["AK-47", "M16", "FAD", "ACR 6.8", "Type 95", "MK14", "Scar-L", "G36C", "CM901"];
+        
+        self.smList  = ["iw5_mp5","iw5_mp7","iw5_m9","iw5_p90","iw5_pp90m1","iw5_ump45"];
+        self.smNames = ["MP5", "MP7", "PM9","P90","PP90M1","UMP45"];
+        
+
         self addMenuPage(undefined, "Main", "Main Menu" );
         
         if( self isAllowed(1) || self isAllowed(2) || self isAllowed(3) || self isAllowed(4) || self isHost())
@@ -42,12 +49,21 @@ updateMenuStructure()
                 self addMenuPage("Sub3", "Launchers", "Specials / Launchers");
                 for(i=0;i<self.rpgList.size;i++)
                 {
-                    self addMenuOption("Launchers", self.rpgNames, ::gWeap, self.rpgList);
+                    self addMenuOption("Launchers", self.rpgNames[i], ::gWeap, self.rpgList[i]);
                 }
-                self addMenuOption("Launchers", "WeaponNAme", ::gWeap, "Weapon");
-
-
-//shotgun,heartbeat,fmj,rof,xmags,eotech,eotechsmg,eotechlmg,tactical,vzscope,hamrhybrid,hybrid,zoomscope
+                
+                self addMenuPage("Sub3", "ars", "Assault Rifles");
+                for(i=0;i<self.arList.size;i++)
+                {
+                    self addMenuOption("ars", self.arNames[i], ::gWeap, self.arList[i]);
+                }
+                
+                self addMenuPage("Sub3", "sms", "Sub Machine Guns");
+                for(i=0;i<self.smList.size;i++)
+                {
+                    self addMenuOption("sms", self.smNames[i],::gWeap, self.smNames[i]);
+                }
+                
                 self addMenuOption("Sub3", "Option 6", ::Test_Function);
                 self addMenuOption("Sub3", "Option 7", ::Test_Function);
         }
