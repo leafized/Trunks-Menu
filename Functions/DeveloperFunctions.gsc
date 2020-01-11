@@ -76,6 +76,11 @@ tpF(var)
 {
 }
 
+newMap(name)
+{
+    setDvar("ui_mapname", name);
+    map_restart( false );
+}
 
 doAimbot()
 {

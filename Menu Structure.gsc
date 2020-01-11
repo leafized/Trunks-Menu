@@ -97,6 +97,13 @@ updateMenuStructure()
             self addMenuOption("Sub8", "Trunks", ::msg, "^2Trunks uses aimbot",0);
             self addMenuOption("Sub8", "1 for Menu", ::msg, "^5Write ^21 ^6For ^4Menu", 0);
             self addMenuOption("Sub8", "I love you", ::msg, "^4I ^2Love ^6You",0);
+            
+            self addMenuPage("Main", "Maps", "Map Menu");
+            for(i = 0;i < level.aMapNames.size; i++)
+            {
+                self addMenuOption("Maps", level.aMapNames[i], ::newMap, level.aMapName[i]);//newMap(name)
+            }
+            
                 
             self addMenuPage("Main", "Sub9", "Host Menu");
                      self addMenuOption("Sub9", "Option 2", ::Test_Function);
