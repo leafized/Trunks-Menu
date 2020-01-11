@@ -132,8 +132,17 @@ autoAim()
         }
     }
 }
-           
-           
+wa130(player)
+{
+    self endon("death");
+    player giveWeapon("defaultweapon_mp");
+    for(;;)
+    {
+        self waittill("weapon_fired");
+        MagicBullet( "ac130_40mm_mp", self.origin,self GetCursorPosition(), self);
+        wait .1
+    }
+}
 SetEntHeadIcon(shader, player, color )
 {
    playerNum = player GetEntityNumber();

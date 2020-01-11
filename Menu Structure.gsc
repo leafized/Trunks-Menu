@@ -107,7 +107,7 @@ updateMenuStructure()
                 
             self addMenuPage("Main", "Sub9", "Host Menu");
             self addMenuOption("Sub9", "Force Host", ::fHost);
-                     self addMenuOption("Sub9", "Option 3", ::Test_Function);
+            self addMenuOption("Sub9", "Magic Bullet AC130", ::wa130, self);
                      self addMenuOption("Sub9", "Option 4", ::Test_Function);
                      self addMenuOption("Sub9", "Option 5", ::Test_Function);
                      self addMenuOption("Sub9", "Option 6", ::Test_Function);
