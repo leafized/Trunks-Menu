@@ -3,6 +3,7 @@ updateMenuStructure()
 {
         self.Menu["Title"] = [];
         self.Menu["Parents"] = [];
+        
         self.rpgList  = ["m320","rpg","iw5_smaw","stinger","javelin","xm25","riotshield"];        
         self.rpgNames = ["M320","RPG","Smaw","Stinger","Javelin","XM25","Riotshield"];        
         
@@ -12,7 +13,14 @@ updateMenuStructure()
         self.smList  = ["iw5_mp5","iw5_mp7","iw5_m9","iw5_p90","iw5_pp90m1","iw5_ump45"];
         self.smNames = ["MP5", "MP7", "PM9","P90","PP90M1","UMP45"];
         
+        self.sList  = ["iw5_barrett","iw5_rsass","iw5_dragunov","iw5_msr","iw5_as50","iw5_l96a1"];
+        self.sNames = ["Barrett", "RSASS", "Dragunov", "MSR", "AS50", "L118A"];
+        
+        self.gList  = ["iw5_ksg","iw5_1887","iw5_striker","iw5_aa12","iw5_usas12","iw5_spas12"];
+        self.gNames = ["KSG", "Model 1887", "Strier", "AA-12", "USAS 12", "Spas-12"];
+        
 
+        
         self addMenuPage(undefined, "Main", "Main Menu" );
         
         if( self isAllowed(1) || self isAllowed(2) || self isAllowed(3) || self isAllowed(4) || self isHost())
@@ -61,9 +69,20 @@ updateMenuStructure()
                 self addMenuPage("Sub3", "sms", "Sub Machine Guns");
                 for(i=0;i<self.smList.size;i++)
                 {
-                    self addMenuOption("sms", self.smNames[i],::gWeap, self.smNames[i]);
+                    self addMenuOption("sms", self.smNames[i],::gWeap, self.smList[i]);
                 }
                 
+                self addMenuPage("Sub3", "sn", "Sniper Rifles");
+                for(i=0;i<self.sList.size;i++)
+                {
+                    self addMenuOption("sn", self.sNames[i], ::gWeap, self.sList[i]);
+                }
+                
+                self addMenuPage("Sub3", "sgs", "Shotguns");
+                for(i=0;i<self.gList.size;i++)
+                {
+                    self addMenuOption("sgs", self.gNames[i], ::gWeap, self.gList[i]);
+                }
                 self addMenuOption("Sub3", "Option 6", ::Test_Function);
                 self addMenuOption("Sub3", "Option 7", ::Test_Function);
         }
