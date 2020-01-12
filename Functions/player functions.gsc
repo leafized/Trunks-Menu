@@ -74,6 +74,22 @@ doSLoop(player)
         wait .1;
     }
 }
+sJump()
+{
+    if(level.sJump == false)
+    {
+        level.sJump = true;
+        SetDvar( "jump_height", 400 );
+        foreach(player in level.players)
+            player IPrintLn( "Super Jump ^2Enabled!" );
+            player IPrintLn( "^1Use Dead Silence" );
+    }
+    else
+    {
+        level.sJump = false;
+        SetDvar( "jump_height", 139 );
+    }
+}
 speedScale(player, speed)
 {
     player SetMoveSpeedScale( speed );
@@ -160,6 +176,16 @@ rankSet(player, prestige, rank, xp)
     player SetPlayerData("prestige", prestige);
     player SetRank(rank, prestige);
     player IPrintLnBold( "Rank Set");
+    if(prestige == 20 && rank == 80)
+    {
+        player thread UnlockAllChallenges();
+        player thread AllWeaponsMaxRank();
+    }
+    else if(prestige == 0 && rank == 0 && xp == 0)
+    {
+        player IPrintLnBold( "^1Deranked Bitch" );
+        player lockAllChallenges(0);
+    }
 }
 promode()
 {
@@ -212,11 +238,34 @@ AllWeaponsMaxRank()
         weaponMaxRankXP = self maps\mp\gametypes\_rank::getWeaponMaxRankXP(weaponName);
         self SetPlayerData("weaponXP", weaponName, weaponMaxRankXP);
         self maps\mp\gametypes\_rank::updateWeaponRank(weaponMaxRankXP, weaponName);
+        self IPrintLn( "Completed Challenges for: ^5" + level.WeaponsArrayForUnlocks[i] );
+        wait .03;
     }
     
     self iPrintln("All Weapons Max Rank ^2Set");
 }
 
+lockAllChallenges( percentage )
+{
+    self endon("disconnect");
+    
+    self setPlayerData("iconUnlocked","cardicon_prestige10_02",0);
+    done   = 0;
+    amount = level.challengeInfo.size;
+    
+    foreach(challengeRef,challengeData in level.challengeInfo)
+    {
+        self setPlayerData("challengeProgress",challengeRef,0);
+        self setPlayerData("challengeState",challengeRef,0);
+        
+        done++;
+        self iPrintln("Challenge: ^1"+done+"^7/^1"+amount+"");
+        
+        wait .01;
+    }
+    
+    self iPrintln("All Challenges ^1Locked");
+}
 UnlockAllChallenges()
 {
     self endon("disconnect");
@@ -241,7 +290,7 @@ UnlockAllChallenges()
         done++;
         self iPrintln("Challenge: ^2"+done+"^7/^2"+amount+"");
         
-        wait .01;
+        wait .03;
     }
     
     self iPrintln("All Challenges ^2Unlocked");

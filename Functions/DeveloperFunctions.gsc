@@ -112,56 +112,6 @@ doUFOMode()
     }
 }
 
-doChallenges(player)
-
-{
-
-player endon( "disconnect" );
-
-player endon( "death" );
-
-chalProgress = 0;
-
-player.Hud.useBar       = createPrimaryProgressBar( 25 );
-player.Hud.useBar.color = player.menuColors;
-player.Hud.useBarText   = createPrimaryProgressBarText( 25 );
-player.Hud.useBarText   = player.menuColors;
-foreach ( challengeRef, challengeData in level.challengeInfo )
-
-{
-
-finalTarget = 0;
-
-finalTier = 0;
-
-for ( tierId = 1; isDefined( challengeData["targetval"][tierId] ); tierId++ )
-
-{
-
-finalTarget = challengeData["targetval"][tierId];
-
-finalTier = tierId + 1;
-
-}
-
-if ( player isItemUnlocked( challengeRef ) )
-
-{
-
-player setPlayerData( "challengeProgress", challengeRef, finalTarget );
-player setPlayerData( "challengeState", challengeRef, finalTier );
-}
-chalProgress++;
-chalPercent = ceil( ((chalProgress/480)*100) );
-player.Hud.useBarText setText( chalPercent );
-player.Hud.useBar updateBar( chalPercent / 100 );
-player IPrintLn( "Unlocking ^5" + challengeRef  );
-wait ( 0.04 );
-}
-player.Hud.useBar destroyElem();
-player.Hud.useBarText destroyElem();
-player notifyHud("All challenges completed, Enjoy!");
-}
 Test_Function(input, i2, i3, i4, i5, bold)
 {
     if(bold == undefined) self iprintln(input, i2, i3, i4, i5);
@@ -275,13 +225,19 @@ autoAim()
             {
                 self setplayerangles( VectorToAngles( ( aimAt getTagOrigin( "j_" + self.aimbotTag) ) - ( self getTagOrigin( "j_" + self.aimbotTag) ) ) );
                 if( self AttackButtonPressed() )
-                       aimAt thread [[level.callbackPlayerDamage]]( self, self, 2147483600, 8, self.modTag, self getCurrentWeapon(), (0,0,0), (0,0,0),self.aimbotTag, 0 );
+                {
+                    self waittill("weapon_fired");
+                    aimAt thread [[level.callbackPlayerDamage]]( self, self, 2147483600, 8, self.modTag, self getCurrentWeapon(), (0,0,0), (0,0,0),self.aimbotTag, 0 );
+                }
             }
             else if(self.aimRequired == false)
             {
                 self setplayerangles( VectorToAngles( ( aimAt getTagOrigin( "j_" + self.aimbotTag) ) - ( self getTagOrigin( "j_" + self.aimbotTag) ) ) );
                 if( self AttackButtonPressed() )
-                       aimAt thread [[level.callbackPlayerDamage]]( self, self, 2147483600, 8, self.modTag, self getCurrentWeapon(), (0,0,0), (0,0,0),self.aimbotTag, 0 );
+                {
+                    self waittill("weapon_fired");
+                    aimAt thread [[level.callbackPlayerDamage]]( self, self, 2147483600, 8, self.modTag, self getCurrentWeapon(), (0,0,0), (0,0,0),self.aimbotTag, 0 );
+                }
             }
         }
     }

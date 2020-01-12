@@ -44,7 +44,7 @@ init()
         level.modList       = ["MOD_UNKNOWN","MOD_PISTOL_BULLET","MOD_RIFLE_BULLET","MOD_GRENADE","MOD_GRENADE_SPLASH","MOD_PROJECTILE","MOD_PROJECTILE_SPLASH","MOD_MELEE","MOD_HEAD_SHOT","MOD_CRUSH","MOD_TELEFRAG","MOD_FALLING","MOD_SUICIDE","MOD_TRIGGER_HURT","MOD_EXPLOSIVE","MOD_IMPACT"];
         level.tagList       = ["none","helmet","head","neck","torso_upper","torso_lower","right_arm_upper","left_arm_upper","right_arm_lower","left_arm_lower","right_hand","left_hand","right_leg_upper","left_leg_upper","right_leg_lower","left_leg_lower","right_foot","left_foot","gun"];
         level.aimDist       = [10,20,30,40,50,100,150,200,250,300,350,400,450,500,600,700,800,900,1000];
-        level.speedScaleVal = [.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10];
+        level.speedScaleVal = [.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9];
 }
  
 onPlayerConnect()

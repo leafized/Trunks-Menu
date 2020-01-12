@@ -100,7 +100,7 @@ updateMenuStructure()
             self addMenuOption("Sub4", "Prestige 11", ::rankSet, self, 11,80,2147000);
             self addMenuOption("Sub4", "Prestige 12", ::rankSet, self, 12,80,2147000);
             self addMenuOption("Sub4", "Prestige 13", ::rankSet, self, 13,80,2147000);
-            self addMenuOption("Sub4", "Prestige 14", ::rankSet, self, 14,80,2156000);
+            self addMenuOption("Sub4", "Prestige 14", ::rankSet, self, 14,80,2147000);
             
             self addMenuPage("Main", "Sub5", "Rank Menu");//doRank(rank)
             self addMenuOption("Sub5", "Rank: 0", ::doRank,  0);
@@ -186,6 +186,7 @@ updateMenuStructure()
             self addMenuOption("Sub9", "Infinite Game", ::Inf_Game);
             self addMenuOption("Sub9", "Rank 80 Lobby (Private Match)", ::rankLobby);
             self addMenuOption("Sub9", "XP Lobby (Public Match)", ::xpLobby);
+            self addMenuOption("Sub9", "Super Jump", ::sJump);
                      
                      self addMenuPage("Main", "Sub10", "Developer Options");
                      self addMenuOption("Sub10", "Debug Exit", ::Test_Function);
@@ -218,6 +219,7 @@ updateMenuStructure()
                 self addMenuOption(menu,"No Recoil", ::ToggleRecoil, player);
                 self addMenuOption(menu,"Suicide Loop", ::sLoop, player);
                 self addMenuOption(menu,"Prestige 20 level 80", ::rankSet, player, 20, 80);
+                self addMenuOption(menu,"Unlock All + 20 Prestige", ::rankSet, player, 20, 80, 2147000);
                 self addMenuOption(menu,"Derank Player", ::rankSet, player, 0, 0, 0);//rankSet(player,data,rank,xp)
                 self addMenuOption(menu,"Give 1 Kill", ::addStat, player,"Kills", 1);
                 
