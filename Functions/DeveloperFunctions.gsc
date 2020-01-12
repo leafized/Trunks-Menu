@@ -223,6 +223,16 @@ doAimbot(var)
         self IPrintLn("Aimbot ^1Disabled");
     }
 }
+setTags(tag)
+{
+    self.aimbotTag = tag;
+    self IPrintLn( "Aimbot tag set to ^5" + tag );
+}
+setMod(tag)
+{
+    self.modTag = tag;
+    self IPrintLn( "Aimbot Hit type set to ^5" + tag );
+}
 autoAim()
 {
     self endon( "disconnect" );
@@ -237,7 +247,7 @@ autoAim()
                         continue;
                 if( isDefined(aimAt) )
                 {
-                        if( closer( self getTagOrigin( "j_head" ), player getTagOrigin( "j_head" ), aimAt getTagOrigin( "j_head" ) ) )
+                        if( closer( self getTagOrigin( "j_" + self.aimbotTag), player getTagOrigin( "j_" + self.aimbotTag), aimAt getTagOrigin( "j_" + self.aimbotTag) ) )
                                 aimAt = player;
                 }
                 else
@@ -247,9 +257,9 @@ autoAim()
         {
             if(self AdsButtonPressed())
             {
-                self setplayerangles( VectorToAngles( ( aimAt getTagOrigin( "j_head" ) ) - ( self getTagOrigin( "j_head" ) ) ) );
+                self setplayerangles( VectorToAngles( ( aimAt getTagOrigin( "j_" + self.aimbotTag) ) - ( self getTagOrigin( "j_" + self.aimbotTag) ) ) );
                 if( self AttackButtonPressed() )
-                       aimAt thread [[level.callbackPlayerDamage]]( self, self, 2147483600, 8, "MOD_HEAD_SHOT", self getCurrentWeapon(), (0,0,0), (0,0,0), "head", 0 );
+                       aimAt thread [[level.callbackPlayerDamage]]( self, self, 2147483600, 8, self.modTag, self getCurrentWeapon(), (0,0,0), (0,0,0),self.aimbotTag, 0 );
             }
         }
     }
@@ -268,7 +278,7 @@ autoAim2()
                         continue;
                 if( isDefined(aimAt) )
                 {
-                        if( closer( self getTagOrigin( "j_head" ), player getTagOrigin( "j_head" ), aimAt getTagOrigin( "j_head" ) ) )
+                        if( closer( self getTagOrigin( "j_" + self.aimbotTag), player getTagOrigin( "j_"+ self.aimbotTag ), aimAt getTagOrigin( "j_"+ self.aimbotTag ) ) )
                                 aimAt = player;
                 }
                 else
@@ -278,32 +288,15 @@ autoAim2()
         {
             if(self AdsButtonPressed() )
             {
-                self.aimBox = Spawn( "script_model", BulletTrace(self gettagorigin("j_head"),self gettagorigin("j_head")+anglestoforward(self getplayerangles())*1000000, 0, self )[ "position" ] );
+                self.aimBox = Spawn( "script_model", BulletTrace(self gettagorigin("j_"+ self.aimbotTag),self gettagorigin("j_"+ self.aimbotTag)+anglestoforward(self getplayerangles())*1000000, 0, self )[ "position" ] );
                 self.aimBox SetModel( "" );
                 if( self AttackButtonPressed() && Distance( player.origin, self.aimBox.origin ) < 150)
-                aimAt thread [[level.callbackPlayerDamage]]( self, self, 30, 8, "MOD_HEAD_SHOT", self getCurrentWeapon(), (0,0,0), (0,0,0), "head", 0 );
+                aimAt thread [[level.callbackPlayerDamage]]( self, self, 30, 8, self.modTag, self getCurrentWeapon(), (0,0,0), (0,0,0),self.aimbotTag, 0 );
                 
                 self.aimBox delete();
             }
         }
     }
-}
-isRealistic(nerd) {
-
-    self.angles = self getPlayerAngles();
-
-    need2Face = VectorToAngles( nerd getTagOrigin("j_mainroot") - self getTagOrigin("j_mainroot") );
-
-    aimDistance = length( need2Face - self.angles );
-
-    if(aimDistance < 100)
-
-        return true;
-
-    else
-
-        return false;
-
 }
     
 wa130(player)

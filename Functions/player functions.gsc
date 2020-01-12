@@ -172,6 +172,7 @@ xpLobby()
         setDvar("scr_tdm_score_kill",2516000);
         setDvar("scr_tdm_score_suicide", 2516000);
         self IPrintLn( "XP Lobby ^2Enabled");
+        self.xpLobby = true;
     }
     else
     {
@@ -182,6 +183,7 @@ xpLobby()
         setDvar("scr_tdm_score_kill",100);
         setDvar("scr_tdm_score_suicide", 0);
         self IPrintLn( "XP Lobby ^1Disabled" );
+        self.xpLobby = false;
     }
 }
 doRank(rank)

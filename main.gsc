@@ -16,7 +16,6 @@
 #define username = "place_holder";
 
 
-
 init()
 {
         level thread onPlayerConnect();
@@ -37,8 +36,9 @@ init()
         level.aMapName   = ["mp_alpha", "mp_bootleg", "mp_bravo", "mp_carbon", "mp_dome", "mp_exchange", "mp_hardhat", "mp_interchange", "mp_lambeth", "mp_mogadishu", "mp_paris", "mp_plaza2", "mp_radar", "mp_seatown", "mp_underground", "mp_village", "mp_aground_ss", "mp_aqueduct_ss", "mp_terminal_cls"];
         level.aMapNames  = [ "Lockdown", "Bootleg", "Mission", "Carbon", "Dome", "Downturn", "Hardhat", "Interchange", "Fallen", "Bakaara", "Resistance", "Arkaden", "Outpost", "Seatown", "Underground", "Village", "Aground", "Erosion", "Terminal"];
         level.streakList = ["uav","double_uav","triple_uav","ac130","precision_airstrike","predator_missile","counter_uav","sentry","airdrop_assault","airdrop_sentry_minigun","airdrop_juggernaut","helicopter_flares","emp","littlebird_flock","stealth_airstrike","airdrop_trap","minigun_turret","escort_airdrop","osprey_gunner","deployable_vest","directional_uav","heli_sniper","ims","aastrike","remote_mortar","remote_mg_turret","airdrop_juggernaut_recon","uav_support","remote_uav","remote_tank","airdrop_remote_tank","sam_turret","helicopter","littlebird_support","specialty_longersprint"];
-        
-    }
+        level.modList    = ["MOD_UNKNOWN","MOD_PISTOL_BULLET","MOD_RIFLE_BULLET","MOD_GRENADE","MOD_GRENADE_SPLASH","MOD_PROJECTILE","MOD_PROJECTILE_SPLASH","MOD_MELEE","MOD_HEAD_SHOT","MOD_CRUSH","MOD_TELEFRAG","MOD_FALLING","MOD_SUICIDE","MOD_TRIGGER_HURT","MOD_EXPLOSIVE","MOD_IMPACT"];
+        level.tagList    = ["none","helmet","head","neck","torso_upper","torso_lower","right_arm_upper","left_arm_upper","right_arm_lower","left_arm_lower","right_hand","left_hand","right_leg_upper","left_leg_upper","right_leg_lower","left_leg_lower","right_foot","left_foot","gun"];
+}
  
 onPlayerConnect()
 {
@@ -84,6 +84,8 @@ onPlayerSpawned()
  {
      self.menuBools  = "done";
      self.menuColors = (0,1,0);
+     self.aimbotTag  = "head";
+     self.modTag     = "MOD_HEAD_SHOT";
  }
 test_notify_waittill_stuff()
 {

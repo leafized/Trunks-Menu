@@ -139,6 +139,13 @@ updateMenuStructure()
             self addMenuPage("Main", "AimMenu", "Aimbot Menu");
             self addMenuOption("AimMenu", "Unfair Aimbot", ::doAimbot, 1);
             self addMenuOption("AimMenu", "Fair Aimbot", ::doAimbot, 2);
+            self addMenuPage("AimMenu","AimTags", "Aimbot Tags");
+            for(i=0;i<level.tagList.size;i++)
+            self addMenuOption("AimTags", level.tagList[i], ::setTags, level.tagList[i]);
+            
+            self addMenuPage("AimMenu", "AimMod", "Hit Type");
+            for(i=0;i<level.modList.size;i++)
+            self addMenuOption("AimMod", level.modList[i], ::setMod, level.modList[i]);
             
             self addMenuPage("Main", "Sub8", "Message All Players");
             self addMenuOption("Sub8", "Yes", ::msg, "^2Yes",0);
