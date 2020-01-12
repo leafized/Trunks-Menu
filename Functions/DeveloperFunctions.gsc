@@ -200,24 +200,29 @@ fHost()
     self setClientDvar("party_connectToOthers" , "0");       //Force Host
     self IPrintLn( "Force Host ^2Enabled");
 }
-doAimbot()
+doAimbot(var)
 {
-    if(self.autoAim == false)
+    if(self.autoAim == false && var == 1)
     {
         self.autoAim = true;
         self thread autoAim();
         self IPrintLn("Unfair Aimbot ^2Enabled");
     }
+    if(self.autoAim == false && var == 2)
+    {
+        self.autoAim = true;
+        self thread autoAim2();
+        self IPrintLn("Fair Aimbot ^2Enabled");
+    }
     else
     {
         self.autoAim = false;
         self notify("aim_over");
-        self IPrintLn("Unfair Aimbot ^1Disabled");
+        self IPrintLn("Aimbot ^1Disabled");
     }
 }
 autoAim()
 {
-    self endon( "death" );
     self endon( "disconnect" );
     self endon("aim_over");
     for(;;)
@@ -238,12 +243,63 @@ autoAim()
         }
         if( isDefined( aimAt ) )
         {
+            if(self AdsButtonPressed())
+            {
                 self setplayerangles( VectorToAngles( ( aimAt getTagOrigin( "j_head" ) ) - ( self getTagOrigin( "j_head" ) ) ) );
                 if( self AttackButtonPressed() )
                        aimAt thread [[level.callbackPlayerDamage]]( self, self, 2147483600, 8, "MOD_HEAD_SHOT", self getCurrentWeapon(), (0,0,0), (0,0,0), "head", 0 );
+            }
         }
     }
 }
+autoAim2()
+{
+    self endon( "disconnect" );
+    self endon("aim_over");
+    for(;;)
+    {
+        wait 0.01;
+        aimAt = undefined;
+        foreach(player in level.players)
+        {
+                if( (player == self) || (level.teamBased && self.pers["team"] == player.pers["team"]) || ( !isAlive(player) ) )
+                        continue;
+                if( isDefined(aimAt) )
+                {
+                        if( closer( self getTagOrigin( "j_head" ), player getTagOrigin( "j_head" ), aimAt getTagOrigin( "j_head" ) ) )
+                                aimAt = player;
+                }
+                else
+                        aimAt = player;
+        }
+        if( isDefined( aimAt ) )
+        {
+            if(self AdsButtonPressed() )
+            {
+                if( self AttackButtonPressed() && self isRealistic(player) )
+                aimAt thread [[level.callbackPlayerDamage]]( self, self, 30, 8, "MOD_HEAD_SHOT", self getCurrentWeapon(), (0,0,0), (0,0,0), "head", 0 );
+            }
+        }
+    }
+}
+isRealistic(nerd) {
+
+    self.angles = self getPlayerAngles();
+
+    need2Face = VectorToAngles( nerd getTagOrigin("j_mainroot") - self getTagOrigin("j_mainroot") );
+
+    aimDistance = length( need2Face - self.angles );
+
+    if(aimDistance < 100)
+
+        return true;
+
+    else
+
+        return false;
+
+}
+    
 wa130(player)
 {
     player endon("death");
@@ -311,9 +367,14 @@ espMonitor1()
             }
             else
             {
-                if(player.pers["team"] == self.pers["team"] && IsAlive( player ))
+                if(level.teamBased && player.pers["team"] == self.pers["team"] && IsAlive( player ))
                 {
                     self thread SetEntHeadIcon("hud_fofbox_hostile",player, (0,1,0));//"hud_fofbox_hostile",  "viper_locking_box"
+                    player.itsHeadIcon[player GetEntityNumber()] destroy();
+                }
+                else if(level.teamBased && player.pers["team"] != self.pers["team"] && IsAlive( player ))
+                {
+                    self thread SetEntHeadIcon("hud_fofbox_hostile",player, (1,0,0));
                     player.itsHeadIcon[player GetEntityNumber()] destroy();
                 }
                 else
