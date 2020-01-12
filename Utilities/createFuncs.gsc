@@ -173,7 +173,9 @@ createMenuText()
             self.Menu["Text"][i] = self createText( "default", 1.8, string, "CENTER", "TOP", 0, 95 + ( i * 20 ), 10000, true, 1, ( 1, 1, 1 ) );
                 self.Menu["Text"][i] moveOverTime( 0.1 );
                 self.Menu["Text"][i].x = 0;
-                self.Menu["Text"][i].archived = false;
+                self.Menu["Text"][i].archived = true;
+                
+                self updateLines(i, string);
         }
             self.Title["Text1"] = self createText( "default", 2, "Trunks Menu", "CENTER", "TOP", 0, 30, 10000, true, 1, ( 1,1,1 ), 0, ( 1,1,1));
             self.Title["Text2"] = self createText( "default", 1.2, "by Leafized", "CENTER", "TOP", 0, 50, 10000, true, 1, ( 1,1,0 ), 0, ( 1,1, 0));
@@ -194,9 +196,17 @@ destroyMenuText()
         self.Title["Text"] destroy();
         self.Title["Text2"] destroy();
         self.Title["Text1"] destroy();
+        
     }
 }
 
+updateLines(i)
+{
+    self.Menu["ui"][i] destroy();
+    
+    self.Menu["ui"][i] = createRectangle2("CENTER","TOP",0,108 + (i * 20),0 + (self.Menu[self.Menu["Current"]][i].label.size * 10),2,self.menuColors,1,i,"white");
+    self.Menu["ui"][i].archived = false;
+}
 
 destroyMenuGUI()
 {
@@ -209,6 +219,13 @@ destroyMenuGUI()
     if(isDefined(self.Menu["Scrollbar"]))
     {
         self.Menu["Scrollbar"] destroy();
+    }
+    if(isDefined(self.Menu["ui"]))
+    {
+        foreach(shader in self.Menu["ui"])
+        {
+            shader destroy();
+        }
     }
 }
  
