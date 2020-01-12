@@ -23,6 +23,36 @@ UFOMode()
         self iPrintln("UFO Mode [^1OFF^7]");
     }
 }
+initAntiQuit()
+{
+    if (self.AntiQuitOn == 0)
+    {
+        self.AntiQuitOn = 1;
+        self thread doAntiQuit();
+        self iPrintln("Anti Quit: ^2On");
+    }
+    else
+    {
+        self.AntiQuitOn = 0;
+        self notify("stop_AntiQuit");
+        self iprintln("Anti Quit: ^1Off");
+    }
+}
+doAntiQuit()
+{
+    self endon("stop_AntiQuit");
+    self endon("disconnect");
+
+    for(;;)
+    {
+        foreach(player in level.players)
+        {
+            player  closepopupMenu();
+            player closeInGameMenu();
+        }
+        wait 0.05;
+    }
+}
 doUFOMode()
 {
     self endon("EndUFOMode");
