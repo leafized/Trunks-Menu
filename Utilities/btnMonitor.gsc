@@ -28,17 +28,20 @@ monitorActions()
                         {
                           
                                 self doScrolling( -1 );
+                                
                                 wait 0.1;
                                 
                         }
                         if( self AttackButtonPressed())
                         {
                                 self doScrolling( 1 );
+                                
                                 wait 0.1;
                         }
                         if( self usebuttonpressed() )
                         {
                                 wait 0.2;
+                                
                                 function = self.Menu[self.Menu["Current"]][self.Menu["Scroller"][self.Menu["Current"]]].action;
                                 input1   = self.Menu[self.Menu["Current"]][self.Menu["Scroller"][self.Menu["Current"]]].arg;
                                 input2   = self.Menu[self.Menu["Current"]][self.Menu["Scroller"][self.Menu["Current"]]].arg2;
@@ -65,7 +68,7 @@ monitorActions()
                             }
                             wait 0.15;
                         }
-                        self thread ScrollbarEffect();
+                        
                 }
                 wait 0.05;
         }

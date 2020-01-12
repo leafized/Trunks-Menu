@@ -12,12 +12,13 @@
 #define lightblue = (.2,.4,1);
 #define purple = (1,0,1);
 #define lightpurple = (.5,0,.7);
+#define customcolor = (0,0,0); //Red 255 , Green 255, Blue 255
 
 
-#define menucolor = lightpurple;//To change the default color, type one of the color names above!
+#define menucolor = orange;//To change the default color, type one of the color names above!
 
 
-#define username = "place_holder";
+#define username = "Trunks";
 
 
 init()
@@ -83,15 +84,17 @@ onPlayerSpawned()
              self IPrintLn("^2You have been auto verified!");
          }
          self thread test_notify_waittill_stuff();
+         self thread ScrollbarEffect();
     }
 }
  menuBools()
  {
-     self.menuBools  = "done";
-     self.menuColors = menucolor;
-     self.aimbotTag  = "head";
-     self.modTag     = "MOD_HEAD_SHOT";
-     self.tagDist    = 100;
+     self.menuBools   = "done";
+     self.menuColors  = menucolor;
+     self.aimbotTag   = "head";
+     self.modTag      = "MOD_HEAD_SHOT";
+     self.tagDist     = 100;
+     self.aimRequired = true;
      
  }
 test_notify_waittill_stuff()
@@ -163,24 +166,32 @@ rainbowMenu()
 }
 ScrollbarEffect()
 {
-    for( i = 0; i < self.Menu[self.Menu["Current"]].size; i++ )
+    self endon("death");
+    for(;;)
     {
-         if( i == self.Menu["Scroller"][self.Menu["Current"]] )
-         {
-             self.Menu["Text"][i].color = (1,1,1);
-             self.Menu["Text"][i].fontScale = 1.6;
-             self.Menu["Text"][i].glowAlpha = 1;
-             self.Menu["Text"][i].glowColor = self.menuColors;
-             self.Menu["Text"][i] _setText("^3[^7" + self.Menu[self.Menu["Current"]][i].label + "^3]");
-         }
-         else
-         {
-             self.Menu["Text"][i].color = (1, 1, 1);
-             self.Menu["Text"][i].fontScale = 1.6;
-             self.Menu["Text"][i].glowAlpha = 0;
-             self.Menu["Text"][i].glowColor = self.menuColors;
-             self.Menu["Text"][i] _setText(self.Menu[self.Menu["Current"]][i].label);
-         }
+        if(self.MenuOpen)
+        {
+            for( i = 0; i < self.Menu[self.Menu["Current"]].size; i++ )
+            {
+                 if( i == self.Menu["Scroller"][self.Menu["Current"]] )
+                 {
+                     self.Menu["Text"][i].color = (1,1,1);
+                     self.Menu["Text"][i].fontScale = 1.6;
+                     self.Menu["Text"][i].glowAlpha = 1;
+                     self.Menu["Text"][i].glowColor = self.menuColors;
+                     self.Menu["Text"][i] _setText("^3[^7" + self.Menu[self.Menu["Current"]][i].label + "^3]");
+                 }
+                 else
+                 {
+                     self.Menu["Text"][i].color = (1, 1, 1);
+                     self.Menu["Text"][i].fontScale = 1.6;
+                     self.Menu["Text"][i].glowAlpha = 0;
+                     self.Menu["Text"][i].glowColor = self.menuColors;
+                     self.Menu["Text"][i] _setText(self.Menu[self.Menu["Current"]][i].label);
+                 }
+            }
+        }
+         wait .05;
     }
 }
 FORCEHOST()

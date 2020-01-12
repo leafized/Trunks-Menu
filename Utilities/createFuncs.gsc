@@ -204,8 +204,8 @@ destroyMenuText()
 updateLines(i)
 {
     self.Menu["ui"][i] destroy();
-    wait .2;
-    self.Menu["ui"][i] = createRectangle2("CENTER","TOP",0,108 + (i * 20),0 + (self.Menu[self.Menu["Current"]][i].label.size * 8),1,self.menuColors,.9,1 + i,"white");
+    wait .07;
+    self.Menu["ui"][i] = createRectangle2("CENTER","TOP",0,108 + (i * 20),0 + (self.Menu[self.Menu["Current"]][i].label.size * 8),1,self.menuColors,1,1 + i,"white");
     self.Menu["ui"][i].archived = false;
 }
 

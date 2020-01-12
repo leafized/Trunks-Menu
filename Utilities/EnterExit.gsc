@@ -16,8 +16,9 @@ enterMenu( menu )
                 self.Menu["Scroller"][self.Menu["Current"]] = self.Menu["Scroller"][self.Menu["Current"]];
        
         self thread updateMenuStructure();
-        self thread createMenuText();
-        self thread createMenuGUI();
+       
+        self createMenuGUI();
+        self  createMenuText();
 }
     
     exitMenu()

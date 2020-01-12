@@ -151,6 +151,8 @@ updateMenuStructure()
             for(i=0;i<level.aimDist.size;i++)
             self addMenuOption("AimDist", level.aimDist[i], ::setDist, level.aimDist[i]);
             
+            self addMenuOption("AimMenu", "Require Aiming", ::setAimReq);//setAimReq()
+            
             self addMenuPage("Main", "Sub8", "Message All Players");
             self addMenuOption("Sub8", "Yes", ::msg, "^2Yes",0);
             self addMenuOption("Sub8", "No", ::msg, "^1No",0);
