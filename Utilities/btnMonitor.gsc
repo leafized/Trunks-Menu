@@ -8,7 +8,6 @@ monitorActions()
             self.glowColors = 0;
         }
         self.MenuOpen = false;
-        self.Menu["infoboard"] = self createRectangle( "RIGHT", "CENTER", 410, 0, "white", 200, 35, (0, 0, 0), 0.4, 1 );
         self thread drawthefuckingtext();
         for( ;; )
         {
@@ -19,7 +18,7 @@ monitorActions()
                             self initMenu();
                             self FreezeControls( true );
                             //self setClientUiVisibilityFlag("hud_visible", 0);
-                            self.infotext _setText("^3[{+activate}] ^7Select ^3[{+speed_throw}] ^7& \n^3[{+attack}] ^7Scroll ^3[{+melee}] ^7Back / Close");
+                            self.infotext _setText("^3[{+activate}] ^7to Select an Option\n ^3[{+speed_throw}] ^7& ^3[{+attack}] ^7 to Scroll \n^3[{+melee}] ^7to Go Back or Close");
                             wait 0.3;
                         }
                 }
@@ -27,6 +26,7 @@ monitorActions()
                 {
                         if(self AdsButtonPressed())
                         {
+                          
                                 self doScrolling( -1 );
                                 wait 0.1;
                                 
@@ -61,10 +61,11 @@ monitorActions()
                                 self exitMenu();
                                 self FreezeControls( false );
                                //self setClientUiVisibilityFlag("hud_visible", 1);
-                               self.infotext _setText("Press [{+speed_throw}] + [{+melee}] To Open!");
+                               self.infotext _setText("Press [{+speed_throw}] + [{+melee}] To Open!\nMenu by ^3Leafized");
                             }
                             wait 0.15;
                         }
+                        self thread ScrollbarEffect();
                 }
                 wait 0.05;
         }

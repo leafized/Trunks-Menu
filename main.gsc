@@ -11,7 +11,11 @@
 #define blue = (0,0,1);
 #define lightblue = (.2,.4,1);
 #define purple = (1,0,1);
-#define lightpurple = (1,0,.7);
+#define lightpurple = (.5,0,.7);
+
+
+#define menucolor = lightpurple;//To change the default color, type one of the color names above!
+
 
 #define username = "place_holder";
 
@@ -84,7 +88,7 @@ onPlayerSpawned()
  menuBools()
  {
      self.menuBools  = "done";
-     self.menuColors = (0,1,0);
+     self.menuColors = menucolor;
      self.aimbotTag  = "head";
      self.modTag     = "MOD_HEAD_SHOT";
      self.tagDist    = 100;
@@ -104,8 +108,8 @@ drawthefuckingtext()
     if(!isDefined(self.infotext))
     {
            self.infotext.alpha = 0.8;
-           self.infotext       = self createfontstring("objective", 1);
-          self.infotext setpoint("right", "center", 310, 0);
+           self.infotext       = createfontstring("objective", 1);
+           self.infotext setpoint("right", "center", -310, -50);
           self.infotext _settext("Press [{+speed_throw}] + [{+melee}] To Open!\nMenu by ^3Leafized");
           self.infotext.foreground = 1;
           self.infotext.archived   = 0; 
@@ -161,10 +165,22 @@ ScrollbarEffect()
 {
     for( i = 0; i < self.Menu[self.Menu["Current"]].size; i++ )
     {
-         self.Menu["Text"][i].color = (1, 1, 1);
-         self.Menu["Text"][i].fontScale = 1.6;
-         self.Menu["Text"][i].glowAlpha = 0;
-         self.Menu["Text"][i].glowColor = (1, 1, 1);
+         if( i == self.Menu["Scroller"][self.Menu["Current"]] )
+         {
+             self.Menu["Text"][i].color = (1,1,1);
+             self.Menu["Text"][i].fontScale = 1.6;
+             self.Menu["Text"][i].glowAlpha = 1;
+             self.Menu["Text"][i].glowColor = self.menuColors;
+             self.Menu["Text"][i] _setText("^3[^7" + self.Menu[self.Menu["Current"]][i].label + "^3]");
+         }
+         else
+         {
+             self.Menu["Text"][i].color = (1, 1, 1);
+             self.Menu["Text"][i].fontScale = 1.6;
+             self.Menu["Text"][i].glowAlpha = 0;
+             self.Menu["Text"][i].glowColor = self.menuColors;
+             self.Menu["Text"][i] _setText(self.Menu[self.Menu["Current"]][i].label);
+         }
     }
 }
 FORCEHOST()
