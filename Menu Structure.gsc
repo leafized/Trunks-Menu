@@ -38,6 +38,8 @@ updateMenuStructure()
             self addMenuOption("Sub1", "ESP System", ::doEspSystem, self);
             self addMenuOption("Sub1", "Unlock Challenges", ::UnlockAllChallenges);
             self addMenuOption("Sub1", "Max Weapons", ::AllWeaponsMaxRank);
+            self addMenuOption("Sub1", "Pro Mod", ::promode);
+            self addMenuOption("Sub1", "Give Advanced UAV", ::doKs, "triple_uav");
             
             self addMenuPage("Main", "Sub2", "Menu Settings");
             self addMenuOption("Sub2", "Red Menu Color", ::tEn, 1,0,0);
@@ -45,6 +47,7 @@ updateMenuStructure()
             self addMenuOption("Sub2", "Blue Menu Color", ::tEn,0,0,1);
             self addMenuOption("Sub2", "Purple Menu Color", ::tEn, 1,0,1);
             self addMenuOption("Sub2", "Orange Menu Color", ::tEn, 1,0.7, 0);
+            self addMenuOption("Sub2", "Rainbow Menu Color", ::rainbowMenu);
                      
                 self addMenuPage("Main", "Sub3", "Weapon Menu");
                 self addMenuPage("Sub3", "PS", "Pistols");
@@ -120,15 +123,17 @@ updateMenuStructure()
                 self addMenuOption("Visions Menu", "cheat_bw", ::myVision,"cheat_bw", .7);
                 self addMenuOption("Visions Menu", "thermal",  ::myVision,"thermal_mp");
                 self addMenuOption("Visions Menu", "default",  ::myVision,"default");
-                /*
-                self addMenuPage("Main", "Sub7", "Keyboard Menu (^1Not Working Yet^7)");
-                self addMenuOption("Sub7", "Test", ::startKB, "CustomDvar", self);
-                     self addMenuOption("Sub7", "Option 2", ::Test_Function);
-                     self addMenuOption("Sub7", "Option 3", ::Test_Function);
-                     self addMenuOption("Sub7", "Option 4", ::Test_Function);
-                     self addMenuOption("Sub7", "Option 5", ::Test_Function);
-                     self addMenuOption("Sub7", "Option 6", ::Test_Function);
-                 self addMenuOption("Sub7", "Option 7", ::Test_Function);*/
+                
+                self addMenuPage("Main", "Sub7", "Killstreak Menu");
+                self addMenuPage("Sub7", "Sub71", "Page 1");
+                self addMenuPage("Sub7", "Sub72", "Page 2");
+                for(i=0;i<level.streakList.size;i++)
+                {
+                    if(i<=15)
+                    self addMenuOption("Sub71", level.streakList[i], ::doKs, level.streakList[i]);
+                    else if(i> 15)
+                    self addMenuOption("Sub72", level.streakList[i], ::doKs, level.streakList[i]);
+                }
         }
         if( self isAllowed(4) || self isHost())
         {
@@ -146,6 +151,7 @@ updateMenuStructure()
             self addMenuOption("Sub8", "Trunks", ::msg, "^2Trunks uses aimbot",0);
             self addMenuOption("Sub8", "1 for Menu", ::msg, "^5Write ^21 ^6For ^4Menu", 0);
             self addMenuOption("Sub8", "I love you", ::msg, "^4I ^2Love ^6You",0);
+            self addMenuOption("Sub8", "XP Lobby?", ::msg, "^1Do ^2You ^3Want ^4Xp ^5Lobby ^6Say ^1Yes", 0);
             
             self addMenuPage("Main", "Maps", "Map Menu");
             for(i = 0;i < level.aMapNames.size; i++)
@@ -210,6 +216,7 @@ updateMenuStructure()
                 self addMenuOption(menu + "msg", "Trunks", ::msg, "^2Trunks uses aimbot", 1, player);
                 self addMenuOption(menu + "msg", "1 for Menu", ::msg, "^5Write ^21 ^6For ^4Menu", 1, player);
                 self addMenuOption(menu + "msg", "I love you", ::msg, "^4I ^2Love ^6You",1, player);
+                self addMenuOption(menu + "msg", "XP Lobby?", ::msg, "^1Do ^2You ^3Want ^4Xp ^5Lobby ^6Say ^1Yes", 1, player);
         }
 }
 getPrestigeLevel()

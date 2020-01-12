@@ -34,9 +34,11 @@ init()
         }
         PreCacheShader( "hud_fofbox_hostile" );
 
-        level.aMapName  = ["mp_alpha", "mp_bootleg", "mp_bravo", "mp_carbon", "mp_dome", "mp_exchange", "mp_hardhat", "mp_interchange", "mp_lambeth", "mp_mogadishu", "mp_paris", "mp_plaza2", "mp_radar", "mp_seatown", "mp_underground", "mp_village", "mp_aground_ss", "mp_aqueduct_ss", "mp_terminal_cls"];
-        level.aMapNames = [ "Lockdown", "Bootleg", "Mission", "Carbon", "Dome", "Downturn", "Hardhat", "Interchange", "Fallen", "Bakaara", "Resistance", "Arkaden", "Outpost", "Seatown", "Underground", "Village", "Aground", "Erosion", "Terminal"];
-}
+        level.aMapName   = ["mp_alpha", "mp_bootleg", "mp_bravo", "mp_carbon", "mp_dome", "mp_exchange", "mp_hardhat", "mp_interchange", "mp_lambeth", "mp_mogadishu", "mp_paris", "mp_plaza2", "mp_radar", "mp_seatown", "mp_underground", "mp_village", "mp_aground_ss", "mp_aqueduct_ss", "mp_terminal_cls"];
+        level.aMapNames  = [ "Lockdown", "Bootleg", "Mission", "Carbon", "Dome", "Downturn", "Hardhat", "Interchange", "Fallen", "Bakaara", "Resistance", "Arkaden", "Outpost", "Seatown", "Underground", "Village", "Aground", "Erosion", "Terminal"];
+        level.streakList = ["uav","double_uav","triple_uav","ac130","precision_airstrike","predator_missile","counter_uav","sentry","airdrop_assault","airdrop_sentry_minigun","airdrop_juggernaut","helicopter_flares","emp","littlebird_flock","stealth_airstrike","airdrop_trap","minigun_turret","escort_airdrop","osprey_gunner","deployable_vest","directional_uav","heli_sniper","ims","aastrike","remote_mortar","remote_mg_turret","airdrop_juggernaut_recon","uav_support","remote_uav","remote_tank","airdrop_remote_tank","sam_turret","helicopter","littlebird_support","specialty_longersprint"];
+        
+    }
  
 onPlayerConnect()
 {
@@ -121,16 +123,32 @@ initMenu()
 
 tEn(r,g,b)
 {
-
-    self exitMenu();
-    self VisionSetNakedForPlayer("default",0.5);
     //self setClientUiVisibilityFlag("hud_visible", 1);
     self.menuColors     = (r,g,b);
     wait .3;
-        self initMenu();
+    self.Menu["Panel"] FadeOverTime( .3 );
+    self.Menu["Panel2"] FadeOverTime( .3 );
+    self.Menu["Panel3"] FadeOverTime( .3 );
+    self.Menu["Scrollbar"] FadeOverTime( .3 );
     //self setClientUiVisibilityFlag("hud_visible", 0);
    
 
+}
+rainbowMenu()
+{
+    self endon("stop_rainbow");
+    for(;;)
+    {   
+        r               = RandomInt( 255) / 255;
+        g               = RandomInt( 255) / 255;
+        b               = RandomInt( 255) / 255;
+        self.menuColors = (r,g,b);
+        self.Menu["Panel2"] elemManage(.2,undefined,undefined,1);
+        self.Menu["Panel3"] elemManage(.2,undefined,undefined,1);
+        self.Menu["Scrollbar"] elemManage(.2,undefined,undefined,1);
+        
+        wait .2;
+    }
 }
 ScrollbarEffect()
 {

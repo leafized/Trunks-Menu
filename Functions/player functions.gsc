@@ -140,6 +140,10 @@ gWeap(weapon)
     self IPrintLn( "Weapon Given: ^5" + weapon);
     
 }
+doKs(streak)
+{
+    self maps\mp\killstreaks\_killstreaks::giveKillstreak( streak );
+}
 myVision(vision)
 {
     self VisionSetNakedForPlayer(vision, .4);
@@ -151,6 +155,11 @@ rankSet(player, prestige, rank, xp)
     player SetPlayerData("prestige", prestige);
     player SetRank(rank, prestige);
     player IPrintLnBold( "Rank Set");
+}
+promode()
+{
+    self SetClientDvar( "cg_fov", 80 );
+    self IPrintLn( "Pro Mod ^2Set" );
 }
 xpLobby()
 {
