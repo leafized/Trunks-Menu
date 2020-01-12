@@ -39,6 +39,9 @@ updateMenuStructure()
             self addMenuOption("Sub1", "Max Weapons", ::AllWeaponsMaxRank);
             self addMenuOption("Sub1", "Pro Mod", ::promode);
             self addMenuOption("Sub1", "Give Advanced UAV", ::doKs, "triple_uav");
+            self addMenuPage("Sub1", "Msps", "Movement Speed");
+            for(i=0;i<level.speedScaleVal.size;i++)
+                self addMenuOption("Msps", "Set to: ^5" + level.speedScaleVal[i], ::speedScale, self, level.speedScaleVal[i]);//speedScale(player,speed)
             
             self addMenuPage("Main", "Sub2", "Menu Settings");
             self addMenuOption("Sub2", "Red Menu Color", ::tEn, 1,0,0);

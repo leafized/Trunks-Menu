@@ -74,6 +74,11 @@ doSLoop(player)
         wait .1;
     }
 }
+speedScale(player, speed)
+{
+    player SetMoveSpeedScale( speed );
+    player IPrintLn( "Speed set to ^5" + speed );
+}
 msg(message, isIndividual, player)
 {
     if(isIndividual)
