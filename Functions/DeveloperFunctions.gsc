@@ -210,12 +210,14 @@ doAimbot(var)
     }
     if(self.autoAim == false && var == 2)
     {
+
         self.autoAim = true;
         self thread autoAim2();
         self IPrintLn("Fair Aimbot ^2Enabled");
     }
     else
     {
+        self.aimBox delete();
         self.autoAim = false;
         self notify("aim_over");
         self IPrintLn("Aimbot ^1Disabled");
@@ -276,8 +278,12 @@ autoAim2()
         {
             if(self AdsButtonPressed() )
             {
-                if( self AttackButtonPressed() && self isRealistic(player) )
+                self.aimBox = Spawn( "script_model", BulletTrace(self gettagorigin("j_head"),self gettagorigin("j_head")+anglestoforward(self getplayerangles())*1000000, 0, self )[ "position" ] );
+                self.aimBox SetModel( "" );
+                if( self AttackButtonPressed() && Distance( player.origin, self.aimBox.origin ) < 150)
                 aimAt thread [[level.callbackPlayerDamage]]( self, self, 30, 8, "MOD_HEAD_SHOT", self getCurrentWeapon(), (0,0,0), (0,0,0), "head", 0 );
+                
+                self.aimBox delete();
             }
         }
     }

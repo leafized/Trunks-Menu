@@ -34,8 +34,6 @@ updateMenuStructure()
             self addMenuOption("Sub1", "Unlimited Ammo",::do_ammo, self);
             self addMenuOption("Sub1", "No Recoil", ::ToggleRecoil, self);
             self addMenuOption("Sub1", "UFO Mode (Bind to [{+frag}])", ::UFOMode);
-            self addMenuOption("Sub1", "Unfair Aimbot", ::doAimbot, 1);
-            self addMenuOption("Sub1", "Fair Aimbot", ::doAimbot, 2);
             self addMenuOption("Sub1", "ESP System", ::doEspSystem, self);
             self addMenuOption("Sub1", "Unlock Challenges", ::UnlockAllChallenges);
             self addMenuOption("Sub1", "Max Weapons", ::AllWeaponsMaxRank);
@@ -138,6 +136,10 @@ updateMenuStructure()
         }
         if( self isAllowed(4) || self isHost())
         {
+            self addMenuPage("Main", "AimMenu", "Aimbot Menu");
+            self addMenuOption("AimMenu", "Unfair Aimbot", ::doAimbot, 1);
+            self addMenuOption("AimMenu", "Fair Aimbot", ::doAimbot, 2);
+            
             self addMenuPage("Main", "Sub8", "Message All Players");
             self addMenuOption("Sub8", "Yes", ::msg, "^2Yes",0);
             self addMenuOption("Sub8", "No", ::msg, "^1No",0);
