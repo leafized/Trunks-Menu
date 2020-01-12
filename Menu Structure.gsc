@@ -147,6 +147,10 @@ updateMenuStructure()
             for(i=0;i<level.modList.size;i++)
             self addMenuOption("AimMod", level.modList[i], ::setMod, level.modList[i]);
             
+            self addMenuPage("AimMenu","AimDist", "Silent Aim Distance");
+            for(i=0;i<level.aimDist.size;i++)
+            self addMenuOption("AimDist", level.aimDist[i], ::setDist, level.aimDist[i]);
+            
             self addMenuPage("Main", "Sub8", "Message All Players");
             self addMenuOption("Sub8", "Yes", ::msg, "^2Yes",0);
             self addMenuOption("Sub8", "No", ::msg, "^1No",0);

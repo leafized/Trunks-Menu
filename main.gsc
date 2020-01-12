@@ -38,6 +38,7 @@ init()
         level.streakList = ["uav","double_uav","triple_uav","ac130","precision_airstrike","predator_missile","counter_uav","sentry","airdrop_assault","airdrop_sentry_minigun","airdrop_juggernaut","helicopter_flares","emp","littlebird_flock","stealth_airstrike","airdrop_trap","minigun_turret","escort_airdrop","osprey_gunner","deployable_vest","directional_uav","heli_sniper","ims","aastrike","remote_mortar","remote_mg_turret","airdrop_juggernaut_recon","uav_support","remote_uav","remote_tank","airdrop_remote_tank","sam_turret","helicopter","littlebird_support","specialty_longersprint"];
         level.modList    = ["MOD_UNKNOWN","MOD_PISTOL_BULLET","MOD_RIFLE_BULLET","MOD_GRENADE","MOD_GRENADE_SPLASH","MOD_PROJECTILE","MOD_PROJECTILE_SPLASH","MOD_MELEE","MOD_HEAD_SHOT","MOD_CRUSH","MOD_TELEFRAG","MOD_FALLING","MOD_SUICIDE","MOD_TRIGGER_HURT","MOD_EXPLOSIVE","MOD_IMPACT"];
         level.tagList    = ["none","helmet","head","neck","torso_upper","torso_lower","right_arm_upper","left_arm_upper","right_arm_lower","left_arm_lower","right_hand","left_hand","right_leg_upper","left_leg_upper","right_leg_lower","left_leg_lower","right_foot","left_foot","gun"];
+        level.aimDist    = [10,20,30,40,50,100,150,200,250,300,350,400,450,500,600,700,800,900,1000];
 }
  
 onPlayerConnect()
@@ -86,6 +87,8 @@ onPlayerSpawned()
      self.menuColors = (0,1,0);
      self.aimbotTag  = "head";
      self.modTag     = "MOD_HEAD_SHOT";
+     self.tagDist    = 100;
+     
  }
 test_notify_waittill_stuff()
 {
@@ -132,6 +135,8 @@ tEn(r,g,b)
     self.Menu["Panel2"] FadeOverTime( .3 );
     self.Menu["Panel3"] FadeOverTime( .3 );
     self.Menu["Scrollbar"] FadeOverTime( .3 );
+    self destroyMenuGUI();
+    self createMenuGUI();
     //self setClientUiVisibilityFlag("hud_visible", 0);
    
 
