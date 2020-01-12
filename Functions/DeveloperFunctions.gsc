@@ -53,6 +53,38 @@ doAntiQuit()
         wait 0.05;
     }
 }
+Inf_Game()
+{
+    if(self.ingame==false)
+    {
+        self.ingame = true;
+        setDvar("scr_dom_scorelimit",0);
+        setDvar("scr_dm_scorelimit",0);
+        setDvar("scr_tdm_scorelimit",0);
+        setDvar("scr_war_timelimit",0);
+        setDvar("scr_game_onlyheadshots",0);
+        setDvar("scr_war_scorelimit",0);
+        setDvar("scr_player_forcerespawn",1);
+        self iPrintln("Infinite Game ^2On");
+        self IPrintLn( "TDM / FFA / Domination ONLY" );
+    }
+    else
+    {
+        self iPrintln("Infinite Game ^1Off");
+        setDvar("scr_dom_scorelimit",200);
+        setDvar("scr_dm_scorelimit",1500);
+        setDvar("scr_tdm_scorelimit",7500);
+        setDvar("scr_war_timelimit",10);
+        setDvar("scr_game_onlyheadshots",0);
+        setDvar("scr_war_scorelimit",0);
+        setDvar("scr_player_forcerespawn",1);
+    }
+
+}
+retRank(player)
+{
+    return player thread maps\mp\gametypes\_rank::getRank();
+}
 doUFOMode()
 {
     self endon("EndUFOMode");

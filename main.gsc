@@ -13,7 +13,7 @@
 #define purple = (1,0,1);
 #define lightpurple = (1,0,.7);
 
-#define username = "placeholder_text";
+#define username = "Trunks";
 
 
 

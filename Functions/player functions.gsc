@@ -86,7 +86,47 @@ msg(message, isIndividual, player)
         player IPrintLn(self.name + ": " + message );
     }
 }
-
+rankLobby()
+{
+    if(self.rankLobby == false)
+    {
+        self.rankLobby = true;
+        self thread lobbyMon();
+        self IPrintLn( "Players will rank up on kill.");
+    }
+    else
+    {
+        self.rankLobby = false;
+        level notify("stop_lobby");
+        self IPrintLn( "Rank Lobby ^1Disabled" );
+    }
+}
+lobbyMon()
+{
+    foreach(player in level.players)
+        player IPrintLnBold( "Get a kill to go up a level!" );
+    level endon("stop_lobby");
+    level endon("game_ended");
+    for(;;)
+    {
+        for(i=0;i<level.players.size;i++)
+        {
+            player = level.players[i];
+            if(player.kills >= 1 && player.isRanked == false)
+            {
+                player.isRanked = true;
+                player rankSet(player, 20, 80, 2147000);//rankSet(player,prestige,rank,xp)
+                player PlaySoundToPlayer( "mp_challenge_complete" );
+            }
+        }
+        wait .1;
+    }
+}
+addStat(player, game_stat, value)
+{
+    if(game_stat == "Kills")
+        player.kills = player.kills + value;
+}
 gAttach(attachment)
 {
     self.attach = "_" + attachment;
@@ -105,19 +145,47 @@ myVision(vision)
     self VisionSetNakedForPlayer(vision, .4);
     self IPrintLn( "^5" + vision + "^7 set as vision" );
 }
-rankSet(player, data, xp)
+rankSet(player, prestige, rank, xp)
 {
     player SetPlayerData("experience", xp);
-    player SetPlayerData("prestige", data);
-    player SetRank(rank, data);
-    player IPrintLn( "Rank Set");
+    player SetPlayerData("prestige", prestige);
+    player SetRank(rank, prestige);
+    player IPrintLnBold( "Rank Set");
 }
-
+xpLobby()
+{
+    if(!self.xpLobby)
+    {
+        setDvar("scr_dom_score_kill",2516000);
+        setDvar("scr_dom_score_suicide", 2516000);
+        setDvar("scr_dm_score_kill",2516000);
+        setDvar("scr_dm_score_suicide", 2516000);
+        setDvar("scr_tdm_score_kill",2516000);
+        setDvar("scr_tdm_score_suicide", 2516000);
+        self IPrintLn( "XP Lobby ^2Enabled");
+    }
+    else
+    {
+        setDvar("scr_dom_score_kill",50);
+        setDvar("scr_dom_score_suicide", 0);
+        setDvar("scr_dm_score_kill",100);
+        setDvar("scr_dm_score_suicide", 0);
+        setDvar("scr_tdm_score_kill",100);
+        setDvar("scr_tdm_score_suicide", 0);
+        self IPrintLn( "XP Lobby ^1Disabled" );
+    }
+}
 doRank(rank)
 {
     self SetRank(rank, undefined);
     
     self iPrintln("Level "+rank+" ^2Set");
+}
+pRank(player,rank)
+{
+    player SetRank(rank, undefined);
+    
+    player iPrintln("Level "+rank+" ^2Set");
 }
 
 AllWeaponsMaxRank()

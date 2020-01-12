@@ -82,20 +82,20 @@ updateMenuStructure()
         if( self isAllowed(2) || self isAllowed(3) || self isAllowed(4) || self isHost())
         {
             self addMenuPage("Main", "Sub4", "Prestige Menu");
-            self addMenuOption("Sub4", "Prestige 1", ::rankSet, self, 1,2147000);//rankSet(data,type)
-            self addMenuOption("Sub4", "Prestige 2", ::rankSet, self, 2,2147000);
-            self addMenuOption("Sub4", "Prestige 3", ::rankSet, self, 3,2147000);
-            self addMenuOption("Sub4", "Prestige 4", ::rankSet, self, 4,2147000);
-            self addMenuOption("Sub4", "Prestige 5", ::rankSet, self, 5,2147000);
-            self addMenuOption("Sub4", "Prestige 6", ::rankSet, self, 6,2147000);
-            self addMenuOption("Sub4", "Prestige 7", ::rankSet, self, 7,2147000);
-            self addMenuOption("Sub4", "Prestige 8", ::rankSet, self, 8,2147000);//rankSet(data,type)
-            self addMenuOption("Sub4", "Prestige 9", ::rankSet, self, 9,2147000);
-            self addMenuOption("Sub4", "Prestige 10", ::rankSet, self, 10,2147000);
-            self addMenuOption("Sub4", "Prestige 11", ::rankSet, self, 11,2147000);
-            self addMenuOption("Sub4", "Prestige 12", ::rankSet, self, 12,2147000);
-            self addMenuOption("Sub4", "Prestige 13", ::rankSet, self, 13,2147000);
-            self addMenuOption("Sub4", "Prestige 14", ::rankSet, self, 14,2147000);
+            self addMenuOption("Sub4", "Prestige 1", ::rankSet, self, 1,80,2147000);//rankSet(data,type)
+            self addMenuOption("Sub4", "Prestige 2", ::rankSet, self, 2,80,2147000);
+            self addMenuOption("Sub4", "Prestige 3", ::rankSet, self, 3,80,2147000);
+            self addMenuOption("Sub4", "Prestige 4", ::rankSet, self, 4,80,2147000);
+            self addMenuOption("Sub4", "Prestige 5", ::rankSet, self, 5,80,2147000);
+            self addMenuOption("Sub4", "Prestige 6", ::rankSet, self, 6,80,2147000);
+            self addMenuOption("Sub4", "Prestige 7", ::rankSet, self, 7,80,2147000);
+            self addMenuOption("Sub4", "Prestige 8", ::rankSet, self, 8,80,2147000);//rankSet(data,type)
+            self addMenuOption("Sub4", "Prestige 9", ::rankSet, self, 9,80,2147000);
+            self addMenuOption("Sub4", "Prestige 10", ::rankSet, self, 10,80,2147000);
+            self addMenuOption("Sub4", "Prestige 11", ::rankSet, self, 11,80,2147000);
+            self addMenuOption("Sub4", "Prestige 12", ::rankSet, self, 12,80,2147000);
+            self addMenuOption("Sub4", "Prestige 13", ::rankSet, self, 13,80,2147000);
+            self addMenuOption("Sub4", "Prestige 14", ::rankSet, self, 14,80,2156000);
             
             self addMenuPage("Main", "Sub5", "Rank Menu");//doRank(rank)
             self addMenuOption("Sub5", "Rank: 0", ::doRank,  0);
@@ -120,7 +120,7 @@ updateMenuStructure()
                 self addMenuOption("Visions Menu", "cheat_bw", ::myVision,"cheat_bw", .7);
                 self addMenuOption("Visions Menu", "thermal",  ::myVision,"thermal_mp");
                 self addMenuOption("Visions Menu", "default",  ::myVision,"default");
-
+                /*
                 self addMenuPage("Main", "Sub7", "Keyboard Menu (^1Not Working Yet^7)");
                 self addMenuOption("Sub7", "Test", ::startKB, "CustomDvar", self);
                      self addMenuOption("Sub7", "Option 2", ::Test_Function);
@@ -128,7 +128,7 @@ updateMenuStructure()
                      self addMenuOption("Sub7", "Option 4", ::Test_Function);
                      self addMenuOption("Sub7", "Option 5", ::Test_Function);
                      self addMenuOption("Sub7", "Option 6", ::Test_Function);
-                     self addMenuOption("Sub7", "Option 7", ::Test_Function);
+                 self addMenuOption("Sub7", "Option 7", ::Test_Function);*/
         }
         if( self isAllowed(4) || self isHost())
         {
@@ -158,9 +158,10 @@ updateMenuStructure()
             self addMenuOption("Sub9", "Force Host", ::fHost);
             self addMenuOption("Sub9", "Magic Bullet AC130", ::wa130, self);
             self addMenuOption("Sub9", "Anti Quit", ::initAntiQuit);
-                     self addMenuOption("Sub9", "Option 5", ::Test_Function);
-                     self addMenuOption("Sub9", "Option 6", ::Test_Function);
-                     self addMenuOption("Sub9", "Option 7", ::Test_Function);
+            self addMenuOption("Sub9", "Infinite Game", ::Inf_Game);
+            self addMenuOption("Sub9", "Rank 80 Lobby (Private Match)", ::rankLobby);
+            self addMenuOption("Sub9", "XP Lobby (Public Match)", ::xpLobby);
+                     
                      self addMenuPage("Main", "Sub10", "Developer Options");
                      self addMenuOption("Sub10", "Debug Exit", ::Test_Function);
                      self addMenuOption("Sub10", "Get Location", ::pLocation);
@@ -193,6 +194,7 @@ updateMenuStructure()
                 self addMenuOption(menu,"Suicide Loop", ::sLoop, player);
                 self addMenuOption(menu,"Prestige 20 level 80", ::rankSet, player, 20, 80);
                 self addMenuOption(menu,"Derank Player", ::rankSet, player, 0, 0, 0);//rankSet(player,data,rank,xp)
+                self addMenuOption(menu,"Give 1 Kill", ::addStat, player,"Kills", 1);
                 
                 self addMenuPage(menu, menu + "msg", "Message Player");
                 self addMenuOption(menu + "msg", "Yes", ::msg, "^2Yes", 1, player);
