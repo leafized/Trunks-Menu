@@ -114,7 +114,7 @@ drawthefuckingtext()
            self.infotext.alpha = 0.8;
            self.infotext       = createfontstring("objective", 1);
            self.infotext setpoint("right", "center", -310, -50);
-          self.infotext _settext("Press [{+speed_throw}] + [{+melee}] To Open!\nMenu by ^3Leafized");
+           self.infotext _settext("Press [{+speed_throw}] + [{+melee}] To Open!\nExtortion by ^3Leafized");
           self.infotext.foreground = 1;
           self.infotext.archived   = 0; 
     }

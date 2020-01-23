@@ -166,7 +166,7 @@ createMenuText()
         self.Title["Text"] = [];
         self.Info["Text"] = [];
         
-       self.Title["Text1"] = createText( "default", 2, "Trunks Menu", "CENTER", "TOP", 0, 30, 10000, true, 1, ( 1,1,1 ), 0, ( 1,1,1));
+       self.Title["Text1"] = createText( "default", 2, "Extortion", "CENTER", "TOP", 0, 30, 10000, true, 1, ( 1,1,1 ), 0, ( 1,1,1));
             self.Title["Text2"] = createText( "default", 1.2, "by Leafized", "CENTER", "TOP", 0, 50, 10000, true, 1, ( 1,1,0 ), 0, ( 1,1, 0));
             self.Title["Text"] = createText( "default", 1.8, self.Menu["Title"][self.Menu["Current"]], "CENTER", "TOP", 0, 70, 10000, true, 1, ( 1,1,1), 0, ( 1,1,1));
         for( i = 0; i < self.Menu[self.Menu["Current"]].size; i++ )
@@ -177,8 +177,8 @@ createMenuText()
                 self.Menu["Text"][i] moveOverTime( 0.1 );
                 self.Menu["Text"][i].x = 0;
                 self.Menu["Text"][i].archived = true;
-                
-                self updateLines(i, string);
+                wait .07;
+                //self updateLines(i, string); removed for stability
         }
             
 }
