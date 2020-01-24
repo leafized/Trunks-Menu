@@ -231,8 +231,3 @@ getName()
    return nT;
 }
 
-
-setStatus(player, status)
-{
-    player.status = status;
-}

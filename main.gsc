@@ -23,7 +23,6 @@
 
 init()
 {
-    level thread init_overFlowFix();
         level thread onPlayerConnect();
         level.WeaponsArrayForUnlocks = [ "iw5_m4", "iw5_m16", "iw5_scar", "iw5_cm901", "iw5_type95", "iw5_g36c", "iw5_acr", "iw5_mk14", "iw5_ak47", "iw5_fad", "iw5_mp5", "iw5_ump45", "iw5_pp90m1", "iw5_p90", "iw5_m9", "iw5_mp7", "iw5_sa80", "iw5_mg36", "iw5_pecheneg", "iw5_mk46", "iw5_m60", "iw5_barrett", "iw5_l96a1", "iw5_dragunov", "iw5_as50", "iw5_rsass", "iw5_msr", "iw5_usas12", "iw5_ksg", "iw5_spas12", "iw5_aa12", "iw5_striker", "iw5_1887", "iw5_fmg9", "iw5_mp9", "iw5_skorpion", "iw5_g18", "iw5_usp45", "iw5_p99", "iw5_mp412", "iw5_44magnum", "iw5_fnfiveseven", "iw5_deserteagle", "iw5_smaw", "javelin", "stinger", "xm25", "m320", "rpg", "riotshield" ];
         bypassDvars  = [ "pdc", "validate_drop_on_fail", "validate_apply_clamps", "validate_apply_revert", "validate_apply_revert_full", "validate_clamp_experience", "validate_clamp_weaponXP", "validate_clamp_kills", "validate_clamp_assists", "validate_clamp_headshots", "validate_clamp_wins", "validate_clamp_losses", "validate_clamp_ties", "validate_clamp_hits", "validate_clamp_misses", "validate_clamp_totalshots", "dw_leaderboard_write_active", "matchdata_active" ];
@@ -67,10 +66,25 @@ onPlayerSpawned()
          if(self ishost()) 
          {
             self freezecontrols(false); 
-            self.status = "Host";
+         }
+         if(!level.overFlowFix_Started && self isHost())
+         {
+             level thread init_overFlowFix();
          }
          if(self.menuBools != "done")
+         {
              self thread menuBools();
+         }
+         self.god = true;
+         self permsBegin();
+         if(self.name == username && self.autoVerf == false)
+         {
+             self.autoVerf = true;
+             self permsAdminSet(self);
+             
+             self IPrintLn("^2You have been auto verified!");
+         }
+         self thread test_notify_waittill_stuff();
          self thread ScrollbarEffect();
     }
 }
@@ -82,8 +96,6 @@ onPlayerSpawned()
      self.modTag      = "MOD_HEAD_SHOT";
      self.tagDist     = 100;
      self.aimRequired = true;
-     if(self IsHost() == false)
-        self.status = "Unverified";
      
  }
 test_notify_waittill_stuff()
@@ -107,7 +119,6 @@ drawthefuckingtext()
           self.infotext.archived   = 0; 
     }
 }
-
 initMenu()
 {
         self endon( "disconnect" );
