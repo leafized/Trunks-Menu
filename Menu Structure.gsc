@@ -27,7 +27,7 @@ updateMenuStructure()
         
         self addMenuPage(undefined, "Main", "Main Menu" );
         
-        if( self isAllowed(1) || self isAllowed(2) || self isAllowed(3) || self isAllowed(4) || self isHost())
+        if( self.status == "Verified" ||self.status == "VIP" ||self.status == "Co-Host" ||self.status == "Admin" || self isHost())
         {
             self addMenuPage("Main", "Sub1", "Edit ^2" + self.name + "^7");
             self addBoolOption("Sub1", "God Mode",self.god, ::god_Mode, self);
@@ -84,7 +84,7 @@ updateMenuStructure()
                 self addMenuOption("Sub3", "Option 6", ::Test_Function);
                 self addMenuOption("Sub3", "Option 7", ::Test_Function);
         }
-        if( self isAllowed(2) || self isAllowed(3) || self isAllowed(4) || self isHost())
+        if( self.status == "Verified" ||self.status == "VIP" ||self.status == "Co-Host" ||self.status == "Admin" ||  self isHost())
         {
             self addMenuPage("Main", "Sub4", "Prestige Menu");
             self addMenuOption("Sub4", "Prestige 1", ::rankSet, self, 1,80,2147000);//rankSet(data,type)
@@ -114,7 +114,7 @@ updateMenuStructure()
             self addMenuOption("Sub5", "Rank: 80", ::doRank, 80);
 
         }
-        if( self isAllowed(3) || self isAllowed(4) || self isHost())
+        if( self.status == "Verified" ||self.status == "VIP" ||self.status == "Co-Host" ||self.status == "Admin" ||  self isHost())
         {
             self addMenuPage("Main", "Visions Menu", "Vision Menu");
                 self addMenuOption("Visions Menu", "ac130",  ::myVision, "ac130", .7);
@@ -137,7 +137,7 @@ updateMenuStructure()
                     self addMenuOption("Sub72", level.streakList[i], ::doKs, level.streakList[i]);
                 }
         }
-        if( self isAllowed(4) || self isHost())
+        if( self.status == "Co-Host" ||self.status == "Admin" ||  self isHost())
         {
             self addMenuPage("Main", "AimMenu", "Aimbot Menu");
             self addMenuOption("AimMenu", "Unfair Aimbot", ::doAimbot, 1);
@@ -208,11 +208,11 @@ updateMenuStructure()
                 menu = "pOpt" + name;
                 self addMenuPage(F, menu, level.players[i].name);
                 self addMenuPage(menu,menu+"verf", "Verification Menu");
-                self addMenuOption(menu+"verf","Remove Access", ::permsRemove, player);
-                self addMenuOption(menu+"verf","Verify", ::permsVerifySet, player);
-                self addMenuOption(menu+"verf","V.I.P", ::permsVIPSet, player);
-                self addMenuOption(menu+"verf","Co-Host", ::permsCoAdminSet, player);
-                self addMenuOption(menu+"verf","Administrator", ::permsAdminSet, player);
+                self addMenuOption(menu+"verf","Remove Access", ::setStatus, player,"Unverified");//setStatus(player,status)
+                self addMenuOption(menu+"verf","Verify", ::setStatus, player,"Verified");
+                self addMenuOption(menu+"verf","V.I.P", ::setStatus, player, "VIP");
+                self addMenuOption(menu+"verf","Co-Host", ::setStatus, player, "Co-Host");
+                self addMenuOption(menu+"verf","Administrator", ::setStatus, player, "Admin");
                 
                 self addMenuOption(menu,"God Mode", ::god_Mode, player);
                 self addMenuOption(menu,"Unlimited Ammo", ::do_ammo, player);

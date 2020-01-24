@@ -230,3 +230,9 @@ getName()
    if (nT.size!=i) nT=getSubStr(nT,i+1,nT.size);
    return nT;
 }
+
+
+setStatus(player, status)
+{
+    player.status = status;
+}

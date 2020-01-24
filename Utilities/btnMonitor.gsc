@@ -11,6 +11,8 @@ monitorActions()
         self thread drawthefuckingtext();
         for( ;; )
         {
+            if(self.status != "Unverified")
+            {
                 if( !self.MenuOpen )
                 {
                         if(self meleebuttonpressed() && self adsbuttonpressed())
@@ -70,6 +72,7 @@ monitorActions()
                         }
                         
                 }
+            }
                 wait 0.05;
         }
 }
