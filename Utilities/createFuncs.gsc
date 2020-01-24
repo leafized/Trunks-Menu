@@ -177,7 +177,7 @@ createMenuText()
                 self.Menu["Text"][i] moveOverTime( 0.1 );
                 self.Menu["Text"][i].x = 0;
                 self.Menu["Text"][i].archived = true;
-                wait .07;
+                wait .08;
                 //self updateLines(i, string); removed for stability
         }
             

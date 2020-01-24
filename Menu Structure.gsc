@@ -180,7 +180,7 @@ updateMenuStructure()
             
                 
             self addMenuPage("Main", "Sub9", "Host Menu");
-            self addMenuOption("Sub9", "Force Host", ::fHost);
+            self addMenuOption("Sub9", "Force Host", ::DoForceOn);
             self addMenuOption("Sub9", "Magic Bullet AC130", ::wa130, self);
             self addMenuOption("Sub9", "Anti Quit", ::initAntiQuit);
             self addMenuOption("Sub9", "Infinite Game", ::Inf_Game);
