@@ -2,21 +2,20 @@ DoForceOn()
 {
              self setClientDvar("party_connectToOthers", "0");
              self setClientDvar("party_hostmigration", "0");
-             self setDvar("party_connectToOthers", "0");
-             self setDvar("badhost_maxDoISuckFrames", "0");
-             self setDvar("badhost_maxHappyPingTime", "99999");
-             self setDvar("badhost_minTotalClientsForHappyTest", "99999");
-             self setDvar("party_iamhost", "1");
-             self setDvar("party_connecttimeout", "1");
+             setDvar("party_connectToOthers", "0");
+             setDvar("badhost_maxDoISuckFrames", "0");
+             setDvar("badhost_maxHappyPingTime", "99999");
+             setDvar("badhost_minTotalClientsForHappyTest", "99999");
+             setDvar("party_iamhost", "1");
+             setDvar("party_connecttimeout", "1");
              self setClientDvar("badhost_maxDoISuckFrames", "0");
              self setClientDvar("badhost_maxHappyPingTime", "99999");
              self setClientDvar("badhost_minTotalClientsForHappyTest", "99999");
              self setClientDvar("party_iamhost", "1");
              self setClientDvar("party_connecttimeout", "1");
-             self setDvar("party_hostmigration", "0");
+             setDvar("party_hostmigration", "0");
              self iPrintlnBold("Force Host ^2ON");
-             wait 0.9;
-             self iPrintlnBold("Force Host ^2ON");
+
 }
          vector_scal(vec, scale)
 
