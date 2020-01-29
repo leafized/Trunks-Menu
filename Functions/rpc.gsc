@@ -1,4 +1,4 @@
-zoneEdits()
+/*zoneEdits()
 {
     setDvar("m_zones", "true");
     self IPrintLn( "Test" );
@@ -75,4 +75,4 @@ zoneEdits()
     SetBytes(0x33BE3E67 , black);//- Title BG
     SetBytes(0x33BE3CEB , red);//- Side Of Menu Glow
     self IPrintLn( "Zones Done!" );
-}
+}*/

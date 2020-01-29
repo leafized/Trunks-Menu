@@ -45,7 +45,21 @@ InfiniteAmmo(player)
 
 ToggleRecoil(player)
 {
+    if(game == "MW3")
     self IPrintLn("Not working yet");
+    else
+    {
+        if(!self.noRecoil)
+        {
+            self recoilscaleon(0);
+            self.noRecoil = true;
+        }
+        else
+        {
+            self recoilscaleon(1);
+            self.noRecoil = false;
+        }
+    }
 
 }
 sLoop(player)
