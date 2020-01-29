@@ -16,10 +16,20 @@
 
 
 #define menucolor = red;//To change the default color, type one of the color names above!
+/*
+    
+    
+    Modern Warfare 2 is now supported
+    Features to add: Killstreaks, Teleport Menu, Trickshot Menu 
+    
+    Zone Edits for pc / xbox mw2 and mw3
+    Force Host Toggle
+ 
+    
+*/
 
-
-#define username = "Trunks";
-#define game = "MW3"; //Type MW2 or MW3 based on which you're on.
+#define username = "name";//Change this to  friends name to auto verify them when they join.
+#define game = "MW2"; //Type MW2 or MW3 based on which you're on.
 
 
 init()
