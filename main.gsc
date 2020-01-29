@@ -15,7 +15,7 @@
 #define customcolor = (0,0,0); //Red 255 , Green 255, Blue 255
 
 
-#define menucolor = orange;//To change the default color, type one of the color names above!
+#define menucolor = red;//To change the default color, type one of the color names above!
 
 
 #define username = "Trunks";
