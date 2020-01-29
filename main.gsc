@@ -19,6 +19,7 @@
 
 
 #define username = "Trunks";
+#define game = "MW3"; //Type MW2 or MW3 based on which you're on.
 
 
 init()

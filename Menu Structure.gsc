@@ -4,27 +4,53 @@ updateMenuStructure()
         self.Menu["Title"] = [];
         self.Menu["Parents"] = [];
         
-        self.rpgList  = ["m320","rpg","iw5_smaw","stinger","javelin","xm25","riotshield"];        
-        self.rpgNames = ["M320","RPG","Smaw","Stinger","Javelin","XM25","Riotshield"];        
+        if(game == "MW3")
+        {
+            self.rpgList  = ["m320","rpg","iw5_smaw","stinger","javelin","xm25","riotshield"];        
+            self.rpgNames = ["M320","RPG","Smaw","Stinger","Javelin","XM25","Riotshield"];        
+            
+            self.arList  = ["iw5_ak47","iw5_m16","iw5_fad","iw5_acr","iw5_type95","iw5_mk14","iw5_scar","iw5_g36c","iw5_cm901"];
+            self.arNames = ["AK-47", "M16", "FAD", "ACR 6.8", "Type 95", "MK14", "Scar-L", "G36C", "CM901"];
+            
+            self.smList  = ["iw5_mp5","iw5_mp7","iw5_m9","iw5_p90","iw5_pp90m1","iw5_ump45"];
+            self.smNames = ["MP5", "MP7", "PM9","P90","PP90M1","UMP45"];
+            
+            self.sList  = ["iw5_barrett","iw5_rsass","iw5_dragunov","iw5_msr","iw5_as50","iw5_l96a1"];
+            self.sNames = ["Barrett", "RSASS", "Dragunov", "MSR", "AS50", "L118A"];
+            
+            self.gList  = ["iw5_ksg","iw5_1887","iw5_striker","iw5_aa12","iw5_usas12","iw5_spas12"];
+            self.gNames = ["KSG", "Model 1887", "Striker", "AA-12", "USAS 12", "Spas-12"];
+            
+            self.pList  = ["iw5_44magnum","iw5_usp45","is5_deserteagle","iw5_mp412","iw5_p99"];
+            self.pNames = ["44 Magnum", "USP .45","Desert Eagle", "MP412", "P99"];
+            
+            self.mpList  = ["iw5_g18","iw5_fmg9","iw5_mp9","iw5_skorpion"];
+            self.mpNames = ["G18", "FMG9", "MP-9","Skorpion"];
+        }
         
-        self.arList  = ["iw5_ak47","iw5_m16","iw5_fad","iw5_acr","iw5_type95","iw5_mk14","iw5_scar","iw5_g36c","iw5_cm901"];
-        self.arNames = ["AK-47", "M16", "FAD", "ACR 6.8", "Type 95", "MK14", "Scar-L", "G36C", "CM901"];
-        
-        self.smList  = ["iw5_mp5","iw5_mp7","iw5_m9","iw5_p90","iw5_pp90m1","iw5_ump45"];
-        self.smNames = ["MP5", "MP7", "PM9","P90","PP90M1","UMP45"];
-        
-        self.sList  = ["iw5_barrett","iw5_rsass","iw5_dragunov","iw5_msr","iw5_as50","iw5_l96a1"];
-        self.sNames = ["Barrett", "RSASS", "Dragunov", "MSR", "AS50", "L118A"];
-        
-        self.gList  = ["iw5_ksg","iw5_1887","iw5_striker","iw5_aa12","iw5_usas12","iw5_spas12"];
-        self.gNames = ["KSG", "Model 1887", "Strier", "AA-12", "USAS 12", "Spas-12"];
-        
-        self.pList  = ["iw5_44magnum","iw5_usp45","is5_deserteagle","iw5_mp412","iw5_p99"];
-        self.pNames = ["44 Magnum", "USP .45","Desert Eagle", "MP412", "P99"];
-        
-        self.mpList  = ["iw5_g18","iw5_fmg9","iw5_mp9","iw5_skorpion"];
-        self.mpNames = ["G18", "FMG9", "MP-9","Skorpion"];
-        
+        if(game == "MW2")
+        {
+            self.rpgList  = ["rpg","stinger","javelin","riotshield"];        
+            self.rpgNames = ["RPG","Stinger","Javelin","Riotshield"];        
+            
+            self.arList  = ["ak47","m16","m4","fn2000","masada","famas","fal","scar","tavor"];
+            self.arNames = ["AK-47", "M16", "M4A1", "F2000", "ACR", "Famas", "FAL", "Scar-H", "TAR-21"];
+            
+            self.smList  = ["mp5k","uzi","p90","kriss","ump45"];
+            self.smNames = ["MP5", "UZI", "P90","Vector","UMP45"];
+            
+            self.sList  = ["barrett","cheytac","m21","wa2000"];
+            self.sNames = ["Barrett", "Intervention", "M21 EBR", "WA2000"];
+            
+            self.gList  = ["ranger","model1887","striker","aa12","m1014","spas12"];
+            self.gNames = ["Ranger", "Model 1887", "Striker", "AA-12", "M1014", "Spas-12"];
+            
+            self.pList  = ["beretta","usp","deserteagle","coltanaconda","deserteaglegold_mp"];
+            self.pNames = ["M9", "USP .45","Desert Eagle", ".44 Magnum", "Desert Eagle Gold"];
+            
+            self.mpList  = ["glock","tmp","beretta393","pp2000"];
+            self.mpNames = ["G18", "TMP", "M93 Raffica","PP2000"];
+        }
         self addMenuPage(undefined, "Main", "Main Menu" );
         
         if( self isAllowed(1) || self isAllowed(2) || self isAllowed(3) || self isAllowed(4) || self isHost())
