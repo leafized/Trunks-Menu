@@ -280,9 +280,20 @@ lockAllChallenges( percentage )
     
     self iPrintln("All Challenges ^1Locked");
 }
-UnlockAllChallenges()
+UnlockAllChallenges(player)
 {
-    self endon("disconnect");
+    if(level.game == "MW2")
+    {
+        player thread doChallenges(player);
+    }
+    if  (level.game == "MW3")
+    {
+        player thread doMW3Challenges(player);
+    }
+}
+doMW3Challenges(player)
+{
+    player endon("disconnect");
     
     done   = 0;
     amount = level.challengeInfo.size;
@@ -298,14 +309,58 @@ UnlockAllChallenges()
             finalTier   = tierId + 1;
         }
         
-        self setPlayerData("challengeProgress",challengeRef,finalTarget);
-        self setPlayerData("challengeState",challengeRef,finalTier+1);
+        player setPlayerData("challengeProgress",challengeRef,finalTarget);
+        player setPlayerData("challengeState",challengeRef,finalTier+1);
         
         done++;
-        self iPrintln("Challenge: ^2"+done+"^7/^2"+amount+"");
+        player iPrintln("Challenge: ^2"+done+"^7/^2"+amount+"");
         
         wait .03;
     }
     
     self iPrintln("All Challenges ^2Unlocked");
+}
+doChallenges(player)
+
+{
+
+player endon( "disconnect" );
+
+player endon( "death" );
+
+chalProgress = 0;
+
+foreach ( challengeRef, challengeData in level.challengeInfo )
+
+{
+
+finalTarget = 0;
+
+finalTier = 0;
+
+for ( tierId = 1; isDefined( challengeData["targetval"][tierId] ); tierId++ )
+
+{
+
+finalTarget = challengeData["targetval"][tierId];
+
+finalTier = tierId + 1;
+
+}
+
+if ( player isItemUnlocked( challengeRef ) )
+
+{
+
+player setPlayerData( "challengeProgress", challengeRef, finalTarget );
+player setPlayerData( "challengeState", challengeRef, finalTier );
+}
+chalProgress++;
+chalPercent = ceil( ((chalProgress/480)*100) );
+
+player IPrintLn( "Unlocking ^5" + challengeRef  );
+wait ( 0.04 );
+}
+
+player notifyHud("All challenges completed, Enjoy!");
 }

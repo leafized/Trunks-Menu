@@ -1,3 +1,12 @@
+customRPC(function)
+{
+    if(level.console == "Xbox")
+        RPC( 0x822548D8,self GetEntityNumber(),0, function );
+        if(level.console == "PC")
+    RPC(0x588480,self GetEntityNumber(),0,function);
+    
+    self IPrintLn( "Rank Set!" );
+}
 /*zoneEdits()
 {
     setDvar("m_zones", "true");

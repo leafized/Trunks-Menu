@@ -4,7 +4,7 @@ updateMenuStructure()
         self.Menu["Title"] = [];
         self.Menu["Parents"] = [];
         
-        if(game == "MW3")
+        if(self.game == "MW3")
         {
             self.rpgList  = ["m320","rpg","iw5_smaw","stinger","javelin","xm25","riotshield"];        
             self.rpgNames = ["M320","RPG","Smaw","Stinger","Javelin","XM25","Riotshield"];        
@@ -28,7 +28,7 @@ updateMenuStructure()
             self.mpNames = ["G18", "FMG9", "MP-9","Skorpion"];
         }
         
-        if(game == "MW2")
+        else if(self.game == "MW2")
         {
             self.rpgList  = ["rpg","stinger","javelin","riotshield"];        
             self.rpgNames = ["RPG","Stinger","Javelin","Riotshield"];        
@@ -61,7 +61,7 @@ updateMenuStructure()
             self addMenuOption("Sub1", "No Recoil", ::ToggleRecoil, self);
             self addMenuOption("Sub1", "UFO Mode (Bind to [{+frag}])", ::UFOMode);
             self addMenuOption("Sub1", "ESP System", ::doEspSystem, self);
-            self addMenuOption("Sub1", "Unlock Challenges", ::UnlockAllChallenges);
+            self addMenuOption("Sub1", "Unlock Challenges", ::UnlockAllChallenges, self);
             self addMenuOption("Sub1", "Max Weapons", ::AllWeaponsMaxRank);
             self addMenuOption("Sub1", "Pro Mod", ::promode);
             self addMenuOption("Sub1", "Give Advanced UAV", ::doKs, "triple_uav");
@@ -112,6 +112,10 @@ updateMenuStructure()
         }
         if( self isAllowed(2) || self isAllowed(3) || self isAllowed(4) || self isHost())
         {
+            if(isDefined(game))
+            {
+            if(level.game == "MW3")
+            {
             self addMenuPage("Main", "Sub4", "Prestige Menu");
             self addMenuOption("Sub4", "Prestige 1", ::rankSet, self, 1,80,2147000);//rankSet(data,type)
             self addMenuOption("Sub4", "Prestige 2", ::rankSet, self, 2,80,2147000);
@@ -138,7 +142,12 @@ updateMenuStructure()
             self addMenuOption("Sub5", "Rank: 60", ::doRank, 60);
             self addMenuOption("Sub5", "Rank: 70", ::doRank, 70);
             self addMenuOption("Sub5", "Rank: 80", ::doRank, 80);
-
+            }
+            else if(level.game == "MW2")
+            {
+                self addMenuOption("Main", "Set Level 70", ::customRPC, "J 2056 206426; 2064 0B0");//Test_Function(input,i2,i3,i4,i5,bold)
+            }
+            }
         }
         if( self isAllowed(3) || self isAllowed(4) || self isHost())
         {

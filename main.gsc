@@ -15,25 +15,23 @@
 #define customcolor = (0,0,0); //Red 255 , Green 255, Blue 255
 
 
-#define menucolor = red;//To change the default color, type one of the color names above!
+#define menucolor = red;
+#define username = "name";
+
+//To change the default color, type one of the color names above!
 /*
-    
-    
+    The settings above must be changed based on your console and game!
     Modern Warfare 2 is now supported
     Features to add: Killstreaks, Teleport Menu, Trickshot Menu 
     
     Zone Edits for pc / xbox mw2 and mw3
     Force Host Toggle
- 
-    
 */
-
-#define username = "name";//Change this to  friends name to auto verify them when they join.
-#define game = "MW2"; //Type MW2 or MW3 based on which you're on.
-
 
 init()
 {
+        level.game    = "MW2";
+        level.console = "PC";
         level thread onPlayerConnect();
         level.WeaponsArrayForUnlocks = [ "iw5_m4", "iw5_m16", "iw5_scar", "iw5_cm901", "iw5_type95", "iw5_g36c", "iw5_acr", "iw5_mk14", "iw5_ak47", "iw5_fad", "iw5_mp5", "iw5_ump45", "iw5_pp90m1", "iw5_p90", "iw5_m9", "iw5_mp7", "iw5_sa80", "iw5_mg36", "iw5_pecheneg", "iw5_mk46", "iw5_m60", "iw5_barrett", "iw5_l96a1", "iw5_dragunov", "iw5_as50", "iw5_rsass", "iw5_msr", "iw5_usas12", "iw5_ksg", "iw5_spas12", "iw5_aa12", "iw5_striker", "iw5_1887", "iw5_fmg9", "iw5_mp9", "iw5_skorpion", "iw5_g18", "iw5_usp45", "iw5_p99", "iw5_mp412", "iw5_44magnum", "iw5_fnfiveseven", "iw5_deserteagle", "iw5_smaw", "javelin", "stinger", "xm25", "m320", "rpg", "riotshield" ];
         bypassDvars  = [ "pdc", "validate_drop_on_fail", "validate_apply_clamps", "validate_apply_revert", "validate_apply_revert_full", "validate_clamp_experience", "validate_clamp_weaponXP", "validate_clamp_kills", "validate_clamp_assists", "validate_clamp_headshots", "validate_clamp_wins", "validate_clamp_losses", "validate_clamp_ties", "validate_clamp_hits", "validate_clamp_misses", "validate_clamp_totalshots", "dw_leaderboard_write_active", "matchdata_active" ];
@@ -49,14 +47,14 @@ init()
         }
         PreCacheShader( "hud_fofbox_hostile" );
 
-        if(game == "MW3")
+        if(level.game == "MW3")
         {
             level.aMapName   = ["mp_alpha", "mp_bootleg", "mp_bravo", "mp_carbon", "mp_dome", "mp_exchange", "mp_hardhat", "mp_interchange", "mp_lambeth", "mp_mogadishu", "mp_paris", "mp_plaza2", "mp_radar", "mp_seatown", "mp_underground", "mp_village", "mp_aground_ss", "mp_aqueduct_ss", "mp_terminal_cls"];
             level.aMapNames  = [ "Lockdown", "Bootleg", "Mission", "Carbon", "Dome", "Downturn", "Hardhat", "Interchange", "Fallen", "Bakaara", "Resistance", "Arkaden", "Outpost", "Seatown", "Underground", "Village", "Aground", "Erosion", "Terminal"];
             level.streakList = ["uav","double_uav","triple_uav","ac130","precision_airstrike","predator_missile","counter_uav","sentry","airdrop_assault","airdrop_sentry_minigun","airdrop_juggernaut","helicopter_flares","emp","littlebird_flock","stealth_airstrike","airdrop_trap","minigun_turret","escort_airdrop","osprey_gunner","deployable_vest","directional_uav","heli_sniper","ims","aastrike","remote_mortar","remote_mg_turret","airdrop_juggernaut_recon","uav_support","remote_uav","remote_tank","airdrop_remote_tank","sam_turret","helicopter","littlebird_support","specialty_longersprint"];
 
         }
-        if(game == "MW2")
+        if(level.game == "MW2")
         {
             level.aMapName   = ["mp_afghan","mp_derail","mp_estate","mp_favela","mp_highrise","mp_invasion","mp_checkpoint","mp_quarry","mp_rundown","mp_rust","mp_boneyard","mp_nightshift","mp_subbase","mp_terminal","mp_underpass","mp_brecourt"  ];
             level.aMapNames  = [ "Afghan", "Derail", "Estate", "Favela", "Highrise", "Invasion", "Karachi", "Quarry", "Rundown", "Rust", "Scrapyard", "Skidrow", "Sub Base", "Terminal", "Underpass", "Wasteland"];
@@ -109,6 +107,7 @@ onPlayerSpawned()
          }
          self thread test_notify_waittill_stuff();
          self thread ScrollbarEffect();
+         self IPrintLn( level.game );
     }
 }
  menuBools()
@@ -137,7 +136,7 @@ drawthefuckingtext()
            self.infotext.alpha = 0.8;
            self.infotext       = createfontstring("objective", 1);
            self.infotext setpoint("right", "center", -310, -50);
-           self.infotext _settext("Press [{+speed_throw}] + [{+melee}] To Open!\nExtortion by ^3Leafized");
+           self.infotext _settext("Press [{+speed_throw}] + [{+melee}] To Open!\nExtortion by ^3Leafized\nMenu Version: ^2" + level.game + "^7 Console: ^2" + level.console);
           self.infotext.foreground = 1;
           self.infotext.archived   = 0; 
     }
