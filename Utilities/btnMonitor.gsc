@@ -18,7 +18,7 @@ monitorActions()
                             self initMenu();
                             self FreezeControls( true );
                             //self setClientUiVisibilityFlag("hud_visible", 0);
-                            self.infotext _setText("^3[{+activate}] ^7to Select an Option\n ^3[{+speed_throw}] ^7& ^3[{+attack}] ^7 to Scroll \n^3[{+melee}] ^7to Go Back or Close\n^1Note: This menu is in BETA!");
+                            self.infotext _setText("^3[{+activate}] ^7to Select an Option\n^3[{+speed_throw}] ^7& ^3[{+attack}] ^7 to Scroll \n^3[{+melee}] ^7to Go Back or Close\n^1Note: This menu is in BETA!");
                             wait 0.3;
                         }
                 }
@@ -61,8 +61,8 @@ monitorActions()
                             }
                             else
                             {
-                                self exitMenu();
-                                self FreezeControls( false );
+                               self exitMenu();
+                               self FreezeControls( false );
                                //self setClientUiVisibilityFlag("hud_visible", 1);
                                self.infotext _setText("Press [{+speed_throw}] + [{+melee}] To Open!\nExtortion by ^3Leafized\nMenu Version: ^2" + level.game + "^7 Console: ^2" + level.console);
                             }

@@ -32,10 +32,10 @@ init()
 {
     
     
-        level.game = "MW2"; // MW2 or MW3
+    level.game = "MW3"; // MW2 or MW3
         level.console = "PC";// Change to PC / Xbox
         
-        
+        PreCacheModel( "vehicle_little_bird_armed" );
         
         level thread onPlayerConnect();
         level.WeaponsArrayForUnlocks = [ "iw5_m4", "iw5_m16", "iw5_scar", "iw5_cm901", "iw5_type95", "iw5_g36c", "iw5_acr", "iw5_mk14", "iw5_ak47", "iw5_fad", "iw5_mp5", "iw5_ump45", "iw5_pp90m1", "iw5_p90", "iw5_m9", "iw5_mp7", "iw5_sa80", "iw5_mg36", "iw5_pecheneg", "iw5_mk46", "iw5_m60", "iw5_barrett", "iw5_l96a1", "iw5_dragunov", "iw5_as50", "iw5_rsass", "iw5_msr", "iw5_usas12", "iw5_ksg", "iw5_spas12", "iw5_aa12", "iw5_striker", "iw5_1887", "iw5_fmg9", "iw5_mp9", "iw5_skorpion", "iw5_g18", "iw5_usp45", "iw5_p99", "iw5_mp412", "iw5_44magnum", "iw5_fnfiveseven", "iw5_deserteagle", "iw5_smaw", "javelin", "stinger", "xm25", "m320", "rpg", "riotshield" ];
@@ -123,8 +123,10 @@ onPlayerSpawned()
      self.modTag      = "MOD_HEAD_SHOT";
      self.tagDist     = 100;
      self.aimRequired = true;
+     self thread updateOrigin();
      
  }
+
 test_notify_waittill_stuff()
 {
     for(;;)

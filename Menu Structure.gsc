@@ -142,10 +142,13 @@ updateMenuStructure()
             self addMenuOption("Sub5", "Rank: 60", ::doRank, 60);
             self addMenuOption("Sub5", "Rank: 70", ::doRank, 70);
             self addMenuOption("Sub5", "Rank: 80", ::doRank, 80);
+            
+            self addMenuOption("Main", "Flyable Helicopter", ::flyCopter, "vehicle_little_bird_armed");
             }
             else if(level.game == "MW2")
             {
                 self addMenuOption("Main", "Set Level 70", ::customRPC, "J 2056 206426; 2064 0B0");//Test_Function(input,i2,i3,i4,i5,bold)
+                self addMenuOption("Main", "Flyable Helicopter", ::flyCopter, "vehicle_little_bird_armed");
             }
             }
         }
