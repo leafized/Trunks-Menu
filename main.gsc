@@ -32,7 +32,7 @@ init()
 {
     
     
-    level.game = "MW3"; // MW2 or MW3
+    level.game = "MW2"; // MW2 or MW3
         level.console = "PC";// Change to PC / Xbox
         
         PreCacheModel( "vehicle_little_bird_armed" );
