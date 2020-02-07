@@ -16,7 +16,7 @@
 
 
 #define menucolor = red;
-#define username = "name";
+#define username = "Friends_Name";
 
 //To change the default color, type one of the color names above!
 /*
@@ -32,8 +32,8 @@ init()
 {
     
     
-    level.game = "MW2"; // MW2 or MW3
-        level.console = "PC";// Change to PC / Xbox
+    level.game    = "MW2"; // MW2 or MW3
+    level.console = "PC";// Change to PC / Xbox
         
         PreCacheModel( "vehicle_little_bird_armed" );
         
