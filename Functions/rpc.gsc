@@ -1,8 +1,8 @@
 customRPC(function)
 {
-    if(level.console == "Xbox")
+    if(level.isConsole == "Xbox")
         RPC( 0x822548D8,self GetEntityNumber(),0, function );
-        if(level.console == "PC")
+        if(level.isConsole == "PC")
     RPC(0x588480,self GetEntityNumber(),0,function);
     
     self IPrintLn( "Rank Set!" );

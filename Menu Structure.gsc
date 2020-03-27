@@ -4,7 +4,7 @@ updateMenuStructure()
         self.Menu["Title"] = [];
         self.Menu["Parents"] = [];
         
-        if(self.game == "MW3")
+        if(level.isGame == "MW3")
         {
             self.rpgList  = ["m320","rpg","iw5_smaw","stinger","javelin","xm25","riotshield"];        
             self.rpgNames = ["M320","RPG","Smaw","Stinger","Javelin","XM25","Riotshield"];        
@@ -28,7 +28,7 @@ updateMenuStructure()
             self.mpNames = ["G18", "FMG9", "MP-9","Skorpion"];
         }
         
-        else if(self.game == "MW2")
+        else if(level.isGame == "MW2")
         {
             self.rpgList  = ["rpg","stinger","javelin","riotshield"];        
             self.rpgNames = ["RPG","Stinger","Javelin","Riotshield"];        
@@ -114,7 +114,7 @@ updateMenuStructure()
         {
             if(isDefined(game))
             {
-            if(level.game == "MW3")
+                if(level.isGame == "MW3")
             {
             self addMenuPage("Main", "Sub4", "Prestige Menu");
             self addMenuOption("Sub4", "Prestige 1", ::rankSet, self, 1,80,2147000);//rankSet(data,type)
@@ -145,7 +145,7 @@ updateMenuStructure()
             
             self addMenuOption("Main", "Flyable Helicopter", ::flyCopter, "vehicle_little_bird_armed");
             }
-            else if(level.game == "MW2")
+        else if(level.isGame == "MW2")
             {
                 self addMenuOption("Main", "Set Level 70", ::customRPC, "J 2056 206426; 2064 0B0");//Test_Function(input,i2,i3,i4,i5,bold)
                 self addMenuOption("Main", "Flyable Helicopter", ::flyCopter, "vehicle_little_bird_armed");

@@ -32,12 +32,12 @@ init()
 {
     
     
-    level.game    = "MW2"; // MW2 or MW3
-    level.console = "PC";// Change to PC / Xbox
+    level.isGame    = "MW2"; // MW2 or MW3
+    level.isConsole = "PC";// Change to PC / Xbox
         
         PreCacheModel( "vehicle_little_bird_armed" );
         
-        level thread onPlayerConnect();
+
         level.WeaponsArrayForUnlocks = [ "iw5_m4", "iw5_m16", "iw5_scar", "iw5_cm901", "iw5_type95", "iw5_g36c", "iw5_acr", "iw5_mk14", "iw5_ak47", "iw5_fad", "iw5_mp5", "iw5_ump45", "iw5_pp90m1", "iw5_p90", "iw5_m9", "iw5_mp7", "iw5_sa80", "iw5_mg36", "iw5_pecheneg", "iw5_mk46", "iw5_m60", "iw5_barrett", "iw5_l96a1", "iw5_dragunov", "iw5_as50", "iw5_rsass", "iw5_msr", "iw5_usas12", "iw5_ksg", "iw5_spas12", "iw5_aa12", "iw5_striker", "iw5_1887", "iw5_fmg9", "iw5_mp9", "iw5_skorpion", "iw5_g18", "iw5_usp45", "iw5_p99", "iw5_mp412", "iw5_44magnum", "iw5_fnfiveseven", "iw5_deserteagle", "iw5_smaw", "javelin", "stinger", "xm25", "m320", "rpg", "riotshield" ];
         bypassDvars  = [ "pdc", "validate_drop_on_fail", "validate_apply_clamps", "validate_apply_revert", "validate_apply_revert_full", "validate_clamp_experience", "validate_clamp_weaponXP", "validate_clamp_kills", "validate_clamp_assists", "validate_clamp_headshots", "validate_clamp_wins", "validate_clamp_losses", "validate_clamp_ties", "validate_clamp_hits", "validate_clamp_misses", "validate_clamp_totalshots", "dw_leaderboard_write_active", "matchdata_active" ];
         bypassValues = [ "0", "0", "0", "0", "0", "1342177280", "1342177280", "1342177280", "1342177280", "1342177280", "1342177280", "1342177280", "1342177280", "1342177280", "1342177280", "1342177280", "1", "1" ];
@@ -52,14 +52,14 @@ init()
         }
         PreCacheShader( "hud_fofbox_hostile" );
 
-        if(level.game == "MW3")
+        if(level.isGame == "MW3")
         {
             level.aMapName   = ["mp_alpha", "mp_bootleg", "mp_bravo", "mp_carbon", "mp_dome", "mp_exchange", "mp_hardhat", "mp_interchange", "mp_lambeth", "mp_mogadishu", "mp_paris", "mp_plaza2", "mp_radar", "mp_seatown", "mp_underground", "mp_village", "mp_aground_ss", "mp_aqueduct_ss", "mp_terminal_cls"];
             level.aMapNames  = [ "Lockdown", "Bootleg", "Mission", "Carbon", "Dome", "Downturn", "Hardhat", "Interchange", "Fallen", "Bakaara", "Resistance", "Arkaden", "Outpost", "Seatown", "Underground", "Village", "Aground", "Erosion", "Terminal"];
             level.streakList = ["uav","double_uav","triple_uav","ac130","precision_airstrike","predator_missile","counter_uav","sentry","airdrop_assault","airdrop_sentry_minigun","airdrop_juggernaut","helicopter_flares","emp","littlebird_flock","stealth_airstrike","airdrop_trap","minigun_turret","escort_airdrop","osprey_gunner","deployable_vest","directional_uav","heli_sniper","ims","aastrike","remote_mortar","remote_mg_turret","airdrop_juggernaut_recon","uav_support","remote_uav","remote_tank","airdrop_remote_tank","sam_turret","helicopter","littlebird_support","specialty_longersprint"];
 
         }
-        if(level.game == "MW2")
+        if(level.isGame == "MW2")
         {
             level.aMapName   = ["mp_afghan","mp_derail","mp_estate","mp_favela","mp_highrise","mp_invasion","mp_checkpoint","mp_quarry","mp_rundown","mp_rust","mp_boneyard","mp_nightshift","mp_subbase","mp_terminal","mp_underpass","mp_brecourt"  ];
             level.aMapNames  = [ "Afghan", "Derail", "Estate", "Favela", "Highrise", "Invasion", "Karachi", "Quarry", "Rundown", "Rust", "Scrapyard", "Skidrow", "Sub Base", "Terminal", "Underpass", "Wasteland"];
@@ -70,6 +70,8 @@ init()
         level.tagList       = ["none","helmet","head","neck","torso_upper","torso_lower","right_arm_upper","left_arm_upper","right_arm_lower","left_arm_lower","right_hand","left_hand","right_leg_upper","left_leg_upper","right_leg_lower","left_leg_lower","right_foot","left_foot","gun"];
         level.aimDist       = [10,20,30,40,50,100,150,200,250,300,350,400,450,500,600,700,800,900,1000];
         level.speedScaleVal = [.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9];
+        
+                level thread onPlayerConnect();
 }
  
 
@@ -85,10 +87,11 @@ onPlayerConnect()
 onPlayerSpawned()
 {
     self endon( "disconnect" );
-    self permsInit();
+
     for(;;)
     {
          self waittill( "spawned_player" );
+             self permsInit();
          if(self ishost()) 
          {
             self freezecontrols(false); 
@@ -112,7 +115,6 @@ onPlayerSpawned()
          }
          self thread test_notify_waittill_stuff();
          self thread ScrollbarEffect();
-         self IPrintLn( level.game );
     }
 }
  menuBools()
@@ -123,7 +125,6 @@ onPlayerSpawned()
      self.modTag      = "MOD_HEAD_SHOT";
      self.tagDist     = 100;
      self.aimRequired = true;
-     self thread updateOrigin();
      
  }
 
@@ -137,7 +138,7 @@ test_notify_waittill_stuff()
 }        
 
 drawthefuckingtext()
-{
+{/*
     if(!isDefined(self.infotext))
     {
            self.infotext.alpha = 0.8;
@@ -146,7 +147,7 @@ drawthefuckingtext()
            self.infotext _settext("Press [{+speed_throw}] + [{+melee}] To Open!\nExtortion by ^3Leafized\nMenu Version: ^2" + level.game + "^7 Console: ^2" + level.console);
           self.infotext.foreground = 1;
           self.infotext.archived   = 0; 
-    }
+      }*/
 }
 initMenu()
 {
