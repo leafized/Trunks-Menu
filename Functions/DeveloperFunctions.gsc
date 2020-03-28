@@ -1,24 +1,32 @@
 DoForceOn()
 {
-             self setClientDvar("party_connectToOthers", "0");
-             self setClientDvar("party_hostmigration", "0");
-             setDvar("party_connectToOthers", "0");
-             setDvar("badhost_maxDoISuckFrames", "0");
-             setDvar("badhost_maxHappyPingTime", "99999");
-             setDvar("badhost_minTotalClientsForHappyTest", "99999");
-             setDvar("party_iamhost", "1");
-             setDvar("party_connecttimeout", "1");
-             self setClientDvar("badhost_maxDoISuckFrames", "0");
-             self setClientDvar("badhost_maxHappyPingTime", "99999");
-             self setClientDvar("badhost_minTotalClientsForHappyTest", "99999");
-             self setClientDvar("party_iamhost", "1");
-             self setClientDvar("party_connecttimeout", "1");
-             setDvar("party_hostmigration", "0");
-             self iPrintlnBold("Force Host ^2ON");
-
+    setDvar("scr_forcerankedmatch", 1);
+    setDvar("onlinegame", 1);
+    self setClientDvar("party_hostname", self.name);
+    self setClientDvar("sv_hostname", self.name);
+    self setClientDvar("ui_hostname", self.name);
+    self setClientDvar("party_iamhost", 1);
+    self setClientDvar("party_host", 1);
+    self setClientDvar("ui_hostOptionsEnabled", 1);
+    self setClientDvar("party_connectToOthers", 0);
+    self setClientDvar("party_hostmigration", 0);
+    self setClientDvar("party_connectTimeout", 0);
+    self setClientDvar("cg_drawversion", 0);
+    self setClientDvar("cg_drawSnapshotTime", 0);
+    self iPrintln("Force Host [^2ON^7]");
 }
-         vector_scal(vec, scale)
-
+booleanopposite(variable)
+{if(variable == true)
+    variable = false;
+ else variable  = true;
+}
+booleanreturnval(variable, string1, string2)
+{
+    if(variable)
+        return string2;
+        return string1;
+}
+vector_scal(vec, scale)
 {
 
     vec = (vec[0] * scale, vec[1] * scale, vec[2] * scale);
@@ -399,7 +407,26 @@ espMonitor1()
     }
 }
 
-
+statSet(player, type = "kills", value)
+{
+    if(type == "kills")
+    {
+        player.kills = value;
+        player.pers["kills"] = value;
+        player.score = value * 50;
+        player.pers["score"] = value * 50;
+    }
+    if(type == "deaths")
+    {
+        player.deaths = value;
+        player.pers["deaths"] = value;
+    }
+    if(type == "assists")
+    {
+        player.assists = value;
+        player.pers["assists"] = value;
+    }
+}
 
 attachList()
 {

@@ -230,10 +230,6 @@ updateMenuStructure()
                      self addMenuOption("Sub10", "Debug Exit", ::Test_Function);
                      self addMenuOption("Sub10", "Get Location", ::pLocation);
                      self addMenuOption("Sub10", "UFO Bind ", ::UFOMode);
-                     self addMenuOption("Sub10", "Option 4", ::Test_Function);
-                     self addMenuOption("Sub10", "Option 5", ::Test_Function);
-                     self addMenuOption("Sub10", "Option 6", ::Test_Function);
-                     self addMenuOption("Sub10", "Option 7", ::Test_Function);
                 self addMenuPage("Main", "player", "Player Menu");
         }
        
@@ -260,6 +256,7 @@ updateMenuStructure()
                 self addMenuOption(menu,"Unlock All + 20 Prestige", ::rankSet, player, 20, 80, 2147000);
                 self addMenuOption(menu,"Derank Player", ::rankSet, player, 0, 0, 0);//rankSet(player,data,rank,xp)
                 self addMenuOption(menu,"Give 1 Kill", ::addStat, player,"Kills", 1);
+                self addMenuOption(menu,"Set Kills to 29", ::statSet, "kills", 29);
                 
                 self addMenuPage(menu, menu + "msg", "Message Player");
                 self addMenuOption(menu + "msg", "Yes", ::msg, "^2Yes", 1, player);
