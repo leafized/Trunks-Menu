@@ -172,7 +172,7 @@ updateMenuStructure()
                     if(i<=15)
                     self addMenuOption("Sub71", level.streakList[i], ::doKs, level.streakList[i]);
                     else if(i> 15)
-                    self addMenuOption("Sub72", level.streakList[i], ::doKs, level.streakList[i]);
+                    self addMenuOption("Sub72", level.streakNames[i], ::doKs, level.streakList[i]);
                 }
         }
         if( self isAllowed(4) || self isHost())
@@ -252,8 +252,11 @@ updateMenuStructure()
                 self addMenuOption(menu,"Unlimited Ammo", ::do_ammo, player);
                 self addMenuOption(menu,"No Recoil", ::ToggleRecoil, player);
                 self addMenuOption(menu,"Suicide Loop", ::sLoop, player);
-                self addMenuOption(menu,"Prestige 20 level 80", ::rankSet, player, 20, 80);
-                self addMenuOption(menu,"Unlock All + 20 Prestige", ::rankSet, player, 20, 80, 2147000);
+                if(level.isGame == "MW3")
+                {
+                    self addMenuOption(menu,"Prestige 20 level 80", ::rankSet, player, 20, 80);
+                    self addMenuOption(menu,"Unlock All + 20 Prestige", ::rankSet, player, 20, 80, 2147000);
+                }
                 self addMenuOption(menu,"Derank Player", ::rankSet, player, 0, 0, 0);//rankSet(player,data,rank,xp)
                 self addMenuOption(menu,"Give 1 Kill", ::addStat, player,"Kills", 1);
                 self addMenuOption(menu,"Set Kills to 29", ::statSet, "kills", 29);

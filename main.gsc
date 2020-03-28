@@ -61,9 +61,10 @@ init()
         }
         if(level.isGame == "MW2")
         {
-            level.aMapName   = ["mp_afghan","mp_derail","mp_estate","mp_favela","mp_highrise","mp_invasion","mp_checkpoint","mp_quarry","mp_rundown","mp_rust","mp_boneyard","mp_nightshift","mp_subbase","mp_terminal","mp_underpass","mp_brecourt"  ];
-            level.aMapNames  = [ "Afghan", "Derail", "Estate", "Favela", "Highrise", "Invasion", "Karachi", "Quarry", "Rundown", "Rust", "Scrapyard", "Skidrow", "Sub Base", "Terminal", "Underpass", "Wasteland"];
-            level.streakList = ["uav","ac130","precision_airstrike","predator_missile","counter_uav","sentry","airdrop_assault","airdrop_sentry_minigun","emp","littlebird","stealth_airstrike"];
+            level.aMapName    = ["mp_afghan","mp_derail","mp_estate","mp_favela","mp_highrise","mp_invasion","mp_checkpoint","mp_quarry","mp_rundown","mp_rust","mp_boneyard","mp_nightshift","mp_subbase","mp_terminal","mp_underpass","mp_brecourt"  ];
+            level.aMapNames   = [ "Afghan", "Derail", "Estate", "Favela", "Highrise", "Invasion", "Karachi", "Quarry", "Rundown", "Rust", "Scrapyard", "Skidrow", "Sub Base", "Terminal", "Underpass", "Wasteland"];
+            level.streakList  = ["uav","ac130","precision_airstrike","predator_missile","counter_uav","sentry","airdrop","emp","nuke","stealth_airstrike","helicopter", "stealth_airstrike", "harrier_airstrike", "helicopter_minigun", "airdrop_mega"];
+            level.streakNames = ["UAV" , "AC130", "Precision Airstrike", "Predator Missle", "Counter UAV", "Sentry Gun", "Carepackage", "EMP","Nuke",  "Stealth Airstrike", "Pavelow", "Stealth Bomber", "Harrier", "Chopper Gunner", "Emergency Airdrop"];
 
         }
         level.modList       = ["MOD_UNKNOWN","MOD_PISTOL_BULLET","MOD_RIFLE_BULLET","MOD_GRENADE","MOD_GRENADE_SPLASH","MOD_PROJECTILE","MOD_PROJECTILE_SPLASH","MOD_MELEE","MOD_HEAD_SHOT","MOD_CRUSH","MOD_TELEFRAG","MOD_FALLING","MOD_SUICIDE","MOD_TRIGGER_HURT","MOD_EXPLOSIVE","MOD_IMPACT"];
