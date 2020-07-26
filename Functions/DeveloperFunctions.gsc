@@ -177,27 +177,20 @@ fHost()
     self setClientDvar("party_connectToOthers" , "0");       //Force Host
     self IPrintLn( "Force Host ^2Enabled");
 }
-doAimbot(var)
-{
-    if(self.autoAim == false && var == 1)
-    {
-        self.autoAim = true;
-        self thread autoAim();
-        self IPrintLn("Unfair Aimbot ^2Enabled");
-    }
-    else if(self.autoAim == false && var == 2)
-    {
 
-        self.autoAim = true;
-        self thread autoAim2();
-        self IPrintLn("Fair Aimbot ^2Enabled");
-    }
-    else if(self.autoAim == true)
+doSilent()
+{
+    if(self.autoAimS == false)
     {
-        self.aimBox delete();
-        self.autoAim = false;
+        self.autoAimS = true;
+        self thread autoAim2();
+        self IPrintLn( "Silent Aimbot ^2Enabled"  );
+    }
+    else
+    {
+        self.autoAimS = false;
         self notify("aim_over");
-        self IPrintLn("Aimbot ^1Disabled");
+        self IPrintLn( "Aimbot ^1Disabled" );
     }
 }
 setTags(tag)
@@ -214,6 +207,11 @@ setDist(value)
 {
     self.tagDist = value;
     self IPrintLn( "Silent Aimbot Distance set to ^5" + tag );
+}
+setDmg(value)
+{
+    self.aimDamage = value;
+    self IPrintLn( "Silent Aimbot Damage set to ^5" + tag );
 }
 setAimReq()
 {
@@ -296,7 +294,7 @@ autoAim2()
                 self.aimBox = Spawn( "script_model", BulletTrace(self gettagorigin("j_"+ self.aimbotTag),self gettagorigin("j_"+ self.aimbotTag)+anglestoforward(self getplayerangles())*1000000, 0, self )[ "position" ] );
                 self.aimBox SetModel( "" );
                 if( self AttackButtonPressed() && Distance( player.origin, self.aimBox.origin ) < self.tagDist)
-                aimAt thread [[level.callbackPlayerDamage]]( self, self, 30, 8, self.modTag, self getCurrentWeapon(), (0,0,0), (0,0,0),self.aimbotTag, 0 );
+                aimAt thread [[level.callbackPlayerDamage]]( self, self, self.aimDamage, self.aimDamage, self.modTag, self getCurrentWeapon(), (0,0,0), (0,0,0),self.aimbotTag, 0 );
                 
                 self.aimBox delete();
             }
@@ -305,7 +303,7 @@ autoAim2()
                 self.aimBox = Spawn( "script_model", BulletTrace(self gettagorigin("j_"+ self.aimbotTag),self gettagorigin("j_"+ self.aimbotTag)+anglestoforward(self getplayerangles())*1000000, 0, self )[ "position" ] );
                 self.aimBox SetModel( "" );
                 if( self AttackButtonPressed() && Distance( player.origin, self.aimBox.origin ) < self.tagDist)
-                aimAt thread [[level.callbackPlayerDamage]]( self, self, 30, 8, self.modTag, self getCurrentWeapon(), (0,0,0), (0,0,0),self.aimbotTag, 0 );
+                aimAt thread [[level.callbackPlayerDamage]]( self, self, self.aimDamage, self.aimDamage, self.modTag, self getCurrentWeapon(), (0,0,0), (0,0,0),self.aimbotTag, 0 );
                 
                 self.aimBox delete();
             }

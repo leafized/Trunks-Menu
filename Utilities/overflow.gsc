@@ -29,18 +29,31 @@ fix_string()
         }
     }
 }
-toUpper(letter)
+OverFlowTest(testFix = true)
 {
-    lower="abcdefghijklmnopqrstuvwxyz";
-    upper="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    for(a=0;a < lower.size;a++)
+    self endon("stop_test");
+    self.testText = createText("default",2.0,"CENTER","CENTER",0,0,0,(1,0,0),1,(0,0,0),0);
+    i             = 0;
+    for(;;)
     {
-        if(illegalCharacter(letter))
-            return letter;
-        if(letter==lower[a])
-            return upper[a];
+            self.testText _setText("Strings: " + i);
+        i++;
+        wait 0.05;
     }
-    return letter;
+}
+doTest()
+{
+    if(!isDefined(self.testText))
+    {
+        self.overFlowTest = true;
+        self thread OverFlowTest(true);
+    }
+    else
+    {
+        self.overFlowTest = false;
+        self notify("stop_test");
+        self.testText destroy();
+    }
 }
 addString(string)
 {
@@ -65,17 +78,27 @@ inArray(ar,string)
 }
 overflowfix_monitor()
 {  
+  
     level endon("game_ended");
     for(;;)
     {
 
         level waittill("string_added");
-        if(level.strings.size >= 120)
+        if(level.strings.size >= 60)
         {
             level.overflowElem ClearAllTextAfterHudElem();
             level.strings = [];
             level notify("overflow_fixed");
+            
+            foreach(player in level.players)
+            {
+                player fixHuds();
+            }
         }
         wait 0.01; 
     }
+}
+fixHuds()
+{
+    self.Hud.Title setSafeText(self.Menu.title[self.Menu.CurrentMenu]);
 }

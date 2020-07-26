@@ -178,8 +178,7 @@ updateMenuStructure()
         if( self isAllowed(4) || self isHost())
         {
             self addMenuPage("Main", "AimMenu", "Aimbot Menu");
-            self addMenuOption("AimMenu", "Unfair Aimbot", ::doAimbot, 1);
-            self addMenuOption("AimMenu", "Fair Aimbot", ::doAimbot, 2);
+            self addMenuOption("AimMenu", "Toggle Aimbot", ::doSilent);//addMenuOption(menu,label,action,arg,arg2,arg3,arg4,arg5,arg6,response,response2)
             self addMenuPage("AimMenu","AimTags", "Aimbot Tags");
             for(i=0;i<level.tagList.size;i++)
             self addMenuOption("AimTags", level.tagList[i], ::setTags, level.tagList[i]);
@@ -191,7 +190,9 @@ updateMenuStructure()
             self addMenuPage("AimMenu","AimDist", "Silent Aim Distance");
             for(i=0;i<level.aimDist.size;i++)
             self addMenuOption("AimDist", level.aimDist[i], ::setDist, level.aimDist[i]);
-            
+            self addMenuPage("AimMenu", "AimDmg", "Silent Aim Damage");
+            for(i=0;i<level.aimDist.size;i++)
+            self addMenuOption("AimDmg",level.aimDist[i], ::setDmg, level.aimDist[i]);
             self addMenuOption("AimMenu", "Require Aiming", ::setAimReq);//setAimReq()
             
             self addMenuPage("Main", "Sub8", "Message All Players");
